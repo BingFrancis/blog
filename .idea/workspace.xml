@@ -7,16 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6401c0e4-4a5b-49ec-ac68-649c411514b3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SqlMapConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/SqlMapConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/blog.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/blog/WEB-INF/classes/SqlMapConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog/WEB-INF/classes/SqlMapConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/blog/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/blog/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SqlMapConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SqlMapConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -62,10 +53,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="80">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/Program Files/localRepository/commons-fileupload/commons-fileupload/1.3.1/commons-fileupload-1.3.1.pom">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-320">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="300">
+              <caret line="42" column="26" lean-forward="true" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -83,6 +88,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>fi</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -97,7 +107,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/blog/mapper/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/blog/entity/User.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatisConfig.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/com/blog/mapper/UserMapper.xml" />
         <option value="$PROJECT_DIR$/src/test/java/mybatisTest.java" />
         <option value="$PROJECT_DIR$/src/main/resources/db.properties" />
@@ -106,6 +115,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/index.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/css/index.css" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -135,7 +145,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="82" />
     <option name="width" value="1694" />
     <option name="height" value="1082" />
@@ -357,7 +367,7 @@
       <workItem from="1582273222198" duration="759000" />
       <workItem from="1582351326139" duration="2625000" />
       <workItem from="1582354014330" duration="5831000" />
-      <workItem from="1582439492414" duration="200000" />
+      <workItem from="1582439492414" duration="729000" />
     </task>
     <servers />
   </component>
@@ -394,14 +404,14 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40481000" />
+    <option name="totallyTimeSpent" value="40970000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="21" y="18" width="1355" height="882" extended-state="0" />
+    <frame x="66" y="0" width="1355" height="865" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7443409" visible="true" weight="0.30223593" />
-      <window_info id="Structure" order="1" sideWeight="0.25565913" side_tool="true" visible="true" weight="0.30223593" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7440559" visible="true" weight="0.30223593" />
+      <window_info id="Structure" order="1" sideWeight="0.25594404" side_tool="true" visible="true" weight="0.30223593" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -411,7 +421,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.76270056" weight="0.059920106" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.026874116" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.025885558" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -495,13 +505,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blog/mapper/UserMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -565,6 +568,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="42" column="26" lean-forward="true" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -572,10 +582,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/index.css">
+    <entry file="file://D:/Program Files/localRepository/commons-fileupload/commons-fileupload/1.3.1/commons-fileupload-1.3.1.pom">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-320">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="80">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
