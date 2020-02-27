@@ -6,7 +6,7 @@
 
   <display-name>blog</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>./WEB-INF/views</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
@@ -41,6 +41,10 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
+  <servlet-mapping>
+    <servlet-name>bolg</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
 
   <!-- springmvc的前端控制器 -->
   <servlet>
@@ -53,8 +57,6 @@
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>bolg</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
+
+
 </web-app>

@@ -1,16 +1,18 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
        xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
-    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!-- 1.加载配置文件 -->
     <!-- 第一种加载多个.properties文件的方法 -->
     <context:property-placeholder location="classpath:resource/*.properties"/>
 
+    <!--放行静态资源文件-->
+    <mvc:default-servlet-handler/>
     <!-- 2.配置数据库连接池 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
           destroy-method="close">
@@ -21,6 +23,8 @@
         <property name="maxActive" value="10" />
         <property name="minIdle" value="5" />
     </bean>
+
+
 
 
 
