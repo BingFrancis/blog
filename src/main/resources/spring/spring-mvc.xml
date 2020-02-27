@@ -17,14 +17,14 @@
 <!-- 视图解析器：解析jsp页面，默认使用jstl标签，classpath下得有jstl的包 -->
 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     <!-- 配置前后缀 -->
-    <property name="prefix" value="/WEB-INF/jsp/"></property>
+    <property name="prefix" value="/WEB-INF/views/modules/"></property>
     <property name="suffix" value=".jsp"></property>
 </bean>
-
-<!-- 静态资源处理，不拦截静态资源，如css、js、imgs -->
-<!--<mvc:resources location="/static/css/" mapping="/static/css/**"/>-->
-<!--<mvc:resources location="/static/js/" mapping="/static/js/**"/>-->
-<!--<mvc:resources location="/static/img/" mapping="/static/img/**"/>-->
+ <!--静态资源处理，不拦截静态资源，如css、js、imgs-->
+<mvc:resources location="/static/css/" mapping="/static/css/**"/>
+<mvc:resources location="/static/js/" mapping="/static/js/**"/>
+<mvc:resources location="/static/image/" mapping="/static/image/**"/>
+<mvc:default-servlet-handler/>
 
 <!-- 文件上传相关配置 -->
 <bean id="multipartResolver"

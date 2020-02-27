@@ -9,11 +9,9 @@ html{
     display: block;
     height: 100%;
     margin: 0;
-
 }
 
 body {
-    padding-top: 56px!important;
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     font-size: 17px;
     line-height: 1.42857;
@@ -26,13 +24,13 @@ body {
     display: block;
     color: #333;
 }
-nav{
-    height: 56px;
 
+a{
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .navbar{
-    position: relative;
     min-height: 50px;
     margin-bottom: 20px;
     border: 1px solid transparent;
@@ -44,12 +42,68 @@ nav{
 }
 
 .navbar-fixed-top{
-    top:0;
+    top: 0;
     border-width: 0 0 1px;
 }
 
+nav .width-limit{
+    min-width: 768px;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: block;
+}
+ .logo{
+    float: left;
+    height:50px;
+    padding: 0;
+}
+
+ nva .logo img{
+     height: 100%;
+     border: 0;
+     vertical-align: middle;
+ }
+
+ .btn{
+     text-align: center;
+     cursor: pointer;
+     font-weight: 400;
+     vertical-align: middle;
+     padding: 6px 12px;
+ }
 
 
+ nav .writen-btn{
+     float: right;
+     width: 100px;
+     height: 40px;
+     line-height: 24px;
+     margin: 8px 12px 0;
+     border-radius:20px;
+     font-size: 15px;
+     color: #ffffff;
+     background-color: #ea6f5a;
+ }
+
+ nav .sing-up{
+     float: right;
+     width: 80px;
+     height: 38px;
+     line-height: 24px;
+     margin: 9px 5px 0 15px;
+     border: 1px solid rgba(236,97,73,.7);
+     border-radius: 20px;
+     font-size: 15px;
+     color: #ea6f5a;
+     background-color: transparent;
+ }
+ nav .log-in{
+     color: #969696;
+     float: right;
+     margin: 11px 6px 0 10px;
+     font-size: 15px;
+
+ }
 
 body.reader-black-font, body.reader-black-font .history-mode .view-area,
 body.reader-black-font .history-mode .view-area pre,
