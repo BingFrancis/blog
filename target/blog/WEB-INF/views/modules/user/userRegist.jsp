@@ -110,7 +110,10 @@
             <%--</div>--%>
 
             <div class="layui-form-item">
-                <input type="checkbox" name="agreement" lay-skin="primary" title="同意用户协议" checked>
+                <input type="checkbox" name="agreement" lay-skin="primary" title="我已阅读并接受" checked>
+                    <a onclick="show();" href="javascript:;"  style="margin-bottom: 0">《使用说明》</a>
+                </div>
+
             </div>
             <div class="layui-form-item">
                 <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="LAY-user-reg-submit">注 册</button>

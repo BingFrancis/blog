@@ -140,17 +140,4 @@ public class Encodes {
             throw Exceptions.unchecked(e);
         }
     }
-
-    public static void main(String[] args) {
-        String password = "123456";
-        String plain = Encodes.unescapeHtml(password);
-        byte[] salt = Digests.generateSalt(8);
-        byte[] hashPassword = Digests.sha1(plain.getBytes(), salt, 1024);
-        System.out.println("密码加密！！！！");
-        System.out.println(Encodes.encodeHex(salt)+Encodes.encodeHex(hashPassword));
-        System.out.println("验证密码");
-
-    }
-
-
 }
