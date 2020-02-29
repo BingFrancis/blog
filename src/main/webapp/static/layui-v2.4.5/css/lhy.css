@@ -1,0 +1,148 @@
+body{
+}
+.mainone{
+    width: 960px;
+    margin-top: 20px;
+}
+.maintwo{
+    width: 960px;
+}
+
+.table_logo{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.table_logo td{
+    font-family: "Agency FB", serif;
+    font-size:25px;
+    text-indent:5px;
+    color: #009E94;
+    width: 100px;
+    text-align: left;
+}
+.table_logo img{
+    width: 60px;
+    height: 60px;
+    padding-right: 0;
+}
+.bg{
+    position:relative;
+    height:280px;
+    width: 100%;
+}
+.bg_img{
+    position: absolute;
+    height:250px;
+    padding-left: 0;
+}
+.loginBg{
+    position: absolute;
+    margin-left: 700px;
+    height:244px;
+    width: 244px;
+    /*border:3px solid #92B8B1;*/
+/*filter:alpha(Opacity=60);*/
+    /*-moz-opacity:0.6;*/
+    /*opacity: 0.1;*/
+}
+/*.icon-user{*/
+    /*position: absolute;left: 0;*/
+    /*margin-top: 5px;*/
+    /*z-index:5;*/
+    /*background-image: url('/static/images/index_icon_username.png'); !*引入图片图片*!*/
+    /*background-repeat: no-repeat; !*设置图片不重复*!*/
+    /*background-position: 0px 0px; !*图片显示的位置*!*/
+    /*width: 30px; !*设置图片显示的宽*!*/
+    /*height: 30px; !*图片显示的高*!*/
+/*}*/
+/*.icon-password{*/
+    /*margin-left: 2px;*/
+    /*position: absolute;left: 0;*/
+    /*z-index:5;*/
+    /*background-image: url('/static/images/index_icon_password.png'); !*引入图片图片*!*/
+    /*background-repeat: no-repeat; !*设置图片不重复*!*/
+    /*!*background-position: 0 5px; !*图片显示的位置*!*!*/
+    /*width: 30px; !*设置图片显示的宽*!*/
+    /*height: 30px; !*图片显示的高*!*/
+/*}*/
+.mleft {
+    width: 580px;
+    float: left;
+    margin-left: 15px;
+    display: inline;
+}
+.mright { /* width:300px;  */
+    float: right;
+    width: 330px;
+    margin-left: 10px;
+    display: inline;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.new {
+    width: 580px;
+    font-family: "FangSong", "FangSong_GB2312", "STFangsong", "CWTEX\-F";
+    text-align: left;
+    margin-top: 20px;
+    font-size: 15px;
+}
+.his{
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-family: "Agency FB", serif;
+}
+.contact,.download {
+    width: 300px;
+    background: #cfdeec;
+    margin-bottom: 20px;
+}
+.pdf1{
+    font-family: "Agency FB", serif;
+    text-align: left;
+    font-size: 18px;
+}
+.con_bt{
+    font-family: "Agency FB", serif;
+    text-align: left;
+    font-size: 18px;
+    padding-top: 20px;
+    margin-left: 20px;
+}
+.line {
+    width:295px;
+    height: 0px;
+    border:2px solid #92B8B1;
+    overflow: hidden;
+}
+.Dow_nr {
+     width: 255px;
+ }
+.Dow_nr ul{
+    margin-left: 0;
+}
+.Dow_nr ul li{
+    text-align: left;
+}
+.Dow_nr ul li a{
+    font-family: "Agency FB", serif;
+    font-size: 16px;
+    margin-top: 10px;
+}
+#footer1 {
+    width: 980px;
+    margin-top: 40px;
+    height: 40px;
+    background: #92B8B1;
+    /*background: url(../images/footer_bg.gif) repeat-x;*/
+    clear: both;
+}
+#footer1 p {
+    padding-top: 10px;
+    text-align: center;
+    font-size: 9.0pt;
+    background: #92B8B1;
+}
+.validateCode{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
