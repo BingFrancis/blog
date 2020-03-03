@@ -45,7 +45,7 @@ public class mybatisTest {
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 //        5执行insert方法
         User user = new User();
-        user.setNickName("你大爷的");
+        user.setNickName("马化腾");
         user.setEmail("1111@qq.com");
         user.setPhone("10086");
         userMapper.insert(user);
