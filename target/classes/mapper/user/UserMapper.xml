@@ -3,26 +3,26 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.blog.mapper.user.UserMapper">
-    <!--<resultMap id="BaseResultMap" type="com.blog.entity.User" >-->
-    <!--<id column="id" property="id" jdbcType="BIGINT" />-->
-    <!--<result column="nick_name" property="nickName" jdbcType="VARCHAR" />-->
-    <!--<result column="email" property="email" jdbcType="VARCHAR" />-->
-    <!--<result column="phone" property="phone" jdbcType="VARCHAR" />-->
-    <!--<result column="img_url" property="imgUrl" jdbcType="VARCHAR" />-->
-    <!--<result column="password" property="password" jdbcType="VARCHAR" />-->
-    <!--<result column="state" property="state" jdbcType="VARCHAR" />-->
-    <!--<result column="enable" property="enable" jdbcType="VARCHAR" />-->
-    <!--</resultMap>-->
-    <!--<sql id="Base_Column_List" >-->
-    <!--id, nick_name, email, phone, img_url, password, state, enable-->
-    <!--</sql>-->
+    <resultMap id="BaseResultMap" type="com.blog.entity.User" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="img_url" property="imgUrl" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="enable" property="enable" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+    id, nick_name, email, phone, img_url, password, state, enable
+    </sql>
 
-    <!--&lt;!&ndash; 根据昵称查询用户 &ndash;&gt;-->
-    <!--<select id="selectByNickName" resultMap="BaseResultMap" >-->
-        <!--select *-->
-        <!--from user-->
-        <!--where nick_name = #{nickName,jdbcType=VARCHAR}-->
-    <!--</select>-->
+    <!-- 根据昵称查询用户 -->
+    <select id="selectByNickName" resultMap="BaseResultMap" >
+        select *
+        from user
+        where nick_name = #{nickName,jdbcType=VARCHAR}
+    </select>
 
 
 

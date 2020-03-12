@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByNickName(String nickname) {
         User user = new User();
-        user.setPhone(nickname);
+        user.setNickName(nickname);
         return userMapper.selectOne(user);
     }
 
