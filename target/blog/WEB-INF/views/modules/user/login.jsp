@@ -23,7 +23,6 @@
     <link id="layuicss-layer" rel="stylesheet" href="https://www.layui.com/admin/std/dist/layuiadmin/layui/css/modules/layer/default/layer.css?v=3.1.1" media="all">
 
 
-
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/layui-v2.4.5/layui.all.js"></script>
     <script src="/static/layer/layer.js"></script>
@@ -75,7 +74,7 @@
         </div>
 
         <%--账号密码--%>
-        <div class="layadmin-user-login-box layadmin-user-login-body layui-form main" style="background-color: white ; box-shadow: 0 0 8px rgba(0,0,0,.1);">
+        <div class="layadmin-user-login-box layadmin-user-login-body layui-form main" style="background-color: white ; box-shadow: 0 0 8px rgba(0,0,0,.1); font-size: medium">
             <div class="layui-form-item">
                 <label class="layadmin-user-login-icon layui-icon layui-icon-username" for="LAY-user-login-username"></label>
                 <input type="text" name="username" id="LAY-user-login-username" lay-verify="required" placeholder="手机号或邮箱" class="layui-input">

@@ -7,29 +7,34 @@
     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-<!-- 使用注解驱动：自动配置处理器映射器与处理器适配器 -->
-<mvc:annotation-driven />
 
-<!-- 注解方式：配置Handler，自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
-<!-- 批量加载：组件扫描方式： -->
-<context:component-scan base-package="com.blog.controller" />
+    <!-- 使用注解驱动：自动配置处理器映射器与处理器适配器 -->
+    <mvc:annotation-driven/>
 
-<!-- 视图解析器：解析jsp页面，默认使用jstl标签，classpath下得有jstl的包 -->
-<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-    <!-- 配置前后缀 -->
-    <property name="prefix" value="/WEB-INF/views/modules/"></property>
-    <property name="suffix" value=".jsp"></property>
-</bean>
- <!--静态资源处理，不拦截静态资源，如css、js、imgs-->
-<mvc:resources location="/static/css/" mapping="/static/css/**"/>
-<mvc:resources location="/static/js/" mapping="/static/js/**"/>
-<mvc:resources location="/static/image/" mapping="/static/image/**"/>
-<mvc:default-servlet-handler/>
+    <!-- 注解方式：配置Handler，自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
+    <!-- 批量加载：组件扫描方式： -->
+    <!--<context:component-scan base-package="com.blog.controller" />-->
+    <context:component-scan base-package="com.blog.controller"/>
 
-<!-- 文件上传相关配置 -->
-<bean id="multipartResolver"
-      class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-    <property name="defaultEncoding" value="UTF-8"></property>
-    <property name="maxUploadSize" value="10240000"></property>
-</bean>
+
+    <!-- 视图解析器：解析jsp页面，默认使用jstl标签，classpath下得有jstl的包 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- 配置前后缀 -->
+        <property name="prefix" value="/WEB-INF/views/modules/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+    <!--静态资源处理，不拦截静态资源，如css、js、imgs-->
+    <mvc:resources location="/static/css/" mapping="/static/css/**"/>
+    <mvc:resources location="/static/js/" mapping="/static/js/**"/>
+    <mvc:resources location="/static/image/" mapping="/static/image/**"/>
+    <mvc:default-servlet-handler/>
+
+
+
+
+    <!-- 文件上传相关配置 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"></property>
+        <property name="maxUploadSize" value="10240000"></property>
+    </bean>
 </beans>
