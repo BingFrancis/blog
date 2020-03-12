@@ -3,37 +3,49 @@ package com.blog.controller;
 
 import com.blog.entity.User;
 import com.blog.security.Digests;
-import com.blog.service.SystemService;
+import com.blog.service.Impl.UserServiceImpl;
+import com.blog.service.UserService;
 import com.blog.utils.Encodes;
 import com.blog.utils.RandomValidateCode;
-import com.sun.tools.internal.ws.processor.model.Model;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class UserController {
+//    private final static Logger log = Logger.getLogger(UserController.class);
+    @Autowired
+    private UserService userService;
 
 
-    private SystemService systemService;
 
-    //昵称查重
+    @RequestMapping("/checkNickName")
     @ResponseBody
-    @RequestMapping(value = "checkNickName")
-    public String checkNickName(HttpServletRequest request) {
-        User user = new User();
-        user = systemService.getUserByLoginName(request.getParameter("nickName"));
-        if(user != null){
-            return "false";
+    public Map<String, Object> checkEmail(Model model, @RequestParam(value = "nickName", required = false) String nickName) {
+        Map map = new HashMap<String, Object>();
+        User user = userService.findByNickName(nickName);
+        if (user == null) {
+            //未注册
+            map.put("message", "success");
+        } else {
+            //已注册
+            map.put("message", "fail");
         }
-        return "false";
+
+        return map;
     }
+
+
+
+
     //图片验证码生成
     @RequestMapping(value = "getVerify")
     @ResponseBody

@@ -73,19 +73,19 @@
             form.render();
             form.verify({
                 nickname: function (value) {
-                    if(!new RegExp('^[a-zA-Z0-9_\u4e00-\u9fa5\s·]+$').test(value)){
-                        return '不能有特殊字符';
-                    }
-                    if(/(^\_)|(\__)|(\_+$)/.test(value)){
-                        return '首尾不能出现下划线\'_\'';
-                    }
-                    var minlength = $(item).attr("minlength");
-                    if(minlength && value.length < minlength){
-                        return '长度至少为'+minlength+"位";
-                    }
-                    if(/^\d+$/.test(value)){
-                        return '不能全为数字';
-                    }
+                    // if(!new RegExp('^[a-zA-Z0-9_\u4e00-\u9fa5\s·]+$').test(value)){
+                    //     return '不能有特殊字符';
+                    // }
+                    // if(/(^\_)|(\__)|(\_+$)/.test(value)){
+                    //     return '首尾不能出现下划线\'_\'';
+                    // }
+                    // var minlength = $(item).attr("minlength");
+                    // if(minlength && value.length < minlength){
+                    //     return '长度至少为'+minlength+"位";
+                    // }
+                    // if(/^\d+$/.test(value)){
+                    //     return '不能全为数字';
+                    // }
                     var nickname = $("#nickname").val();
                     if (value == "") {
                         return "请填入一个昵称"
