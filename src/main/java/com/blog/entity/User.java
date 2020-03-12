@@ -3,8 +3,8 @@ package com.blog.entity;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
-    private Long id;
+public class User  {
+    private String id;
 
     private String nickName;
 
@@ -20,11 +20,11 @@ public class User implements Serializable {
 
     private String enable;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -82,6 +82,14 @@ public class User implements Serializable {
 
     public void setEnable(String enable) {
         this.enable = enable == null ? null : enable.trim();
+    }
+
+    public User(){
+
+    }
+
+    public User(String nickName){
+        this.nickName = nickName;
     }
 
     @Override
