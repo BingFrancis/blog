@@ -51,10 +51,8 @@
         $(document).ready(function () {
             $("#imgVerify").attr("src", "/getVerify?id=" + Math.random());
         });
-    </script>
 
 
-    <script type="text/javascript">
         layui.use(['form', 'layedit', 'laydate', 'layer'], function () {
             var form = layui.form
                 , admin = layui.admin
@@ -74,17 +72,17 @@
             form.verify({
                 nickname: function (value) {
                     var message = "";
-                    if(!new RegExp('^[a-zA-Z0-9_\u4e00-\u9fa5\s·]+$').test(value)){
+                    if (!new RegExp('^[a-zA-Z0-9_\u4e00-\u9fa5\s·]+$').test(value)) {
                         return '不能有特殊字符';
                     }
-                    if(/(^\_)|(\__)|(\_+$)/.test(value)){
+                    if (/(^\_)|(\__)|(\_+$)/.test(value)) {
                         return '首尾不能出现下划线\'_\'';
                     }
                     // var minlength = $(item).attr("minlength");
                     // if(minlength && value.length < minlength){
                     //     return '长度至少为'+minlength+"位";
                     // }
-                    if(/^\d+$/.test(value)){
+                    if (/^\d+$/.test(value)) {
                         return '不能全为数字';
                     }
                     var nickname = $("#nickname").val();
@@ -106,20 +104,11 @@
                         });
                         return message;
                     }
-                }, vercode: function (value) {
-                    var messagecode = "";
-                    if (value == "") {
-                        messagecode = "请填入图形验证码"
-                    }
-                    else {
-                        messagecode = "good";
-                    }
-                    return messagecode
-                }
+                },password: [/^[\S]{6,12}$/, '密码必须6到12位，且不能出现空格']
             });
 
             //表单提交验证
-            form.on('submit(test1)', function (data) {
+            form.on('submit(commit)', function (data) {
                 $.fn.serializeObject = function () {
                     var o = {};
                     var a = this.serializeArray();
@@ -251,10 +240,34 @@
                 });
             }
         }
+
+        //短信验证码倒计时
+        function countDown(obj, second) {
+            var buttonDefaultValue = "获取验证码";
+            if (second >= 0) {
+                if (typeof buttonDefaultValue === 'undefined') {
+                    buttonDefaultValue = obj.defaultValue;
+                }
+                obj.disabled = true;
+                obj.value = second + "秒后重获";
+                // obj.value = buttonDefaultValue + '(' + second + ')';
+                second--; // 一秒后重复执行
+                setTimeout(function () {
+                    countDown(obj, second);
+                }, 1000);
+            } else {
+                obj.disabled = false;
+                obj.value = buttonDefaultValue;
+            }
+        }
+
+
     </script>
 
 
+    <%--<script type="text/javascript">--%>
 
+    <%--</script>--%>
 
 
 </head>
@@ -268,7 +281,7 @@
         <div class="layadmin-user-login-box layadmin-user-login-body layui-form"
              style="background-color: white ; box-shadow: 0 0 8px rgba(0,0,0,.1); font-size: medium">
 
-            <form  id="form1" method="post" modelAttribute="user" class="layui-form">
+            <form id="form1" method="post" modelAttribute="user" class="layui-form">
                 <div class="layui-form-item">
                     <label class="layadmin-user-login-icon layui-icon layui-icon-username"
                            for="nickname"></label>
@@ -287,13 +300,12 @@
                 <div class="layui-form-item">
                     <div class="layui-row">
                         <div class="layui-col-xs7">
-                            <input id="code" type="text" name="code" placeholder="请输入图片验证码" lay-verify="vercode"
+                            <input id="code" type="text" name="code" placeholder="图片验证码" lay-verify="code"
                                    maxlength="6" class="layui-input"/>
                         </div>
                         <div class="layui-col-xs5">
                             <div style="margin-left: 10px;">
-                                <img id="imgVerify" src="" onclick="this.src=this.src+'?'"
-                                     style="width: 130px; height:35px"/>
+                                <img id="imgVerify" src="" onclick="this.src=this.src+'?'" class="layadmin-user-login-codeimg" />
                             </div>
                         </div>
                     </div>
@@ -303,23 +315,23 @@
                     <div class="layui-row">
                         <div class="layui-col-xs7">
                             <label class="layadmin-user-login-icon layui-icon layui-icon-vercode"
-                                   for="LAY-user-login-vercode"></label>
-                            <input type="text" name="vercode" id="LAY-user-login-vercode" lay-verify="required"
+                                   for="vercode"></label>
+                            <input type="text" name="vercode" id="vercode" lay-verify="vercode"
                                    placeholder="验证码" class="layui-input">
                         </div>
                         <div class="layui-col-xs5">
                             <div style="margin-left: 10px;">
-                                <button type="button" class="layui-btn layui-btn-primary layui-btn-fluid"
-                                        id="codeBtn">获取验证码
-                                </button>
+                                <input value="获取验证码" type="button"
+                                       class="layui-btn layui-btn-primary layui-btn-fluid"
+                                       id="codeBtn">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layadmin-user-login-icon layui-icon layui-icon-password"
-                           for="LAY-user-login-password"></label>
-                    <input type="password" name="password" id="LAY-user-login-password" lay-verify="pass"
+                           for="password"></label>
+                    <input type="password" name="password" id="password" lay-verify="password"
                            placeholder="密码"
                            class="layui-input">
                 </div>
@@ -335,9 +347,8 @@
                 <%--<input type="text"  style="display: none" class="layui-input">--%>
                 <%--</div>--%>
                 <div class="layui-form-item">
-                    <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="LAY-user-reg-submit">注 册</button>
+                    <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="commit">注 册</button>
                 </div>
-
             </form>
 
             <p class="sign-up-msg">点击 “注册” 即表示您同意并愿意遵守简书<br> <a target="_blank"
@@ -392,20 +403,19 @@
             layer.msg("请输入正确的11位手机号");
             return
         } else {//手机号符合规则，验证手机号是否存在
-            $.ajax({
-                    url: './checkLoginName',
+            $.ajax({//验证手机号是否可用
+                    url: './checkPhone',
                     type: 'post',
                     dataType: 'json',
                     async: false,
                     contentType: "application/x-www-form-urlencoded",
-                    data: {"logname": phoneNum},
+                    data: {"phoneNum": phoneNum},
                     success: function (data) {
                         if (data == false) {
-                            layer.msg("手机号已经存在,请返回首页登录");
+                            layer.msg("该手机号已被注册");
                             return;
-                        }
-                        else {
-                            $.ajax({//验证图片验证码是否正确
+                        } else {
+                            $.ajax({//验证码是否正确
                                 type: "post",
                                 url: "./code",
                                 dataType: "json",
@@ -415,30 +425,30 @@
                                 },
                                 success: function (data) {
                                     if (data === true) {//图片验证码输入正确，短信验证码倒计时
-                                        $.ajax({
-                                            type: "POST",
-                                            url: "/sms/regSendSms",
-                                            data: {"loginName": phoneNum},
-                                            success: function (response) {
-                                                if (response === "true") {
-                                                    countDown(btn, 60);
-                                                    layer.msg("验证码已发送至" + phoneNum + "请注意查收");
-                                                } else {
-                                                    layer.msg("验证码发送失败,请重试");
-                                                }
-                                            },
-                                            error: function () {
-                                                layer.alert("数据请求错误,请稍后重试");
-                                            }
-                                        });
+                                        countDown(btn, 60);
+                                        layer.msg("验证码已发送至" + phoneNum + "请注意查收");
+                                        // $.ajax({
+                                        //     type: "POST",
+                                        //     url: "/sms/regSendSms",
+                                        //     data: {"loginName": phoneNum},
+                                        //     success: function (response) {
+                                        //         if (response === "true") {
+                                        //             countDown(btn, 60);
+                                        //             layer.msg("验证码已发送至" + phoneNum + "请注意查收");
+                                        //         } else {
+                                        //             layer.msg("验证码发送失败,请重试");
+                                        //         }
+                                        //     },
+                                        //     error: function () {
+                                        //         layer.alert("数据请求错误,请稍后重试");
+                                        //     }
+                                        // });
 
-                                    }
-                                    if (data === null) {//图片 验证码为空或错误
-                                        layer.msg("图片验证码为空");
+                                    } else if (data == null) {
+                                        layer.msg("请输入图片验证码");
                                         return;
-                                    }
-                                    if (data === false) {
-                                        layer.msg("图片验证码错误");
+                                    } else {
+                                        layer.msg("图片验证码错误")
                                         return;
                                     }
                                 },

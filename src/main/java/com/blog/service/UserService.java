@@ -6,11 +6,24 @@ import java.util.List;
 
 public interface UserService {
     /**
-     * 根据登录名称查询用户
-     * @param
+     * 根据昵称查询用户
+     * @param nickname
      * @return
      */
     User findByNickName(String nickname);
+
+    /**
+     * *
+     * @param phone
+     * @return
+     */
+    User findByPhone(String phone);
+
+    /**
+     *
+     * @param user
+     * @return
+     */
 
     User selectByNickName(User user);
     /**

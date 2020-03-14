@@ -5,6 +5,7 @@ import com.blog.mapper.user.UserMapper;
 import com.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,6 +25,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findByPhone(String phone) {
+        User user =  new User();
+        user.setPhone(phone);
+        return userMapper.selectOne(user);
+    }
+
+    @Override
     public User selectByNickName(User user) {
         return null;
     }
@@ -33,9 +41,10 @@ public class UserServiceImpl implements UserService {
         return 0;
     }
 
+    @Transactional(readOnly = false)
     @Override
-    public int insert(User record) {
-        return 0;
+    public int insert(User user) {
+        return userMapper.insert(user);
     }
 
     @Override
