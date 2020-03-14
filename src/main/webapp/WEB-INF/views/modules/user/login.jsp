@@ -83,20 +83,20 @@
                 <label class="layadmin-user-login-icon layui-icon layui-icon-password" for="LAY-user-login-password"></label>
                 <input type="password" name="password" id="LAY-user-login-password" lay-verify="required" placeholder="密码" class="layui-input">
             </div>
-            <%--图形验证码模块--%>
-            <div class="layui-form-item">
-                <div class="layui-row">
-                    <div class="layui-col-xs7">
-                        <label class="layadmin-user-login-icon layui-icon layui-icon-vercode" for="vercode"></label>
-                        <input type="text" name="vercode" id="vercode" lay-verify="vercode" placeholder="图形验证码" class="layui-input"/>
-                    </div>
-                    <div class="layui-col-xs5">
-                        <div style="margin-left: 10px;">
-                            <img src=""  id="imgVerify" onclick="this.src=this.src+'?'" style="width: 130px; height: 35px">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <%--&lt;%&ndash;图形验证码模块&ndash;%&gt;--%>
+            <%--<div class="layui-form-item">--%>
+                <%--<div class="layui-row">--%>
+                    <%--<div class="layui-col-xs7">--%>
+                        <%--<label class="layadmin-user-login-icon layui-icon layui-icon-vercode" for="vercode"></label>--%>
+                        <%--<input type="text" name="vercode" id="vercode" lay-verify="vercode" placeholder="图形验证码" class="layui-input"/>--%>
+                    <%--</div>--%>
+                    <%--<div class="layui-col-xs5">--%>
+                        <%--<div style="margin-left: 10px;">--%>
+                            <%--<img src=""  id="imgVerify" onclick="this.src=this.src+'?'" class="layadmin-user-login-codeimg">--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
             <div class="layui-form-item" style="margin-bottom: 20px;">
                 <input type="checkbox"  checked="checked" name="remember" lay-skin="primary" title="记住密码">
                 <div class="layui-unselect layui-form-checkbox" lay-skin="primary">

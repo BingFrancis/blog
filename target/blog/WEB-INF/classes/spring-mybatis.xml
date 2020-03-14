@@ -64,41 +64,5 @@
 
 
 
-    <!--&lt;!&ndash; 4.mapper批量扫描：从mapper包中扫描出mapper,自动创建代理对象并且在spring容器中注册-->
-        <!--需要遵循规范：mapper接口类名和mapper.xml映射文件名称一致，且在同一目录下，-->
-        <!--自动扫描出来的mapper的bean的id为类名(首字母小写)&ndash;&gt;-->
-    <!--<bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
-        <!--<property name="basePackage" value="com.blog"/>-->
-    <!--</bean>-->
-
-    <!--&lt;!&ndash; 定义事务 &ndash;&gt;-->
-    <!--<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
-        <!--<property name="dataSource" ref="dataSource"/>-->
-    <!--</bean>-->
-
-    <!--&lt;!&ndash; 配置 Annotation 驱动，扫描@Transactional注解的类定义事务  &ndash;&gt;-->
-    <!--<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>-->
-
-
-
-    <!--&lt;!&ndash; DAO接口所在包名，Spring会自动查找其下的类 ,自动扫描了所有的XxxxMapper.xml对应的mapper接口文件,只要Mapper接口类和Mapper映射文件对应起来就可以了&ndash;&gt;-->
-    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
-        <!--<property name="basePackage" value="com.blog.mapper"/>-->
-        <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>-->
-    <!--</bean>-->
-
-    <!--&lt;!&ndash; (事务管理)transaction manager, use JtaTransactionManager for global tx &ndash;&gt;-->
-    <!--&lt;!&ndash; 配置事务管理器 &ndash;&gt;-->
-    <!--<bean id="transactionManager"-->
-          <!--class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
-        <!--<property name="dataSource" ref="dataSource" />-->
-    <!--</bean>-->
-
-    <!--&lt;!&ndash;======= 事务配置 End =================== &ndash;&gt;-->
-    <!--&lt;!&ndash; 配置基于注解的声明式事务 &ndash;&gt;-->
-    <!--&lt;!&ndash; enables scanning for @Transactional annotations &ndash;&gt;-->
-    <!--<tx:annotation-driven transaction-manager="transactionManager" />-->
-
-
 
 </beans>
