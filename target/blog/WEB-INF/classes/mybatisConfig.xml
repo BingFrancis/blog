@@ -5,20 +5,30 @@
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
         <setting name="jdbcTypeForNull" value="NULL"/>
-
         <!--显式的指定每个我们需要更改的配置的值，即使他是默认的。防止版本更新带来的问题  -->
         <setting name="cacheEnabled" value="true"/>
         <setting name="lazyLoadingEnabled" value="true"/>
         <setting name="aggressiveLazyLoading" value="false"/>
     </settings>
-
-    <databaseIdProvider type="DB_VENDOR">
-        <property name="MySQL" value="mysql"/>
-        <property name="Oracle" value="oracle"/>
-        <property name="SQL Server" value="sqlserver"/>
-    </databaseIdProvider>
     
+    <typeAliases>
+        <package name="com.blog.entity"/>
+    </typeAliases>
 
+    <plugins>
+        <plugin interceptor="tk.mybatis.mapper.mapperhelper.MapperInterceptor">
+            <!--主键自增回写方法,默认值MYSQL,详细说明请看文档HSQLDB-->
+            <property name="IDENTITY" value="MYSQL"/>
 
+            <!--可选参数一共3个，对应0,1,2,分别为SequenceName，ColumnName,PropertyName-->
+            <property name="seqFormat" value="{0}.nextval"/>
+
+            <!--通用Mapper接口，多个通用接口用逗号隔开-->
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+        </plugin>
+        <!-- 自定义分页插件 -->
+        <!--<plugin interceptor="wang.dreamland.www.common.PageHelper"></plugin>-->
+
+    </plugins>
 
 </configuration>

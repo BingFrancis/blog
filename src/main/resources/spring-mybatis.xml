@@ -9,10 +9,10 @@
 
     <!-- 1.加载配置文件 -->
     <!-- 第一种加载多个.properties文件的方法 -->
-    <context:property-placeholder location="classpath:resource/*.properties"/>
+    <context:property-placeholder location="classpath:/*.properties"/>
 
     <!-- 使用Annotation自动注册Bean，解决事物失效问题：在主容器中不扫描@Controller注解，在SpringMvc中只扫描@Controller注解。  -->
-    <context:component-scan base-package="com.blog.controller"><!-- base-package 如果多个，用“,”分隔 -->
+    <context:component-scan base-package="com.blog"><!-- base-package 如果多个，用“,”分隔 -->
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
@@ -36,16 +36,13 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="typeAliasesPackage" value="com.blog.mapper"/>
         <!-- 加载mybatis的全局配置文件 -->
-        <property name="mapperLocations" value="classpath:/mapper/**/*.xml"/>
         <property name="configLocation" value="classpath:mybatisConfig.xml"/>
+        <property name="mapperLocations" value="classpath:mapper/**/*.xml"/>
+
     </bean>
 
 
-    <!--<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
-        <!--<property name="dataSource" ref="dataSource" />-->
-        <!--&lt;!&ndash; 自动扫描mapping.xml文件 &ndash;&gt;-->
-        <!--<property name="mapperLocations" value="classpath*:com/why/**/mapper/*.xml"></property>-->
-    <!--</bean>-->
+
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类 ,自动扫描了所有的XxxxMapper.xml对应的mapper接口文件,只要Mapper接口类和Mapper映射文件对应起来就可以了-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -61,9 +58,11 @@
     </bean>
 
     <!--======= 事务配置 End =================== -->
-    <!-- 配置基于注解的声明式事务 -->
-    <!-- enables scanning for @Transactional annotations -->
-    <tx:annotation-driven transaction-manager="transactionManager" />
+
+    <!-- 配置 Annotation 驱动，扫描@Transactional注解的类定义事务  -->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+
+
 
     <!--&lt;!&ndash; 4.mapper批量扫描：从mapper包中扫描出mapper,自动创建代理对象并且在spring容器中注册-->
         <!--需要遵循规范：mapper接口类名和mapper.xml映射文件名称一致，且在同一目录下，-->

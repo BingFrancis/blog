@@ -73,22 +73,23 @@
             form.render();
             form.verify({
                 nickname: function (value) {
+                    var message = "";
                     if(!new RegExp('^[a-zA-Z0-9_\u4e00-\u9fa5\s·]+$').test(value)){
                         return '不能有特殊字符';
                     }
                     if(/(^\_)|(\__)|(\_+$)/.test(value)){
                         return '首尾不能出现下划线\'_\'';
                     }
-                    var minlength = $(item).attr("minlength");
-                    if(minlength && value.length < minlength){
-                        return '长度至少为'+minlength+"位";
-                    }
+                    // var minlength = $(item).attr("minlength");
+                    // if(minlength && value.length < minlength){
+                    //     return '长度至少为'+minlength+"位";
+                    // }
                     if(/^\d+$/.test(value)){
                         return '不能全为数字';
                     }
                     var nickname = $("#nickname").val();
                     if (value == "") {
-                        return "请填入一个昵称"
+                        message = "请填入一个昵称";
                     } else {
                         $.ajax({
                             url: './checkNickName',
@@ -103,6 +104,7 @@
                                 }
                             }
                         });
+                        return message;
                     }
                 }, vercode: function (value) {
                     var messagecode = "";
@@ -252,6 +254,9 @@
     </script>
 
 
+
+
+
 </head>
 <body>
 <div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login" style="display: none;">
@@ -273,8 +278,8 @@
 
                 <div class="layui-form-item">
                     <label class="layadmin-user-login-icon layui-icon layui-icon-cellphone"
-                           for="LAY-user-login-cellphone"></label>
-                    <input type="text" name="cellphone" id="LAY-user-login-cellphone" lay-verify="phone"
+                           for="cellphone"></label>
+                    <input type="text" name="cellphone" id="cellphone" lay-verify="phone"
                            placeholder="手机"
                            class="layui-input">
                 </div>
@@ -305,7 +310,7 @@
                         <div class="layui-col-xs5">
                             <div style="margin-left: 10px;">
                                 <button type="button" class="layui-btn layui-btn-primary layui-btn-fluid"
-                                        id="LAY-user-getsmscode">获取验证码
+                                        id="codeBtn">获取验证码
                                 </button>
                             </div>
                         </div>
@@ -372,6 +377,99 @@
         <span><a href="http://www.layui.com/admin/" target="_blank">前往官网</a></span>
     </p>
 </div>
+
+<script>
+    //短信验证码
+    $("#codeBtn").click(function () {
+        var btn = document.getElementById("codeBtn");
+        var code = $("#code").val();
+        var phoneNum = $("#cellphone").val();
+        var inputCode = code.toUpperCase();
+        var myreg = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/;
+
+
+        if (!myreg.test(phoneNum)) {
+            layer.msg("请输入正确的11位手机号");
+            return
+        } else {//手机号符合规则，验证手机号是否存在
+            $.ajax({
+                    url: './checkLoginName',
+                    type: 'post',
+                    dataType: 'json',
+                    async: false,
+                    contentType: "application/x-www-form-urlencoded",
+                    data: {"logname": phoneNum},
+                    success: function (data) {
+                        if (data == false) {
+                            layer.msg("手机号已经存在,请返回首页登录");
+                            return;
+                        }
+                        else {
+                            $.ajax({//验证图片验证码是否正确
+                                type: "post",
+                                url: "./code",
+                                dataType: "json",
+                                data: {
+                                    inputCode: inputCode,
+                                    phoneNum: phoneNum
+                                },
+                                success: function (data) {
+                                    if (data === true) {//图片验证码输入正确，短信验证码倒计时
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "/sms/regSendSms",
+                                            data: {"loginName": phoneNum},
+                                            success: function (response) {
+                                                if (response === "true") {
+                                                    countDown(btn, 60);
+                                                    layer.msg("验证码已发送至" + phoneNum + "请注意查收");
+                                                } else {
+                                                    layer.msg("验证码发送失败,请重试");
+                                                }
+                                            },
+                                            error: function () {
+                                                layer.alert("数据请求错误,请稍后重试");
+                                            }
+                                        });
+
+                                    }
+                                    if (data === null) {//图片 验证码为空或错误
+                                        layer.msg("图片验证码为空");
+                                        return;
+                                    }
+                                    if (data === false) {
+                                        layer.msg("图片验证码错误");
+                                        return;
+                                    }
+                                },
+                                error: function (err) {
+                                    layer.msg("数据请求错误,请稍后重试");
+                                }
+                            });
+                        }
+                    },
+                    error: function (err) {
+                        layer.msg("数据请求错误,请稍后重试")
+                    }
+                }
+            );
+        }
+    });
+
+    // $("#loginName").blur(function () {
+    //     var phoneNum = $(this).val();
+    //     var myreg = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/;
+    //     if (phoneNum != '' && !myreg.test(phoneNum)) {
+    //         $("#mobile").val("");//清除
+    //         layer.msg("请输入正确的11位手机号");
+    //         return
+    //     }
+    //     else {
+    //         $("#mobile").val(phoneNum);
+    //     }
+    // })
+
+</script>
 
 
 </body>
