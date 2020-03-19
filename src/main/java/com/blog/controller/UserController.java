@@ -93,6 +93,11 @@ public class UserController {
             model.addAttribute("error", "非法注册，请重新注册！");
             return "error";
         }
+        User preUser = userService.findByPhone(cellphone);
+        if (preUser !=null){
+            return "500";
+        }
+
         HttpSession session = request.getSession();
 
         String regcode=(String)session.getAttribute("regcode");
@@ -143,6 +148,7 @@ public class UserController {
     //    用户登录页面的跳转
     @RequestMapping(value = "/sing_in")
     public String sing_() {
-        return "user/login";
+        return "user/userLogin";
     }
+
 }

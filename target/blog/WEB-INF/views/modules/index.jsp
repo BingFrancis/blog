@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<c:set var="ctx" value="${pageContext.request.contextPath }"/>
 <html>
 <head>
     <title>主页，书写你的传奇</title>
@@ -11,8 +14,12 @@
     <div class="width-limit">
         <%--左上方的logo--%>
         <a class="logo" href="/a">
-            <img src="static/image/download.png" alt="Nav logo">
+            <img src="../../../static/image/download.png" alt="Nav logo">
         </a>
+        <c:if test="${ not empty user}">
+            <a name="tj_loginp" href="javascript:void(0);"   class="lb" onclick="personal('${user.id}');" style="color: black"><font color="#9370db">${user.nickName}, 欢迎您！</font></a>
+
+        </c:if>
         <%--最右边的写作按钮--%>
         <a class="btn writen-btn" target="_blank" href="/writer#">
             <i></i>

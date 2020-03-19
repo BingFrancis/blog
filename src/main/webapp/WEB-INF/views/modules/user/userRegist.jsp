@@ -52,7 +52,6 @@
             $("#imgVerify").attr("src", "/getVerify?id=" + Math.random());
         });
 
-
         layui.use(['form', 'layedit', 'laydate', 'layer'], function () {
             var form = layui.form
                 , admin = layui.admin
@@ -71,6 +70,9 @@
             form.render();
             form.verify({
                 nickname: function (value) {
+                    if (value.length == 0){
+                        return "昵称不能为空"
+                    }
                     var message = "";
                     if (!new RegExp('^[a-zA-Z0-9_\u4e00-\u9fa5\s·]+$').test(value)) {
                         return '不能有特殊字符';
@@ -102,9 +104,9 @@
                                 }
                             }
                         });
-                        return message;
+                        return message;///^[\S]{6,12}$/
                     }
-                },password: [/^[\S]{6,12}$/, '密码必须6到12位，且不能出现空格']
+                },password: [/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/, '密码必须6到16位，且不能出现空格']
             });
 
             //表单提交验证
@@ -146,12 +148,16 @@
                         if (data === "error") {
                             layer.msg("验证码错误，请输入正确的验证码")
                         }
-                        if (data === "past") {
+                        if(data =="500"){
+                            layer.msg("该手机号已被注册")
+                        }
+                        else if (data === "past") {
                             layer.msg("验证码已失效，请重新获取验证码")
                         }
-                        if (data === "false") {
+                        else if (data === "false") {
                             layer.msg("数据提交失败")
                         }
+
                     },
                     error: function (jqXHR) {
                         layer.msg("服务器异常，请稍后重试....");
@@ -168,7 +174,6 @@
                 function GetStringNumValue(pxstr) {
                     return pxstr.substring(0, pxstr.length - 2);
                 }
-
                 $('input[placeholder],textarea[placeholder]').each(function () {
                     var $element = $(this),
                         placeholder = $element.attr('placeholder');
@@ -260,14 +265,8 @@
                 obj.value = buttonDefaultValue;
             }
         }
-
-
     </script>
 
-
-    <%--<script type="text/javascript">--%>
-
-    <%--</script>--%>
 
 
 </head>
@@ -316,7 +315,7 @@
                         <div class="layui-col-xs7">
                             <label class="layadmin-user-login-icon layui-icon layui-icon-vercode"
                                    for="vercode"></label>
-                            <input type="text" name="vercode" id="vercode" lay-verify="vercode"
+                            <input type="text" name="vercode" id="vercode" lay-verify="required"
                                    placeholder="验证码" class="layui-input">
                         </div>
                         <div class="layui-col-xs5">
