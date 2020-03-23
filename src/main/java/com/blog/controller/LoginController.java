@@ -55,6 +55,7 @@ public class LoginController {
         }
         if(validatePassword(password,pre_login.getPassword())){
             log.info("登录成功");
+            request.getSession().setAttribute("user",pre_login);
             model.addAttribute("user",pre_login);
             return "index";
         }else{
