@@ -149,7 +149,7 @@
             <img src="../../../static/image/download.png" alt="Nav logo">
         </a>
         <%--最右边的写作按钮--%>
-        <a class="btn writen-btn" target="_blank" href="/writer#">
+        <a class="btn writen-btn" target="_blank" href="/write">
             <i></i>
             写文章
         </a>
