@@ -8,7 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6401c0e4-4a5b-49ec-ac68-649c411514b3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/editor/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/editor/.gitignore" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -102,7 +101,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/webapp/static/editor/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
-              <caret line="15" column="11" lean-forward="true" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+              <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -365,7 +364,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1585294845464" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1585295442434" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/17：spring-security之第三方qq登录认证授权/17：spring-security之第三方qq登录认证授权" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -601,7 +600,7 @@
       <workItem from="1584705972901" duration="3037000" />
       <workItem from="1584879124311" duration="1191000" />
       <workItem from="1584933385984" duration="20087000" />
-      <workItem from="1585232121714" duration="6036000" />
+      <workItem from="1585232121714" duration="6648000" />
     </task>
     <servers />
   </component>
@@ -638,7 +637,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="285500000" />
+    <option name="totallyTimeSpent" value="286112000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -653,8 +652,8 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.85504204" visible="true" weight="0.211126" />
-      <window_info id="Structure" order="1" sideWeight="0.14495799" side_tool="true" visible="true" weight="0.211126" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.92436975" visible="true" weight="0.25134048" />
+      <window_info id="Structure" order="1" sideWeight="0.075630255" side_tool="true" visible="true" weight="0.25134048" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -1076,7 +1075,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/editor/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="15" column="11" lean-forward="true" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
         </state>
       </provider>
     </entry>
