@@ -6,7 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6401c0e4-4a5b-49ec-ac68-649c411514b3" name="Default Changelist" comment="" />
+    <list default="true" id="6401c0e4-4a5b-49ec-ac68-649c411514b3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -86,8 +88,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/modules/article/write.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="31" column="63" lean-forward="true" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
+            <state relative-caret-position="1080">
+              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
               <folding>
                 <element signature="n#style#0;n#textarea#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -353,7 +355,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1585291797808" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1585293666743" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/17：spring-security之第三方qq登录认证授权/17：spring-security之第三方qq登录认证授权" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -589,7 +591,7 @@
       <workItem from="1584705972901" duration="3037000" />
       <workItem from="1584879124311" duration="1191000" />
       <workItem from="1584933385984" duration="20087000" />
-      <workItem from="1585232121714" duration="3962000" />
+      <workItem from="1585232121714" duration="5164000" />
     </task>
     <servers />
   </component>
@@ -626,7 +628,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="283426000" />
+    <option name="totallyTimeSpent" value="284628000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -638,11 +640,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8541329" visible="true" weight="0.211126" />
-      <window_info id="Structure" order="1" sideWeight="0.1458671" side_tool="true" visible="true" weight="0.211126" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.85433716" visible="true" weight="0.211126" />
+      <window_info id="Structure" order="1" sideWeight="0.14566284" side_tool="true" visible="true" weight="0.211126" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -654,12 +655,12 @@
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5636729" weight="0.54815865" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="Debug" order="5" sideWeight="0.8719839" visible="true" weight="0.12606232" />
+      <window_info active="true" anchor="bottom" id="Debug" order="5" sideWeight="0.8719839" visible="true" weight="0.13456091" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
       <window_info anchor="bottom" id="Application Servers" order="7" sideWeight="0.49932975" weight="0.45750707" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.3286119" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3286119" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.12801608" side_tool="true" visible="true" weight="0.12606232" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.12801608" side_tool="true" visible="true" weight="0.13456091" />
       <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.63739944" weight="0.17280453" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
@@ -1060,8 +1061,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/modules/article/write.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="31" column="63" lean-forward="true" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
+        <state relative-caret-position="1080">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
           <folding>
             <element signature="n#style#0;n#textarea#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
