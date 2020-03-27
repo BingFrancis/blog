@@ -1,7 +1,3 @@
-*{
-     box-sizing: border-box;
- }
-
 html{
     font-family: sans-serif;
     font-size:10px;
@@ -12,17 +8,21 @@ html{
 }
 
 body {
-    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
-    font-size: 17px;
-    line-height: 1.42857;
-    background-color: #fff;
-    min-width: 768px;
-    height: 100%;
-    line-height: 1.42857;
-    background-color: #ffffff;
-    margin: 0;
-    display: block;
-    color: #333;
+    /*font-family: Helvetica Neue,Helvetica,Arial,sans-serif;*/
+    /*font-size: 17px;*/
+    /*line-height: 1.42857;*/
+    /*background-color: #fff;*/
+    /*min-width: 768px;*/
+    /*height: 100%;*/
+    /*line-height: 1.42857;*/
+    /*background-color: #ffffff;*/
+    /*margin: 0;*/
+    /*display: block;*/
+    /*color: #333;*/
+}
+
+*, :after, :before {
+    box-sizing: border-box;
 }
 
 a{
@@ -30,20 +30,8 @@ a{
     cursor: pointer;
 }
 
-.navbar{
-    min-height: 50px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-}
-
-.navbar-default{
-    background-color: #ffffff;
-    border-color: #f0f0f0;
-}
-
-.navbar-fixed-top{
-    top: 0;
-    border-width: 0 0 1px;
+nav{
+    height: 56px
 }
 
 nav .width-limit{
@@ -102,8 +90,50 @@ nav .width-limit{
      float: right;
      margin: 11px 6px 0 10px;
      font-size: 15px;
-
  }
+
+ nav .user{
+     float: right;
+     height: 100%;
+ }
+
+ nav .user:hover{
+     background-color: #969696;
+ }
+
+ nav .user .avator{
+     position: relative;
+     width: 40px;
+     height: 40px;
+     margin: 8px 24px 8px 16px;
+     display: block;
+     cursor: pointer;
+ }
+
+nav .user .dropdown-menu {
+    left: auto;
+    border-radius: 0 0 4px 4px;
+}
+
+ nav .avator img{
+     width: 100%;
+     height: 100%;
+     border: 1px solid #ddd;
+     border-radius: 50%;
+ }
+
+nav .user .avatar :before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    right: -14px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #999;
+}
+
+
+
 
 body.reader-black-font, body.reader-black-font .history-mode .view-area,
 body.reader-black-font .history-mode .view-area pre,

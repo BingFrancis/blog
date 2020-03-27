@@ -38,6 +38,8 @@ public interface UserService {
      */
     int insert(User record);
 
+    User login(String username,String password);
+
     int insertSelective(User record);
 
     User selectByPrimaryKey(Long id);
