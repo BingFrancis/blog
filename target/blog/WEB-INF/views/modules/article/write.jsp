@@ -30,8 +30,8 @@
             saveHTMLToTextarea: true,
             imageUpload: true,
             imageFormats: ["jpg", "jpeg", "gif", "png", "bmp"],
-            imageUploadURL: "${ctx}/upload?_distType=_articleImg",
-            imageUploadFileName: "_uploadFile",
+            imageUploadURL: "${ctx}/article/uploadImage",
+            imageUploadFileName: "uploadImage",
             toolbarIcons: [
                 "undo", "redo", "|",
                 "bold", "del", "italic", "quote", "|",
@@ -41,16 +41,49 @@
                 "watch", "preview", "clear", "search",
                 "|","help"
             ],
-
         });
     });
 
+    // $(function(){
+    //     $(".editor-preview-container").find("img").each(function(){
+    //         $(this).attr("src", "data:image/jpeg;base64," + decode64($(this).context.src));
+    //         $(this).css("width", "65%");
+    //         $(this).css("height", "65%");
+    //         $(this).wrap("<div align='center'></div>");
+    //     });
+    // });
+
+    function decode64(imgUrl){
+        $.ajax({
+            type: 'post',
+            url: "${ctx}/article/getImage",
+            dataType: "json",
+            async: false,
+            data : {
+                urls : imgUrl,
+            },
+            success: function (result) {
+                imgUrl = result.resImg;
+            },
+            error: function () {
+                console.log("error!");
+            }
+        });
+        return imgUrl;
+    }
 </script>
 <body>
 <div class="form-group">
-    <div class="col-sm-12" id="article-editormd">
-        <textarea style="display:none;"></textarea>
-    </div>
+    <from>
+        <input type="text" name="title" id="title" lay-verify="cellphone"
+               placeholder="文章标题"  style="width: auto;text-align: center">
+        <div class="col-sm-12" id="article-editormd">
+            <textarea style="display:none;"></textarea>
+        </div>
+        <input type="button" value="发布文章">
+        
+    </from>
+
 </div>
 
 </body>
