@@ -147,7 +147,7 @@ public class UserController {
 
     //    用户登录页面的跳转
     @RequestMapping(value = "/sing_in")
-    public String sing_() {
+    public String sing_in() {
         return "user/userLogin";
     }
 
