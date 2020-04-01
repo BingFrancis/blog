@@ -15,7 +15,19 @@
     <title>写作</title>
 </head>
 <link href="${ctx}/static/editor/css/editormd.min.css" rel="stylesheet">
-<script src="${ctx}/static/jquery/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet" href="/static/layui-v2.4.5/css/layui.css" media="all">
+<link rel="stylesheet" href="/static/layui-v2.4.5/css/admin.css" media="all">
+<link rel="stylesheet" href="/static/layui-v2.4.5/css/login.css" media="all">
+<link rel="stylesheet" href="/static/layui-v2.4.5/css/modules/layer/default/layer.css" media="all">
+
+<link id="layuicss-layer" rel="stylesheet"
+      href="https://www.layui.com/admin/std/dist/layuiadmin/layui/css/modules/layer/default/layer.css?v=3.1.1"
+      media="all">
+
+
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/layui-v2.4.5/layui.all.js"></script>
+<script src="/static/layer/layer.js"></script>
 <script src="${ctx}/static/editor/editormd.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -41,8 +53,28 @@
                 "watch", "preview", "clear", "search",
                 "|","help"
             ],
+            // toolbarIconTexts : {
+            //     releaseIcon : "<span bgcolor=\"gray\">发布</span>",
+            //     index : "<span bgcolor=\"red\">返回首页</span>",
+            // },
+            // /*给自定义按钮指定回调函数*/
+            // toolbarHandlers:{
+            //     releaseIcon : function(cm, icon, cursor, selection) {
+            //         contentCommit();//提交表单代码在下面
+            //         // console.log("日志输出 testIcon =>", this, cm, icon, cursor, selection);
+            //     },
+            //     index : function(){
+            //         window.location.href = '返回首页的路径.html';
+            //     },
+            // }
         });
     });
+
+    function contentCommit(){
+        mdEditorForm.method = "post";
+        mdEditorForm.action = "${ctx}/article/saveContent";//提交至服务器的路径
+        mdEditorForm.submit();
+    }
 
     // $(function(){
     //     $(".editor-preview-container").find("img").each(function(){
@@ -74,15 +106,16 @@
 </script>
 <body>
 <div class="form-group">
-    <from>
-        <input type="text" name="title" id="title" lay-verify="cellphone"
+    <form id="saveForm" class="layui-form" action="${ctx}/article/saveContent" method="post">
+        <input type="text" name="title" id="title"
                placeholder="文章标题"  style="width: auto;text-align: center">
-        <div class="col-sm-12" id="article-editormd">
-            <textarea style="display:none;"></textarea>
+        <div class="col-sm-12"   name="article-editormd"  id="article-editormd" >
+            <textarea  name="content" id="content" style="display:none;"></textarea>
         </div>
-        <input type="button" value="发布文章">
-        
-    </from>
+        <div class="layui-form-item">
+            <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="commit">发布文章</button>
+        </div>
+    </form>
 
 </div>
 

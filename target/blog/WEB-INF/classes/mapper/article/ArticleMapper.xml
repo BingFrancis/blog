@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.mapper.article.ArticleMapper">
+
+    <insert id="inserContent" parameterType="com.blog.entity.Article" useGeneratedKeys="true" keyProperty="id">
+        insert into articles(id, user_id, title, content, img_url, views,comment_count ,write_date,update_date,like_count) values(#{id}, #{userId},#{title}, #{content},#{imgUrl},#{views}, #{commentCount},#{writeDate},#{updateDate},#{likeCount})
+    </insert>
+
+
+
+</mapper>
