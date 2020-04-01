@@ -1,8 +1,15 @@
 package com.blog.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.blog.entity.Article;
+import com.blog.entity.User;
+import com.blog.service.ArticleService;
+import com.blog.service.UserService;
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,12 +24,20 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/article")
 public class ArticleController {
+
+    private final static Logger log = Logger.getLogger(UserController.class);
+    @Autowired
+    private ArticleService articleService;
+
+
     //    用户登录页面的跳转
     @RequestMapping(value = "/write")
     public String write() {
@@ -35,7 +50,7 @@ public class ArticleController {
     public JSONObject hello(HttpServletRequest request, HttpServletResponse response,
                             @RequestParam(value = "editormd-image-file", required = false) MultipartFile attach) {
 
-        JSONObject jsonObject=new JSONObject();
+        JSONObject jsonObject = new JSONObject();
 
         try {
             request.setCharacterEncoding("utf-8");
@@ -59,11 +74,49 @@ public class ArticleController {
 
             jsonObject.put("success", 1);
             jsonObject.put("message", "上传成功");
-            jsonObject.put("url",   "/static/img/article/"+attach.getOriginalFilename()   );
+            jsonObject.put("url", "/static/img/article/" + attach.getOriginalFilename());
         } catch (Exception e) {
             jsonObject.put("success", 0);
         }
         return jsonObject;
+    }
+
+    @RequestMapping(value ="/saveContent", method = RequestMethod.POST)
+    public String saveContent(Model model, HttpServletRequest request, User user,
+                       @RequestParam(value = "title", required = false) String title,
+                       @RequestParam(value = "content", required = false) String content1) {
+        user = (User) request.getSession().getAttribute("user");
+        if(user !=null){
+            System.out.println(user.getId());
+            System.out.println(title);
+            System.out.println(content1);
+            Article article = new Article();
+            article.setTitle(title);
+            article.setContent(content1);
+            article.setUserId(Long.parseLong(user.getId()));
+            Date now = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");//可以方便地修改日期格式
+            article.setWriteDate(dateFormat.format(now));
+            articleService.inserContent(article);
+            model.addAttribute("article_content",content1);
+            return "article/view";
+        }
+        return "/index";
+    }
+
+    @RequestMapping(value = "getContent",produces = "text/html;charset=UTF-8;")
+    @ResponseBody
+    public String  getContent(){
+        return "# 测试内容\n" +
+                "##### 啊擦测试\n" +
+                "> # 卡卡啦啦啦爱吃你是v还是\n" +
+                "> ### 我真的好想再活五百年   *为球队取得***驱蚊器**\n" +
+                "\n" +
+                "------------\n" +
+                "\n" +
+                "![](/static/img/article/1a5e740c8ada9f6e7d1ab299f7e68b0.jpg)\n" +
+                "\n" +
+                "啦啦啦我去";
     }
 
 //    @RequestMapping("/uploadImage")
