@@ -107,16 +107,54 @@ public class ArticleController {
     @RequestMapping(value = "getContent",produces = "text/html;charset=UTF-8;")
     @ResponseBody
     public String  getContent(){
-        return "# 测试内容\n" +
-                "##### 啊擦测试\n" +
-                "> # 卡卡啦啦啦爱吃你是v还是\n" +
-                "> ### 我真的好想再活五百年   *为球队取得***驱蚊器**\n" +
+        return "# 其实当你老了 我发誓不会坠落\n" +
+                "> 驱蚊器却缺乏\n" +
+                "\n" +
+                "我的世界开始下雪了\n" +
+                "![](/static/img/article/20170718150902_rNsZS.gif)\n" +
+                "\n" +
+                "|  1 | 2  |\n" +
+                "| ------------ | ------------ |\n" +
+                "|  3 |  1 |\n" +
+                "|  1 | 2  |\n" +
+                "我唱着妈妈唱着的歌谣\n" +
+                "### 其实还好\n" +
+                "\n" +
+                "~~权威渠道~~\n" +
+                "- 1213\n" +
+                "- 21211\n" +
+                "\n" +
+                "1. 22访问完成v就会被\n" +
+                "2. 七年前后举报\n" +
+                "3. 潜伏期你看\n" +
+                "\n" +
+                "拉拉拉拉\n" +
                 "\n" +
                 "------------\n" +
-                "\n" +
-                "![](/static/img/article/1a5e740c8ada9f6e7d1ab299f7e68b0.jpg)\n" +
-                "\n" +
-                "啦啦啦我去";
+                "    \n" +
+                "        @RequestMapping(value =\"/saveContent\", method = RequestMethod.POST)\n" +
+                "        public String saveContent(Model model, HttpServletRequest request, User user,\n" +
+                "                           @RequestParam(value = \"title\", required = false) String title,\n" +
+                "                           @RequestParam(value = \"content\", required = false) String content1) {\n" +
+                "            user = (User) request.getSession().getAttribute(\"user\");\n" +
+                "            if(user !=null){\n" +
+                "                System.out.println(user.getId());\n" +
+                "                System.out.println(title);\n" +
+                "                System.out.println(content1);\n" +
+                "                Article article = new Article();\n" +
+                "                article.setTitle(title);\n" +
+                "                article.setContent(content1);\n" +
+                "                article.setUserId(Long.parseLong(user.getId()));\n" +
+                "                Date now = new Date();\n" +
+                "                SimpleDateFormat dateFormat = new SimpleDateFormat(\"yyyy/MM/dd HH:mm:ss\");//可以方便地修改日期格式\n" +
+                "                article.setWriteDate(dateFormat.format(now));\n" +
+                "                articleService.inserContent(article);\n" +
+                "                model.addAttribute(\"article_content\",content1);\n" +
+                "                return \"article/view\";\n" +
+                "            }\n" +
+                "            return \"/index\";\n" +
+                "        }\n" +
+                "结束了";
     }
 
 //    @RequestMapping("/uploadImage")

@@ -15,21 +15,29 @@
     <title>写作</title>
 </head>
 <link href="${ctx}/static/editor/css/editormd.min.css" rel="stylesheet">
+
 <link rel="stylesheet" href="/static/layui-v2.4.5/css/layui.css" media="all">
 <link rel="stylesheet" href="/static/layui-v2.4.5/css/admin.css" media="all">
-<link rel="stylesheet" href="/static/layui-v2.4.5/css/login.css" media="all">
 <link rel="stylesheet" href="/static/layui-v2.4.5/css/modules/layer/default/layer.css" media="all">
 
 <link id="layuicss-layer" rel="stylesheet"
-      href="https://www.layui.com/admin/std/dist/layuiadmin/layui/css/modules/layer/default/layer.css?v=3.1.1"
-      media="all">
-
+href="https://www.layui.com/admin/std/dist/layuiadmin/layui/css/modules/layer/default/layer.css?v=3.1.1"
+media="all">
 
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/layui-v2.4.5/layui.all.js"></script>
 <script src="/static/layer/layer.js"></script>
 <script src="${ctx}/static/editor/editormd.min.js" type="text/javascript"></script>
 
+
+<style>
+    ol>li{
+        list-style: decimal;
+    }
+    ul>li{
+        list-style: disc;
+    }
+</style>
 <script type="text/javascript">
     var editor;
     $(function () {
@@ -49,7 +57,7 @@
                 "bold", "del", "italic", "quote", "|",
                 "h1", "h2", "h3", "h4", "h5", "h6", "|",
                 "list-ul", "list-ol", "hr", "|",
-                "link", "image", "code", "preformatted-text", "code-block", "table", "html-entities", "|",
+                "link", "image",  "preformatted-text","table", "|",
                 "watch", "preview", "clear", "search",
                 "|","help"
             ],
