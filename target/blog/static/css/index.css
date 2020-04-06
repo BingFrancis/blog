@@ -42,12 +42,13 @@ nav .width-limit{
 }
  .logo{
     float: left;
-    height:50px;
+    height:60px;
     padding: 0;
 }
 
  nva .logo img{
-     height: 100%;
+     width: 50%;
+     height: 80%;
      border: 0;
      vertical-align: middle;
  }
