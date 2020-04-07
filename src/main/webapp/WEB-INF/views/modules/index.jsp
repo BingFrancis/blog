@@ -38,7 +38,7 @@
     <style type="text/css">.style-mode {
         float: right
     }</style>
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${ctx}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         .nqzzJ71pC-jOnJKAfdtr6_0 {
             float: right;
@@ -134,20 +134,207 @@
         }
     </style>
     <link rel="stylesheet" href="/static/css/index.css" media="all">
-    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
-    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-    <script src="http://cdn.bootcss.com/bootstrap-hover-dropdown/2.0.10/bootstrap-hover-dropdown.min.js"></script>
+    <%--<style>--%>
+    <%--body {--%>
+    <%--display: block;--%>
+    <%--margin: 0;--%>
+    <%--padding-top: 56px;--%>
+    <%--min-width: 768px;--%>
+    <%--}--%>
+
+    <%--li {--%>
+    <%--line-height: 20px;--%>
+    <%--}--%>
+
+    <%--.index .main {--%>
+    <%--padding-top: 30px;--%>
+    <%--padding-right: 0px;--%>
+    <%--}--%>
+
+    <%--.index .main .spilt-line {--%>
+    <%--margin: -5px 0 15px;--%>
+    <%--}--%>
+
+    <%--.note-list {--%>
+    <%--margin: 0px;--%>
+    <%--padding: 0px;--%>
+    <%--list-style: none;--%>
+    <%--}--%>
+
+    <%--.note-list .title {--%>
+    <%--margin: -7px 0 4px;--%>
+    <%--display: inherit;--%>
+    <%--font-size: 18px;--%>
+    <%--font-weight: 700;--%>
+    <%--line-height: 1.5;--%>
+    <%--}--%>
+
+    <%--.note-list li {--%>
+    <%--position: relative;--%>
+    <%--width: 100%;--%>
+    <%--margin: 0 0 15px;--%>
+    <%--padding: 15px 2px 20px 0;--%>
+    <%--border-bottom: 1px solid #f0f0f0;--%>
+    <%--word-wrap: break-word;--%>
+    <%--}--%>
+
+    <%--.note-list .have-img {--%>
+    <%--min-height: 14px;--%>
+    <%--}--%>
+
+    <%--.note-list .have-img .wrap-img {--%>
+    <%--position: absolute;--%>
+    <%--width: 150px;--%>
+    <%--top: 50%;--%>
+    <%--right: 0;--%>
+    <%--height: 100px;--%>
+    <%--margin-top: -60px;--%>
+
+    <%--}--%>
+
+    <%--.note-list .have-img .wrap-img img {--%>
+    <%--width: 100%;--%>
+    <%--border-radius: 4px;--%>
+    <%--border: 1px solid #f0f0f0;--%>
+    <%--}--%>
+
+    <%--img {--%>
+    <%--vertical-align: middle;--%>
+    <%--}--%>
+
+
+    <%--</style>--%>
+
+    <style>
+        body {
+            padding-top: 56px;
+        }
+
+        .carousel-item {
+            height: 65vh;
+            min-height: 300px;
+            background: no-repeat center center scroll;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .portfolio-item {
+            margin-bottom: 30px;
+        }
+
+        .card {
+            position: relative;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 1px solid rgba(0, 0, 0, .125);
+            border-radius: .25rem;
+        }
+
+        .mb-4, .my-4 {
+            margin-bottom: 1.5rem !important;
+            margin-top: 10px;
+        }
+
+        .card-body {
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            padding: 1.25rem;
+        }
+
+        .card-title {
+            font-weight: 700;
+        }
+
+        .text-muted {
+            color: #6c757d !important;
+        }
+
+        .card-footer {
+            padding: .75rem 1.25rem;
+            background-color: rgba(0, 0, 0, .03);
+            border-top: 1px solid rgba(0, 0, 0, .125);
+        }
+
+        .rounded {
+            border-radius: .25rem !important;
+        }
+
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .img {
+            object-fit: cover;
+            height: 208px;
+            overflow: hidden;
+            text-align: center;
+            margin: 0 auto;
+            transform: inherit;
+            /*display: flex;*/
+            /*justify-content: center;*/
+            /*align-items: center;*/
+        }
+
+        .img img {
+            background-repeat: no-repeat;
+        / / 背景图像将仅显示一次。 background-attachment: scroll;
+        / / background-position: - 50 px 0 px;
+        / / 设置背景图片的的偏移量，这个-50相当于背景整体向左偏移50，就可以显示图片的中心 background-size: 300 px 200 px;
+        / / / / 设置背景图片的大小，相当于图片实际宽高等比例饿缩放的 background-color: transparent;
+        / / height: auto;
+            width: auto;
+            object-fit: unset;
+        }
+    </style>
+
+
+    <%--<script>--%>
+        <%--var img = document.getElementById("test");--%>
+        <%--var image = new Image();--%>
+        <%--var realWidth = 0;//储存图片实际宽度--%>
+        <%--var realHeight = 0;//储存图片实际高度--%>
+        <%--//获取图片的宽高--%>
+        <%--image.src = "${ctx}/static/image/test.png";--%>
+        <%--//加载成功的处理--%>
+        <%--image.onload = function () {--%>
+            <%--realWidth = image.width;//获取图片实际宽度--%>
+            <%--realHeight = image.height;//获取图片实际高度--%>
+            <%--//让img的宽高相当于图片实际宽高的等比缩放，然后再偏移--%>
+            <%--if (realWidth > realHeight) {--%>
+                <%--img.width = (208 / realHeight) * realWidth;//等比缩放宽度--%>
+                <%--img.height = 572;//跟div高度一致--%>
+                <%--img.style.left = '-' + ((572 / realHeight) * realWidth - 208) / 2 + 'px';//设置图片相对自己位置偏移为img标签的宽度-高度的一半--%>
+            <%--} else if (realWidth < realHeight) {--%>
+                <%--img.width = 572;//跟div高度一致--%>
+                <%--img.height = (572 / realWidth) * realHeight;//等比缩放高度--%>
+                <%--img.style.top = '-' + ((208 / realWidth) * realHeight - 572) / 2 + 'px';//设置图片相对自己位置偏移为img标签的高度-宽度的一半--%>
+            <%--} else {--%>
+                <%--img.width = 208;--%>
+                <%--img.height = 572;--%>
+            <%--}--%>
+        <%--};--%>
+        <%--//图片加载失败的处理--%>
+        <%--img.onerror = function () {--%>
+            <%--img.src = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492076382452&di=04ebd6c4688b2ffbd8ae18e685234704&imgtype=0&src=http%3A%2F%2Fd.hiphotos.baidu.com%2Fzhidao%2Fwh%253D450%252C600%2Fsign%3D0c96dc86da33c895a62b907fe4235fc6%2F0823dd54564e9258d2bb2dff9f82d158ccbf4e17.jpg";--%>
+            <%--img.width = 100;--%>
+            <%--img.height = 100;--%>
+        <%--}--%>
+    <%--</script>--%>
 
 </head>
-
 <body class="reader-black-font" style="overflow-y: scroll ">
 <%--全局顶部导航栏--%>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="width-limit">
-        <%--左上方的logo--%>
-        <a class="logo" href="/a">
-            <img src="../../../static/image/download.png" alt="Nav logo">
-        </a>
         <%--最右边的写作按钮--%>
         <a class="btn writen-btn" target="_blank" href="/article/write">
             <i></i>
@@ -166,9 +353,9 @@
                     <%--主题--%>
                     <%--<span class="caret"></span>--%>
                     <%--</button>--%>
-                <div   data-toggle="dropdown" data-hover="dropdown" data-delay="500" aria-expanded="true">
+                <div data-toggle="dropdown" data-hover="dropdown" data-delay="500" aria-expanded="true">
                     <a class="avator">
-                        <img src="../../../static/image/default.jpg" alt="120">
+                        <img src="${ctx}/static/image/default.jpg" alt="120">
                     </a>
                 </div>
 
@@ -190,70 +377,68 @@
                     </li>
                 </ul>
             </div>
-            <%--<div class="user"  data-toggle="dropdown" data-hover="dropdown" id="dropdownMenu1">--%>
-            <%--<div data-havor="dropdown">--%>
-            <%--<a class="avator">--%>
-            <%--<img src="../../../static/image/default.jpg" alt="头像">--%>
-            <%--</a>--%>
-            <%--</div>--%>
-            <%--<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">--%>
-            <%--<li><span>我得主页</span></li>--%>
-            <%--<li><span>退出</span></li>--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<li>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<a href="/u/d4dfbb4d3aa9">&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<i class="iconfont ic-navigation-profile"></i><span>我的主页</span>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;</a></li>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<li>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<!-- TODO bookmarks_path -->&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<a href="/bookmarks">&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<i class="iconfont ic-navigation-mark"></i><span>收藏的文章</span>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;</a></li>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<li>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<a href="/users/d4dfbb4d3aa9/liked_notes">&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<i class="iconfont ic-navigation-like"></i><span>喜欢的文章</span>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;</a></li>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<li>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<a href="/my/paid_notes">&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<i class="iconfont ic-paid"></i><span>已购内容</span>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;</a></li>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<li>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<a href="/wallet">&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<i class="iconfont ic-navigation-wallet"></i><span>我的钱包</span>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;</a></li>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<li>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<a href="/settings">&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<i class="iconfont ic-navigation-settings"></i><span>设置</span>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;</a></li>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<li>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<a href="/faqs">&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<i class="iconfont ic-navigation-feedback"></i><span>帮助与反馈</span>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;</a></li>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<li>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<a rel="nofollow" data-method="delete" href="/sign_out">&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;<i class="iconfont ic-navigation-signout"></i><span>退出</span>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;</a></li>&ndash;%&gt;&ndash;%&gt;--%>
-            <%--</ul>--%>
-            <%--</div>--%>
-
         </c:if>
-
+        <div class="container">
+            <div class="collapse navbar-collapse">
+                <%--左上方的logo--%>
+                <a class="logo" href="/a">
+                    <img src="${ctx}/static/image/test1.png" alt="Nav logo">
+                </a>
+                <ul class="nav navbar-nav">
+                    <li class="" style="margin-left: 20px">
+                        <a href="/">
+                            <span>首页 </span>
+                        </a>
+                    </li>
+                    <li style="padding-left: 20px;padding-top: 10px">
+                        <from target="_blank" action="/search" method="get">
+                            <input type="text" name="" id="" placeholder="搜索"
+                                   style="height: 40px;width: 300px;border-radius: 30px">
+                            <a class="icon-search"></a>
+                        </from>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </nav>
-<div>身体</div>
-<div>侧边栏</div>
-<%--<footer class="container">--%>
-<%--<div class="row">--%>
-<%--<div class="col-xs-17 main">--%>
-<%--<a target="_blank" href="/">关于我们</a>--%>
-<%--<a target="_blank" href="/">关于我们</a>--%>
-<%--<a target="_blank" href="/">关于我们</a>--%>
-<%--</div>--%>
-<%--<div class="icon-bar">--%>
-<%--@2019-2020 Francis--%>
-<%--<a target="_blank" href="/">关于我们</a>--%>
-<%--<a target="_blank" href="/">关于我们</a>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</footer>--%>
+<div class="split-line"></div>
+<%--<div style="width: 100%;height: 500px; background-color: #5A9600"></div>--%>
+
+
+<div class="container">
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6 img">
+                    <a href="#">
+                        <img id="test" class="img-fluid rounded" src="${ctx}/static/image/test.png" alt="">
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="card-title">
+                        啦啦啦阿啦啦啦啦啦啦啦了asdcs啊称得上是我才是v是VS的VS
+                    </h2>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid
+                        atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero
+                        voluptate voluptatibus possimus, veniam magni quis!</p>
+                    <a href="#" class="btn btn-primary">Read More &rarr;</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+            Posted on January 1, 2017 by
+            <a href="#">Start Bootstrap</a>
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
 </body>
 </html>
