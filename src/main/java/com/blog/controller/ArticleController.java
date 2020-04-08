@@ -4,30 +4,24 @@ import com.alibaba.fastjson.JSONObject;
 import com.blog.entity.Article;
 import com.blog.entity.User;
 import com.blog.service.ArticleService;
-import com.blog.service.UserService;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import sun.misc.BASE64Encoder;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/article")
@@ -36,6 +30,13 @@ public class ArticleController {
     private final static Logger log = Logger.getLogger(UserController.class);
     @Autowired
     private ArticleService articleService;
+
+    @RequestMapping(value = "/getArticles",method = RequestMethod.GET)
+    public List<Article> getArticles(ServletRequest request, ServletResponse response){
+        List<Article> articleList=new ArrayList<Article>();
+        articleList = articleService.findByJoin();
+        return articleList;
+    }
 
 
     //    用户登录页面的跳转
@@ -94,6 +95,7 @@ public class ArticleController {
             article.setTitle(title);
             article.setContent(content1);
             article.setUserId(Long.parseLong(user.getId()));
+            article.setAuther(user.getNickName());
             Date now = new Date();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");//可以方便地修改日期格式
             article.setWriteDate(dateFormat.format(now));
@@ -194,51 +196,7 @@ public class ArticleController {
 //        return map;
 //    }
 
-    public static String getImgFileToBase64(String imgFile) {
-        //将图片文件转化为字节数组字符串，并对其进行Base64编码处理
-        InputStream inputStream = null;
-        byte[] buffer = null;
-        //读取图片字节数组
-        try {
-            inputStream = new FileInputStream(imgFile);
-            int count = 0;
-            while (count == 0) {
-                count = inputStream.available();
-            }
-            buffer = new byte[count];
-            inputStream.read(buffer);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (inputStream != null) {
-                try {
-                    // 关闭inputStream流
-                    inputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        // 对字节数组Base64编码
-        return new BASE64Encoder().encode(buffer);
-    }
 
-//    public static String GetImageStr(File file) {
-//        InputStream in = null;
-//        byte[] data = null;
-//        // 读取图片字节数组
-//        try {
-//            in = new FileInputStream(file);
-//            data = new byte[in.available()];
-//            in.read(data);
-//            in.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        // 对字节数组Base64编码
-//        BASE64Encoder encoder = new BASE64Encoder();
-//        return encoder.encode(data);// 返回Base64编码过的字节数组字符串
-//    }
 
 
 }
