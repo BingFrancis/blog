@@ -1,7 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@page import="com.blog.entity.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<jsp:forward page="/article/getArticles"></jsp:forward>
 <c:set var="ctx" value="${pageContext.request.contextPath }"/>
+<!DOCTYPE html>
 <html>
 <head>
     <title>主页，书写你的传奇</title>
@@ -298,37 +301,58 @@
 
 
     <%--<script>--%>
-        <%--var img = document.getElementById("test");--%>
-        <%--var image = new Image();--%>
-        <%--var realWidth = 0;//储存图片实际宽度--%>
-        <%--var realHeight = 0;//储存图片实际高度--%>
-        <%--//获取图片的宽高--%>
-        <%--image.src = "${ctx}/static/image/test.png";--%>
-        <%--//加载成功的处理--%>
-        <%--image.onload = function () {--%>
-            <%--realWidth = image.width;//获取图片实际宽度--%>
-            <%--realHeight = image.height;//获取图片实际高度--%>
-            <%--//让img的宽高相当于图片实际宽高的等比缩放，然后再偏移--%>
-            <%--if (realWidth > realHeight) {--%>
-                <%--img.width = (208 / realHeight) * realWidth;//等比缩放宽度--%>
-                <%--img.height = 572;//跟div高度一致--%>
-                <%--img.style.left = '-' + ((572 / realHeight) * realWidth - 208) / 2 + 'px';//设置图片相对自己位置偏移为img标签的宽度-高度的一半--%>
-            <%--} else if (realWidth < realHeight) {--%>
-                <%--img.width = 572;//跟div高度一致--%>
-                <%--img.height = (572 / realWidth) * realHeight;//等比缩放高度--%>
-                <%--img.style.top = '-' + ((208 / realWidth) * realHeight - 572) / 2 + 'px';//设置图片相对自己位置偏移为img标签的高度-宽度的一半--%>
-            <%--} else {--%>
-                <%--img.width = 208;--%>
-                <%--img.height = 572;--%>
-            <%--}--%>
-        <%--};--%>
-        <%--//图片加载失败的处理--%>
-        <%--img.onerror = function () {--%>
-            <%--img.src = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492076382452&di=04ebd6c4688b2ffbd8ae18e685234704&imgtype=0&src=http%3A%2F%2Fd.hiphotos.baidu.com%2Fzhidao%2Fwh%253D450%252C600%2Fsign%3D0c96dc86da33c895a62b907fe4235fc6%2F0823dd54564e9258d2bb2dff9f82d158ccbf4e17.jpg";--%>
-            <%--img.width = 100;--%>
-            <%--img.height = 100;--%>
-        <%--}--%>
+    <%--var img = document.getElementById("test");--%>
+    <%--var image = new Image();--%>
+    <%--var realWidth = 0;//储存图片实际宽度--%>
+    <%--var realHeight = 0;//储存图片实际高度--%>
+    <%--//获取图片的宽高--%>
+    <%--image.src = "${ctx}/static/image/test.png";--%>
+    <%--//加载成功的处理--%>
+    <%--image.onload = function () {--%>
+    <%--realWidth = image.width;//获取图片实际宽度--%>
+    <%--realHeight = image.height;//获取图片实际高度--%>
+    <%--//让img的宽高相当于图片实际宽高的等比缩放，然后再偏移--%>
+    <%--if (realWidth > realHeight) {--%>
+    <%--img.width = (208 / realHeight) * realWidth;//等比缩放宽度--%>
+    <%--img.height = 572;//跟div高度一致--%>
+    <%--img.style.left = '-' + ((572 / realHeight) * realWidth - 208) / 2 + 'px';//设置图片相对自己位置偏移为img标签的宽度-高度的一半--%>
+    <%--} else if (realWidth < realHeight) {--%>
+    <%--img.width = 572;//跟div高度一致--%>
+    <%--img.height = (572 / realWidth) * realHeight;//等比缩放高度--%>
+    <%--img.style.top = '-' + ((208 / realWidth) * realHeight - 572) / 2 + 'px';//设置图片相对自己位置偏移为img标签的高度-宽度的一半--%>
+    <%--} else {--%>
+    <%--img.width = 208;--%>
+    <%--img.height = 572;--%>
+    <%--}--%>
+    <%--};--%>
+    <%--//图片加载失败的处理--%>
+    <%--img.onerror = function () {--%>
+    <%--img.src = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492076382452&di=04ebd6c4688b2ffbd8ae18e685234704&imgtype=0&src=http%3A%2F%2Fd.hiphotos.baidu.com%2Fzhidao%2Fwh%253D450%252C600%2Fsign%3D0c96dc86da33c895a62b907fe4235fc6%2F0823dd54564e9258d2bb2dff9f82d158ccbf4e17.jpg";--%>
+    <%--img.width = 100;--%>
+    <%--img.height = 100;--%>
+    <%--}--%>
     <%--</script>--%>
+    <script src="/static/js/jquery.min.js"></script>
+
+    <%--<script type="text/javascript">--%>
+
+    <%--$(document).ready(function () {--%>
+    <%--// alert("66666");--%>
+    <%--$.ajax({--%>
+    <%--type:'get',--%>
+    <%--dataType:"json",--%>
+    <%--url:"${ctx}/article/getArticles",--%>
+    <%--success:function (data) {--%>
+    <%--if (data =="ok"){--%>
+    <%--alert("nimeide1")--%>
+    <%--}--%>
+    <%--}--%>
+    <%--})--%>
+
+    <%--});--%>
+
+    <%--</script>--%>
+
 
 </head>
 <body class="reader-black-font" style="overflow-y: scroll ">
@@ -403,9 +427,6 @@
     </div>
 </nav>
 <div class="split-line"></div>
-<%--<div style="width: 100%;height: 500px; background-color: #5A9600"></div>--%>
-
-
 <div class="container">
     <div class="card mb-4">
         <div class="card-body">
@@ -416,21 +437,82 @@
                     </a>
                 </div>
                 <div class="col-lg-6">
-                    <h2 class="card-title">
+                    <h3 class="card-title">
                         啦啦啦阿啦啦啦啦啦啦啦了asdcs啊称得上是我才是v是VS的VS
-                    </h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid
-                        atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero
-                        voluptate voluptatibus possimus, veniam magni quis!</p>
-                    <a href="#" class="btn btn-primary">Read More &rarr;</a>
+                    </h3>
+                    <p class="card-text"> 顿时我就觉得，我真的做错了！自从孩子出生后，我把所有的精力都放在孩子身上，
+                        却把过多的压力和怨气发在了丈夫身上。在他面前，我觉得自己还是个孩子，可以任性，可以跋扈，他都会迁就我的。
+                        可惜我错了，我跟他没有血缘关系，我们之间更多的是爱和责任。当他说不爱了，责任他也不想再负了！
+                    </p>
                 </div>
             </div>
+
+
         </div>
         <div class="card-footer text-muted">
             Posted on January 1, 2017 by
             <a href="#">Start Bootstrap</a>
         </div>
     </div>
+
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+                <%--<div class="col-lg-6 img">--%>
+                <%--<a href="#">--%>
+                <%--<img id="tes1t" class="img-fluid rounded" src="${ctx}/static/image1/test.png" alt="">--%>
+                <%--</a>--%>
+                <%--</div>--%>
+                <div class="col-lg-6" style="width: 100%">
+                    <h3 class="card-title">
+                        <a>啦啦啦阿啦啦啦啦啦啦啦了asdcs啊称得上是我才是v是VS的VS</a>
+                    </h3>
+                    <p class="card-text"> 顿时我就觉得，我真的做错了！自从孩子出生后，我把所有的精力都放在孩子身上，
+                        却把过多的压力和怨气发在了丈夫身上。在他面前，我觉得自己还是个孩子，可以任性，可以跋扈，他都会迁就我的。
+                        可惜我错了，我跟他没有血缘关系，我们之间更多的是爱和责任。当他说不爱了，责任他也不想再负了！
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="card-footer text-muted">
+            Posted on January 1, 2017 by
+            <a href="#">Start Bootstrap</a>
+        </div>
+    </div>
+
+    <H1>${articleList}</H1>
+
+    <%--<c:forEach items="${articleList}" var="artilce">--%>
+
+        <%--<div class="card mb-4">--%>
+            <%--<div class="card-body">--%>
+                <%--<div class="row">--%>
+                    <%--<div class="col-lg-6 img">--%>
+                        <%--<a href="#">--%>
+                            <%--<img class="img-fluid rounded" src="${ctx}/static/image/test12.png" alt="">--%>
+                        <%--</a>--%>
+                    <%--</div>--%>
+                    <%--<div class="col-lg-6">--%>
+                        <%--<h3 class="card-title">--%>
+                                <%--${artilce.title}--%>
+                        <%--</h3>--%>
+                        <%--<p class="card-text">--%>
+                                <%--${artilce.content}--%>
+                        <%--</p>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<div class="card-footer text-muted">--%>
+                <%--Posted on January 1, 2017 by--%>
+                <%--<a href="#">Start Bootstrap</a>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</c:forEach>--%>
+
+
 </div>
 <!-- Footer -->
 <footer class="py-5 bg-dark">
@@ -442,3 +524,5 @@
 
 </body>
 </html>
+
+

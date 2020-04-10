@@ -1,8 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@page import="com.blog.entity.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<jsp:forward page="/article/getArticles"></jsp:forward>
+<%--<jsp:forward page="/article/getArticles"></jsp:forward>--%>
 <c:set var="ctx" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
@@ -137,77 +136,6 @@
         }
     </style>
     <link rel="stylesheet" href="/static/css/index.css" media="all">
-    <%--<style>--%>
-    <%--body {--%>
-    <%--display: block;--%>
-    <%--margin: 0;--%>
-    <%--padding-top: 56px;--%>
-    <%--min-width: 768px;--%>
-    <%--}--%>
-
-    <%--li {--%>
-    <%--line-height: 20px;--%>
-    <%--}--%>
-
-    <%--.index .main {--%>
-    <%--padding-top: 30px;--%>
-    <%--padding-right: 0px;--%>
-    <%--}--%>
-
-    <%--.index .main .spilt-line {--%>
-    <%--margin: -5px 0 15px;--%>
-    <%--}--%>
-
-    <%--.note-list {--%>
-    <%--margin: 0px;--%>
-    <%--padding: 0px;--%>
-    <%--list-style: none;--%>
-    <%--}--%>
-
-    <%--.note-list .title {--%>
-    <%--margin: -7px 0 4px;--%>
-    <%--display: inherit;--%>
-    <%--font-size: 18px;--%>
-    <%--font-weight: 700;--%>
-    <%--line-height: 1.5;--%>
-    <%--}--%>
-
-    <%--.note-list li {--%>
-    <%--position: relative;--%>
-    <%--width: 100%;--%>
-    <%--margin: 0 0 15px;--%>
-    <%--padding: 15px 2px 20px 0;--%>
-    <%--border-bottom: 1px solid #f0f0f0;--%>
-    <%--word-wrap: break-word;--%>
-    <%--}--%>
-
-    <%--.note-list .have-img {--%>
-    <%--min-height: 14px;--%>
-    <%--}--%>
-
-    <%--.note-list .have-img .wrap-img {--%>
-    <%--position: absolute;--%>
-    <%--width: 150px;--%>
-    <%--top: 50%;--%>
-    <%--right: 0;--%>
-    <%--height: 100px;--%>
-    <%--margin-top: -60px;--%>
-
-    <%--}--%>
-
-    <%--.note-list .have-img .wrap-img img {--%>
-    <%--width: 100%;--%>
-    <%--border-radius: 4px;--%>
-    <%--border: 1px solid #f0f0f0;--%>
-    <%--}--%>
-
-    <%--img {--%>
-    <%--vertical-align: middle;--%>
-    <%--}--%>
-
-
-    <%--</style>--%>
-
     <style>
         body {
             padding-top: 56px;
@@ -298,61 +226,7 @@
             object-fit: unset;
         }
     </style>
-
-
-    <%--<script>--%>
-    <%--var img = document.getElementById("test");--%>
-    <%--var image = new Image();--%>
-    <%--var realWidth = 0;//储存图片实际宽度--%>
-    <%--var realHeight = 0;//储存图片实际高度--%>
-    <%--//获取图片的宽高--%>
-    <%--image.src = "${ctx}/static/image/test.png";--%>
-    <%--//加载成功的处理--%>
-    <%--image.onload = function () {--%>
-    <%--realWidth = image.width;//获取图片实际宽度--%>
-    <%--realHeight = image.height;//获取图片实际高度--%>
-    <%--//让img的宽高相当于图片实际宽高的等比缩放，然后再偏移--%>
-    <%--if (realWidth > realHeight) {--%>
-    <%--img.width = (208 / realHeight) * realWidth;//等比缩放宽度--%>
-    <%--img.height = 572;//跟div高度一致--%>
-    <%--img.style.left = '-' + ((572 / realHeight) * realWidth - 208) / 2 + 'px';//设置图片相对自己位置偏移为img标签的宽度-高度的一半--%>
-    <%--} else if (realWidth < realHeight) {--%>
-    <%--img.width = 572;//跟div高度一致--%>
-    <%--img.height = (572 / realWidth) * realHeight;//等比缩放高度--%>
-    <%--img.style.top = '-' + ((208 / realWidth) * realHeight - 572) / 2 + 'px';//设置图片相对自己位置偏移为img标签的高度-宽度的一半--%>
-    <%--} else {--%>
-    <%--img.width = 208;--%>
-    <%--img.height = 572;--%>
-    <%--}--%>
-    <%--};--%>
-    <%--//图片加载失败的处理--%>
-    <%--img.onerror = function () {--%>
-    <%--img.src = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492076382452&di=04ebd6c4688b2ffbd8ae18e685234704&imgtype=0&src=http%3A%2F%2Fd.hiphotos.baidu.com%2Fzhidao%2Fwh%253D450%252C600%2Fsign%3D0c96dc86da33c895a62b907fe4235fc6%2F0823dd54564e9258d2bb2dff9f82d158ccbf4e17.jpg";--%>
-    <%--img.width = 100;--%>
-    <%--img.height = 100;--%>
-    <%--}--%>
-    <%--</script>--%>
     <script src="/static/js/jquery.min.js"></script>
-
-    <%--<script type="text/javascript">--%>
-
-    <%--$(document).ready(function () {--%>
-    <%--// alert("66666");--%>
-    <%--$.ajax({--%>
-    <%--type:'get',--%>
-    <%--dataType:"json",--%>
-    <%--url:"${ctx}/article/getArticles",--%>
-    <%--success:function (data) {--%>
-    <%--if (data =="ok"){--%>
-    <%--alert("nimeide1")--%>
-    <%--}--%>
-    <%--}--%>
-    <%--})--%>
-
-    <%--});--%>
-
-    <%--</script>--%>
-
 
 </head>
 <body class="reader-black-font" style="overflow-y: scroll ">
@@ -483,34 +357,44 @@
         </div>
     </div>
 
-    <H1>${articleList}</H1>
+    <c:forEach items="${articleList.list}" var="artilce">
+        <tr>
+            <td>${artilce.title}</td>
+            <td>${artilce.content}</td>
+        </tr>
+    </c:forEach>
 
-    <%--<c:forEach items="${articleList}" var="artilce">--%>
-
-        <%--<div class="card mb-4">--%>
-            <%--<div class="card-body">--%>
-                <%--<div class="row">--%>
-                    <%--<div class="col-lg-6 img">--%>
-                        <%--<a href="#">--%>
-                            <%--<img class="img-fluid rounded" src="${ctx}/static/image/test12.png" alt="">--%>
-                        <%--</a>--%>
-                    <%--</div>--%>
-                    <%--<div class="col-lg-6">--%>
-                        <%--<h3 class="card-title">--%>
-                                <%--${artilce.title}--%>
-                        <%--</h3>--%>
-                        <%--<p class="card-text">--%>
-                                <%--${artilce.content}--%>
-                        <%--</p>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<div class="card-footer text-muted">--%>
-                <%--Posted on January 1, 2017 by--%>
-                <%--<a href="#">Start Bootstrap</a>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</c:forEach>--%>
+    <div class="row">
+        <div class="col-md-6">
+            第${articleList.pageNum}页，共${articleList.pages}页，共${articleList.total}条记录
+        </div>
+        <div class="col-md-6 offset-md-4">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination pagination-sm">
+                    <li class="page-item"><a class="page-link" href="${ctx}/article/getArticles?page=1">首页</a></li>
+                    <c:if test="${articleList.hasPreviousPage}">
+                        <li class="page-item"><a class="page-link"
+                                                 href="${ctx}/article/getArticles?page=${articleList.pageNum-1}">上一页</a></li>
+                    </c:if>
+                    <c:forEach items="${articleList.navigatepageNums}" var="page">
+                        <c:if test="${page==articleList.pageNum}">
+                            <li class="page-item active"><a class="page-link" href="#">${page}</a></li>
+                        </c:if>
+                        <c:if test="${page!=articleList.pageNum}">
+                            <li class="page-item"><a class="page-link"
+                                                     href="${ctx}/article/getArticles?page=${page}">${page}</a></li>
+                        </c:if>
+                    </c:forEach>
+                    <c:if test="${articleList.hasNextPage}">
+                        <li class="page-item"><a class="page-link"
+                                                 href="${ctx}/article/getArticles?page=${articleList.pageNum+1}">下一页</a></li>
+                    </c:if>
+                    <li class="page-item"><a class="page-link" href="${ctx}/article/getArticles?page=${articleList.pages}">末页</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 
 
 </div>

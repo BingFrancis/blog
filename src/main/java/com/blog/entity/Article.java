@@ -13,9 +13,21 @@ public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Long id;
+    private User user;
+
+    private Long ArticleId;
 
     private Long userId;
+
+    private String auther;
+
+    public String getAuther() {
+        return auther;
+    }
+
+    public void setAuther(String auther) {
+        this.auther = auther;
+    }
 
     private String title;
 
@@ -36,11 +48,11 @@ public class Article {
     private Long likeCount;
 
     public Long getId() {
-        return id;
+        return ArticleId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.ArticleId = id;
     }
 
     public Long getUserId() {
@@ -55,7 +67,9 @@ public class Article {
         return title;
     }
 
-    public void setTitle(String title) {this.title = title;}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String getContent() {
         return content;
@@ -73,7 +87,9 @@ public class Article {
         this.imgUrl = imgUrl;
     }
 
-    public String getViews() {return views;}
+    public String getViews() {
+        return views;
+    }
 
     public void setViews(String views) {
         this.views = views;
