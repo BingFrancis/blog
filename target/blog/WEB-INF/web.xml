@@ -35,14 +35,14 @@
 
     <!--自定义过滤器-->
 
-    <!--<filter>-->
-        <!--<filter-name>dispatcheIndexFilter</filter-name>-->
-        <!--<filter-class>com.blog.interceptor.IndexFilter</filter-class>-->
-    <!--</filter>-->
-    <!--<filter-mapping>-->
-        <!--<filter-name>dispatcheIndexFilter</filter-name>-->
-        <!--<url-pattern>/index.jsp</url-pattern>-->
-    <!--</filter-mapping>-->
+    <filter>
+        <filter-name>dispatcheIndexFilter</filter-name>
+        <filter-class>com.blog.interceptor.IndexFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>dispatcheIndexFilter</filter-name>
+        <url-pattern>/index.jsp</url-pattern>
+    </filter-mapping>
 
 
     <!-- spring监听器 -->
@@ -52,9 +52,9 @@
     
 
     
-    <listener>
-        <listener-class>com.blog.listener.indexListener</listener-class>
-    </listener>
+    <!--<listener>-->
+        <!--<listener-class>com.blog.listener.indexListener</listener-class>-->
+    <!--</listener>-->
     <!-- 防止spring内存溢出监听器，比如quartz -->
     <listener>
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
@@ -94,6 +94,10 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+
+    <session-config>
+        <session-timeout>15</session-timeout>
+    </session-config>
 
 
 </web-app>

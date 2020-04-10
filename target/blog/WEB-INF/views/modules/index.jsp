@@ -2,7 +2,7 @@
 <%@page import="com.blog.entity.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%--<jsp:forward page="/article/getArticles"></jsp:forward>--%>
+<jsp:forward page="/article/getArticles"></jsp:forward>
 <c:set var="ctx" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
@@ -483,13 +483,34 @@
         </div>
     </div>
 
-    <c:forEach items="${articleList}" var="artilce" >
-        <tr>
-            <td>${artilce.title}</td>
-            <td>${artilce.auther}</td>
-        </tr>
+    <H1>${articleList}</H1>
 
-    </c:forEach>
+    <%--<c:forEach items="${articleList}" var="artilce">--%>
+
+        <%--<div class="card mb-4">--%>
+            <%--<div class="card-body">--%>
+                <%--<div class="row">--%>
+                    <%--<div class="col-lg-6 img">--%>
+                        <%--<a href="#">--%>
+                            <%--<img class="img-fluid rounded" src="${ctx}/static/image/test12.png" alt="">--%>
+                        <%--</a>--%>
+                    <%--</div>--%>
+                    <%--<div class="col-lg-6">--%>
+                        <%--<h3 class="card-title">--%>
+                                <%--${artilce.title}--%>
+                        <%--</h3>--%>
+                        <%--<p class="card-text">--%>
+                                <%--${artilce.content}--%>
+                        <%--</p>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<div class="card-footer text-muted">--%>
+                <%--Posted on January 1, 2017 by--%>
+                <%--<a href="#">Start Bootstrap</a>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</c:forEach>--%>
 
 
 </div>

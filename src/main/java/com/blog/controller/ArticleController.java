@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.blog.entity.Article;
 import com.blog.entity.User;
 import com.blog.service.ArticleService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +34,14 @@ public class ArticleController {
     private ArticleService articleService;
 
     @RequestMapping(value = "/getArticles",method = RequestMethod.GET)
-    public List<Article> getArticles(ServletRequest request, ServletResponse response){
-        List<Article> articleList=new ArrayList<Article>();
-        articleList = articleService.findByJoin();
-        return articleList;
+    public String getArticles(@RequestParam(value = "page", defaultValue = "1") Integer page, Model model){
+        //设置当前页数与大小
+        System.out.println("首次进入查询数据开始");
+        PageHelper.startPage(page,5);
+        List<Article> articleList = articleService.findByJoin();
+        PageInfo pageInfo = new PageInfo(articleList,5);
+        model.addAttribute("articleList",pageInfo);
+        return "/home";
     }
 
 
@@ -195,8 +201,4 @@ public class ArticleController {
 //        map.put("resImg", getImgFileToBase64(urls));
 //        return map;
 //    }
-
-
-
-
 }
