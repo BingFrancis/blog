@@ -36,6 +36,7 @@
 
     <mvc:annotation-driven/>
 
+
     <!-- 视图解析器：解析jsp页面，默认使用jstl标签，classpath下得有jstl的包 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- 配置前后缀 -->

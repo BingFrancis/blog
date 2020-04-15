@@ -16,6 +16,11 @@
         <!--select a.id,a.user_id,a.auther, a.title,a.content,a.img_url,a.views,a.comment_count,a.write_date,a.update_date,a.like_count,u.nick_name from articles a INNER JOIN `user` u on a.user_id = u.id-->
     <!--</select>-->
 
+
+    <select id="findByid" resultMap="joinMap">
+        select id,user_id,auther, title,content,img_url,views,comment_count,write_date,update_date,like_count from articles where id = #{id}
+    </select>
+
     <resultMap id="joinMap" type="com.blog.entity.Article">
         <id property="ArticleId" column="id"></id>
         <result property="userId" column="user_id"></result>
@@ -28,8 +33,7 @@
         <result property="writeDate" column="write_date"></result>
         <result property="updateDate" column="update_date"></result>
         <result property="likeCount" column="like_count"></result>
-        <!--<association property="user" javaType="com.blog.entity.User">-->
-            <!--<result  property="nickName" column="nick_name" />-->
-        <!--</association>-->
     </resultMap>
+
+
 </mapper>

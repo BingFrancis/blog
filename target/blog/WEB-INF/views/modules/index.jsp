@@ -353,6 +353,21 @@
 
     <%--</script>--%>
 
+    <script type="text/javascript">
+        function getUrl(s) {
+            var pattern = /!\[(.*?)\]\((.*?)\)/mg;
+            var result = [];
+            var matcher;
+            while ((matcher = pattern.exec(str)) !== null) {
+                result.push({
+                    alt: matcher[1],
+                    url: matcher[2]
+                });
+                return result;
+            }
+        }
+    </script>
+
 
 </head>
 <body class="reader-black-font" style="overflow-y: scroll ">
@@ -372,11 +387,11 @@
 
         <c:if test="${not empty user}">
             <div class="user">
-                    <%--<button type="button" class="btn dropdown-toggle" id="dropdownMenu2"--%>
-                    <%--data-toggle="dropdown" data-hover="dropdown">--%>
-                    <%--主题--%>
-                    <%--<span class="caret"></span>--%>
-                    <%--</button>--%>
+                    <button type="button" class="btn dropdown-toggle" id="dropdownMenu2"
+                    data-toggle="dropdown" data-hover="dropdown">
+                    主题
+                    <span class="caret"></span>
+                    </button>
                 <div data-toggle="dropdown" data-hover="dropdown" data-delay="500" aria-expanded="true">
                     <a class="avator">
                         <img src="${ctx}/static/image/default.jpg" alt="120">

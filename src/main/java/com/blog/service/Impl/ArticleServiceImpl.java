@@ -22,4 +22,9 @@ public class ArticleServiceImpl  implements ArticleService {
     public List<Article> findByJoin() {
         return  articleMapper.findByJoin();
     }
+
+    @Override
+    public Article findByid(String id) {
+        return articleMapper.findByid(id);
+    }
 }

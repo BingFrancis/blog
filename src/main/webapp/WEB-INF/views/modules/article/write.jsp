@@ -51,11 +51,11 @@ media="all">
             imageUploadURL: "${ctx}/article/uploadImage",
             imageUploadFileName: "uploadImage",
             toolbarIcons: [
-                "undo", "redo","|",
-                "bold", "del", "italic", "quote","|",
                 "h1", "h2", "h3", "h4", "h5", "h6","|",
+                "bold", "del", "italic", "quote","|",
                 "list-ul", "list-ol", "hr","|",
                 "link", "image",  "preformatted-text","table","|",
+                "undo", "redo","|",
                 "watch", "preview","fullscreen", "clear", "search","|",
                 "help"
             ],
@@ -133,14 +133,9 @@ media="all">
             <textarea  name="content" id="content" style="display:none;"></textarea>
         </div>
 
-
-
         <div class="layui-form-item">
             <button class="layui-btn layui-btn-fluid layui-bg-black" lay-submit lay-filter="commit">发布文章</button>
         </div>
-
-
-
 
     </form>
 </div>

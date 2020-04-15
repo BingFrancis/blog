@@ -8,90 +8,11 @@
 <head>
     <title>主页，书写你的传奇</title>
     <meta charset=UTF-8">
-    <style type="text/css">
-        ._242Tf2cgmp6rFj7Lixbrm-_0 {
-            margin-bottom: 20px;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        ._3aA9gkn1LXfMfmJOGrvppf_0 {
-            position: relative;
-            display: block;
-            width: 100%;
-            height: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        ._2fJUc3LXSiPHLwDfnBtS6y_0 {
-            position: absolute;
-            display: block;
-            bottom: 0;
-            right: 0;
-            font-size: 12px;
-            padding: 2px 6px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            cursor: pointer;
-        }
-    </style>
-    <style type="text/css">.style-mode {
-        float: right
-    }</style>
     <link href="${ctx}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
     <style type="text/css">
-        .nqzzJ71pC-jOnJKAfdtr6_0 {
-            float: right;
-            height: 55px;
-            padding: 15px 0px;
-            margin: 0 12px;
-        }
 
-        ._3tScN0zmSdGLaUAH4SxTbM_0 {
-            width: 100%;
-            height: 100%;
-        }
-
-        .nqzzJ71pC-jOnJKAfdtr6_0 ._3f806byixOPpOPWnx8HiQP_0 {
-            height: 25px;
-        }
-
-        .nqzzJ71pC-jOnJKAfdtr6_0 ._2MIQ6sBppQZAKea91We0qf_0 {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-            opacity: 0.6;
-            z-index: 1000;
-        }
-
-        .nqzzJ71pC-jOnJKAfdtr6_0 ._1RppgOJ_CQiXgzd3ke-sbJ_0 {
-            position: fixed;
-            left: -webkit-calc(50% - 190px);
-            left: calc(50% - 190px);
-            top: -webkit-calc(50% - 300px);
-            top: calc(50% - 300px);
-            width: 380px;
-            height: 425px;
-            background-color: #fff;
-            padding: 40px 72px 0;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            -webkit-justify-content: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            z-index: 1000;
-            text-align: center;
-        }
 
         body.reader-night-mode .nqzzJ71pC-jOnJKAfdtr6_0 ._1RppgOJ_CQiXgzd3ke-sbJ_0 {
             background-color: #3f3f3f;
@@ -141,20 +62,6 @@
             padding-top: 56px;
         }
 
-        .carousel-item {
-            height: 65vh;
-            min-height: 300px;
-            background: no-repeat center center scroll;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
-
-        .portfolio-item {
-            margin-bottom: 30px;
-        }
-
         .card {
             position: relative;
             display: -ms-flexbox;
@@ -194,210 +101,289 @@
             border-top: 1px solid rgba(0, 0, 0, .125);
         }
 
-        .rounded {
-            border-radius: .25rem !important;
+        .py-5{
+            padding-bottom: 3rem!important;
+            padding-top: 3rem!important;
         }
 
-        .img-fluid {
+        .bg-dark{
+            background-color: #343a40!important;
+        }
+
+        .text-white{
+            color: #fff!important;
+        }
+
+
+
+        .card img {
+            max-height: 100%;
             max-width: 100%;
-            height: auto;
-        }
-
-        .img {
-            object-fit: cover;
-            height: 208px;
-            overflow: hidden;
-            text-align: center;
-            margin: 0 auto;
-            transform: inherit;
-            /*display: flex;*/
-            /*justify-content: center;*/
-            /*align-items: center;*/
-        }
-
-        .img img {
-            background-repeat: no-repeat;
-        / / 背景图像将仅显示一次。 background-attachment: scroll;
-        / / background-position: - 50 px 0 px;
-        / / 设置背景图片的的偏移量，这个-50相当于背景整体向左偏移50，就可以显示图片的中心 background-size: 300 px 200 px;
-        / / / / 设置背景图片的大小，相当于图片实际宽高等比例饿缩放的 background-color: transparent;
-        / / height: auto;
-            width: auto;
-            object-fit: unset;
+            vertical-align: middle;
         }
     </style>
-    <script src="/static/js/jquery.min.js"></script>
 
+    <script src="/static/js/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $(".dropdown").mouseover(function () {
+                $(this).addClass("open");
+            });
+
+            $(".dropdown").mouseleave(function () {
+                $(this).removeClass("open");
+            })
+        })
+    </script>
 </head>
 <body class="reader-black-font" style="overflow-y: scroll ">
 <%--全局顶部导航栏--%>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="width-limit">
-        <%--最右边的写作按钮--%>
-        <a class="btn writen-btn" target="_blank" href="/article/write">
-            <i></i>
-            写文章
-        </a>
-        <%--注册--%>
-        <c:if test="${empty user}">
-            <a class="btn sing-up" id="sing_up" href="/sing_up">注册</a>
-            <a class="btn log-in" id="sing_in" href="/sing_in">登录</a>
-        </c:if>
 
-        <c:if test="${not empty user}">
-            <div class="user">
-                    <%--<button type="button" class="btn dropdown-toggle" id="dropdownMenu2"--%>
-                    <%--data-toggle="dropdown" data-hover="dropdown">--%>
-                    <%--主题--%>
-                    <%--<span class="caret"></span>--%>
-                    <%--</button>--%>
-                <div data-toggle="dropdown" data-hover="dropdown" data-delay="500" aria-expanded="true">
-                    <a class="avator">
-                        <img src="${ctx}/static/image/default.jpg" alt="120">
-                    </a>
-                </div>
-
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#">Java</a>
-                    </li>
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#">数据挖掘</a>
-                    </li>
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#">
-                            数据通信/网络
-                        </a>
-                    </li>
-                    <li role="presentation" class="divider"></li>
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#">分离的链接</a>
-                    </li>
-                </ul>
-            </div>
-        </c:if>
         <div class="container">
             <div class="collapse navbar-collapse">
                 <%--左上方的logo--%>
-                <a class="logo" href="/a">
+                <a class="logo" href="/">
                     <img src="${ctx}/static/image/test1.png" alt="Nav logo">
                 </a>
-                <ul class="nav navbar-nav">
-                    <li class="" style="margin-left: 20px">
-                        <a href="/">
-                            <span>首页 </span>
-                        </a>
-                    </li>
-                    <li style="padding-left: 20px;padding-top: 10px">
-                        <from target="_blank" action="/search" method="get">
-                            <input type="text" name="" id="" placeholder="搜索"
-                                   style="height: 40px;width: 300px;border-radius: 30px">
-                            <a class="icon-search"></a>
-                        </from>
-                    </li>
-                </ul>
+
+                <%--最右边的写作按钮--%>
+                <a class="btn writen-btn" target="_blank" href="/article/write">
+                    <i></i>
+                    写文章
+                </a>
+                <%--注册--%>
+                <c:if test="${empty user}">
+                    <a class="btn sing-up" id="sing_up" href="/sing_up">注册</a>
+                    <a class="btn log-in" id="sing_in" href="/sing_in">登录</a>
+                </c:if>
+
+                <c:if test="${not empty user}">
+                    <div class="user">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle"
+                                   data-toggle="dropdown"
+                                   style="height: 60px">
+                                    <img alt="" class="img-circle" src="${ctx}/static/image/default.jpg" width="38px"
+                                         height="38px"/>
+                                </a>
+                                <div class="dropdown-menu pull-right"
+                                     style="background: #FFFFFF;width: 320px;overflow: hidden">
+                                    <div style="margin-top: 16px;border-bottom: 1px solid #eeeeee">
+                                        <div style="text-align: center">
+                                            <img class="img-circle" src="${ctx}/static/image/default.jpg"
+                                                 style="width: 38px;height: 38px;"/>
+                                        </div>
+                                        <div style="color: #323534;text-align: center;line-height: 36px;font-size: 17px">
+                                            <span>${user.nickName}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">
+                                        <div class="col-md-4 text-center grid">
+                                            <i class="fa fa-user" style="font-size: 25px;line-height: 45px;"></i>
+                                            <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+                                                个人中心</p>
+                                        </div>
+                                        <div class="col-md-4 text-center grid">
+                                            <i class="fa fa-gear" style="font-size: 25px;line-height: 45px;"></i>
+                                            <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+                                                账号管理</p>
+                                        </div>
+                                        <div class="col-md-4 text-center grid">
+                                            <i class="fa fa-key" style="font-size: 25px;line-height: 45px;"></i>
+                                            <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+                                                密码修改</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">
+                                        <div class="col-md-4 text-center grid">
+                                            <i class="fa fa-user-circle" style="font-size: 25px;line-height: 45px;"></i>
+                                            <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+                                                修改头像</p>
+                                        </div>
+                                        <div class="col-md-4 text-center grid">
+                                            <i class="fa fa-comments" style="font-size: 25px;line-height: 45px;"></i>
+                                            <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+                                                消息</p>
+                                        </div>
+                                        <div class="col-md-4 text-center grid">
+                                            <i class="fa fa-heart-o" style="font-size: 25px;line-height: 45px;"></i>
+                                            <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+                                                帮助中心</p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row" style="margin-top: 20px">
+                                        <div class="text-center"
+                                             style="padding: 15px;margin: 0px;background: #f6f5f5;color: #323534;">
+                                            <i class="fa fa-sign-out"></i> <a>退出</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </c:if>
             </div>
         </div>
     </div>
 </nav>
-<div class="split-line"></div>
+
+<!-- Page Content -->
 <div class="container">
-    <div class="card mb-4">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-lg-6 img">
-                    <a href="#">
-                        <img id="test" class="img-fluid rounded" src="${ctx}/static/image/test.png" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-6">
-                    <h3 class="card-title">
-                        啦啦啦阿啦啦啦啦啦啦啦了asdcs啊称得上是我才是v是VS的VS
-                    </h3>
-                    <p class="card-text"> 顿时我就觉得，我真的做错了！自从孩子出生后，我把所有的精力都放在孩子身上，
-                        却把过多的压力和怨气发在了丈夫身上。在他面前，我觉得自己还是个孩子，可以任性，可以跋扈，他都会迁就我的。
-                        可惜我错了，我跟他没有血缘关系，我们之间更多的是爱和责任。当他说不爱了，责任他也不想再负了！
-                    </p>
-                </div>
-            </div>
 
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Blog Home One
+        <small>Subheading</small>
+    </h1>
 
-        </div>
-        <div class="card-footer text-muted">
-            Posted on January 1, 2017 by
-            <a href="#">Start Bootstrap</a>
-        </div>
-    </div>
-
-
-    <div class="card mb-4">
-        <div class="card-body">
-            <div class="row">
-                <%--<div class="col-lg-6 img">--%>
-                <%--<a href="#">--%>
-                <%--<img id="tes1t" class="img-fluid rounded" src="${ctx}/static/image1/test.png" alt="">--%>
-                <%--</a>--%>
-                <%--</div>--%>
-                <div class="col-lg-6" style="width: 100%">
-                    <h3 class="card-title">
-                        <a>啦啦啦阿啦啦啦啦啦啦啦了asdcs啊称得上是我才是v是VS的VS</a>
-                    </h3>
-                    <p class="card-text"> 顿时我就觉得，我真的做错了！自从孩子出生后，我把所有的精力都放在孩子身上，
-                        却把过多的压力和怨气发在了丈夫身上。在他面前，我觉得自己还是个孩子，可以任性，可以跋扈，他都会迁就我的。
-                        可惜我错了，我跟他没有血缘关系，我们之间更多的是爱和责任。当他说不爱了，责任他也不想再负了！
-                    </p>
-                </div>
-            </div>
-
-
-        </div>
-        <div class="card-footer text-muted">
-            Posted on January 1, 2017 by
-            <a href="#">Start Bootstrap</a>
-        </div>
-    </div>
-
-    <c:forEach items="${articleList.list}" var="artilce">
-        <tr>
-            <td>${artilce.title}</td>
-            <td>${artilce.content}</td>
-        </tr>
-    </c:forEach>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Home</a>
+        </li>
+        <%--<li class="breadcrumb-item active">Blog Home 1</li>--%>
+    </ol>
 
     <div class="row">
-        <div class="col-md-6">
-            第${articleList.pageNum}页，共${articleList.pages}页，共${articleList.total}条记录
-        </div>
-        <div class="col-md-6 offset-md-4">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination pagination-sm">
-                    <li class="page-item"><a class="page-link" href="${ctx}/article/getArticles?page=1">首页</a></li>
-                    <c:if test="${articleList.hasPreviousPage}">
-                        <li class="page-item"><a class="page-link"
-                                                 href="${ctx}/article/getArticles?page=${articleList.pageNum-1}">上一页</a></li>
-                    </c:if>
-                    <c:forEach items="${articleList.navigatepageNums}" var="page">
-                        <c:if test="${page==articleList.pageNum}">
-                            <li class="page-item active"><a class="page-link" href="#">${page}</a></li>
-                        </c:if>
-                        <c:if test="${page!=articleList.pageNum}">
-                            <li class="page-item"><a class="page-link"
-                                                     href="${ctx}/article/getArticles?page=${page}">${page}</a></li>
-                        </c:if>
-                    </c:forEach>
-                    <c:if test="${articleList.hasNextPage}">
-                        <li class="page-item"><a class="page-link"
-                                                 href="${ctx}/article/getArticles?page=${articleList.pageNum+1}">下一页</a></li>
-                    </c:if>
-                    <li class="page-item"><a class="page-link" href="${ctx}/article/getArticles?page=${articleList.pages}">末页</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
 
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+            <c:forEach items="${articleList.list}" var="artilce">
+                <div class="card mb-4">
+                    <%--<img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">--%>
+                    <div class="card-body">
+                        <h2 class="card-title">${artilce.title}</h2>
+                        <p class="card-text">${artilce.content}</p>
+                        <a href="#" style="background-color: #60686f" class="btn btn-primary">Read More &rarr;</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Posted on January 1, 2017 by
+                        <a href="#">Start Bootstrap</a>
+                    </div>
+                </div>
+            </c:forEach>
+            <!-- Pagination -->
+            <%--<ul class="pagination justify-content-center mb-4">--%>
+            <%--<li class="page-item">--%>
+            <%--<a class="page-link" href="#">&larr; Older</a>--%>
+            <%--</li>--%>
+            <%--<li class="page-item disabled">--%>
+            <%--<a class="page-link" href="#">Newer &rarr;</a>--%>
+            <%--</li>--%>
+            <%--</ul>--%>
+            <div class="row">
+                <div class="col-md-6">
+                    第${articleList.pageNum}页，共${articleList.pages}页，共${articleList.total}条记录
+                </div>
+                <div class="col-md-6 offset-md-4">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination pagination-sm mb-4 ">
+                            <li class="page-item"><a class="page-link" href="${ctx}/article/getArticles?page=1">首页</a>
+                            </li>
+                            <c:if test="${articleList.hasPreviousPage}">
+                                <li class="page-item"><a class="page-link"
+                                                         href="${ctx}/article/getArticles?page=${articleList.pageNum-1}">上一页</a>
+                                </li>
+                            </c:if>
+                            <c:forEach items="${articleList.navigatepageNums}" var="page">
+                                <c:if test="${page==articleList.pageNum}">
+                                    <li class="page-item active"><a class="page-link" href="#">${page}</a></li>
+                                </c:if>
+                                <c:if test="${page!=articleList.pageNum}">
+                                    <li class="page-item"><a class="page-link"
+                                                             href="${ctx}/article/getArticles?page=${page}">${page}</a>
+                                    </li>
+                                </c:if>
+                            </c:forEach>
+                            <c:if test="${articleList.hasNextPage}">
+                                <li class="page-item"><a class="page-link"
+                                                         href="${ctx}/article/getArticles?page=${articleList.pageNum+1}">下一页</a>
+                                </li>
+                            </c:if>
+                            <li class="page-item"><a class="page-link"
+                                                     href="${ctx}/article/getArticles?page=${articleList.pages}">末页</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+            <!-- Search Widget -->
+            <div class="card mb-4">
+                <h5 class="card-header">Search</h5>
+                <div class="card-body">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button">Go!</button>
+              </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Categories</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="#">Web Design</a>
+                                </li>
+                                <li>
+                                    <a href="#">HTML</a>
+                                </li>
+                                <li>
+                                    <a href="#">Freebies</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="#">JavaScript</a>
+                                </li>
+                                <li>
+                                    <a href="#">CSS</a>
+                                </li>
+                                <li>
+                                    <a href="#">Tutorials</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Side Widget</h5>
+                <div class="card-body">
+                    You can put anything you want inside of these side widgets. They are easy to use, and feature the
+                    new Bootstrap 4 card containers!
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.row -->
 
 </div>
+<!-- /.container -->
+
 <!-- Footer -->
 <footer class="py-5 bg-dark">
     <div class="container">
@@ -405,6 +391,9 @@
     </div>
     <!-- /.container -->
 </footer>
+
+<%----%>
+
 
 </body>
 </html>

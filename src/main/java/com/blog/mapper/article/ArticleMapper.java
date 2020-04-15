@@ -18,4 +18,6 @@ public interface ArticleMapper extends Mapper<Article> {
 
     List<Article> findByJoin();
 
+    Article findByid(String id);
+
 }
