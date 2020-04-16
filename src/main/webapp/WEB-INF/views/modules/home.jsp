@@ -10,6 +10,8 @@
     <meta charset=UTF-8">
     <link href="${ctx}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <link href="${ctx}/static/bootstrap/css/b">
+
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
     <style type="text/css">
 
@@ -135,6 +137,16 @@
             })
         })
     </script>
+
+    <%--<script type="text/javascript">--%>
+        <%--function geturl(s) {--%>
+            <%--var regexp =/!\[\]\((.*?)\)/g;--%>
+            <%--while((result=regexp.exec(s))!==null){--%>
+                <%--return result[1];--%>
+                <%--console.log(result[1])--%>
+            <%--}--%>
+        <%--}--%>
+    <%--</script>--%>
 </head>
 <body class="reader-black-font" style="overflow-y: scroll ">
 <%--全局顶部导航栏--%>
@@ -255,11 +267,13 @@
         <div class="col-md-8">
             <c:forEach items="${articleList.list}" var="artilce">
                 <div class="card mb-4">
-                    <%--<img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">--%>
+                    <c:if test="${not empty artilce.imgUrl}">
+                        <img class="card-img-top" src="${artilce.imgUrl}" alt="Card image cap">
+                    </c:if>
                     <div class="card-body">
                         <h2 class="card-title">${artilce.title}</h2>
-                        <p class="card-text">${artilce.content}</p>
-                        <a href="#" style="background-color: #60686f" class="btn btn-primary">Read More &rarr;</a>
+                        <p class="card-text">${artilce.summary}......</p>
+                        <a href="${ctx}/article/getContent?a=${artilce.id}" style="background-color: #60686f" class="btn btn-primary">Read More &rarr;</a>
                     </div>
                     <div class="card-footer text-muted">
                         Posted on January 1, 2017 by
@@ -267,20 +281,11 @@
                     </div>
                 </div>
             </c:forEach>
-            <!-- Pagination -->
-            <%--<ul class="pagination justify-content-center mb-4">--%>
-            <%--<li class="page-item">--%>
-            <%--<a class="page-link" href="#">&larr; Older</a>--%>
-            <%--</li>--%>
-            <%--<li class="page-item disabled">--%>
-            <%--<a class="page-link" href="#">Newer &rarr;</a>--%>
-            <%--</li>--%>
-            <%--</ul>--%>
             <div class="row">
                 <div class="col-md-6">
                     第${articleList.pageNum}页，共${articleList.pages}页，共${articleList.total}条记录
                 </div>
-                <div class="col-md-6 offset-md-4">
+                <div class="col-md-6 offset-md-4" style="width: 100%;margin-left: 25%">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination pagination-sm mb-4 ">
                             <li class="page-item"><a class="page-link" href="${ctx}/article/getArticles?page=1">首页</a>
@@ -312,8 +317,6 @@
                     </nav>
                 </div>
             </div>
-
-
         </div>
 
         <!-- Sidebar Widgets Column -->
@@ -385,12 +388,12 @@
 <!-- /.container -->
 
 <!-- Footer -->
-<footer class="py-5 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-    </div>
-    <!-- /.container -->
-</footer>
+<%--<footer class="py-5 bg-dark">--%>
+    <%--<div class="container">--%>
+        <%--<p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>--%>
+    <%--</div>--%>
+    <%--<!-- /.container -->--%>
+<%--</footer>--%>
 
 <%----%>
 

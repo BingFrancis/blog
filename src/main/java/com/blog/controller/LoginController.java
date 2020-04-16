@@ -67,11 +67,7 @@ public class LoginController {
             log.info("登录成功");
             request.getSession().setAttribute("user",pre_login);
             model.addAttribute("user",pre_login);
-            PageHelper.startPage(page,5);
-            List<Article> articleList = articleService.findByJoin();
-            PageInfo pageInfo = new PageInfo(articleList,5);
-            model.addAttribute("articleList",pageInfo);
-            return "/home";
+            return "redirect:/article/getArticles";
         }else{
             model.addAttribute("message","fail");
             return "user/userLogin";

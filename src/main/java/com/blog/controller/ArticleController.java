@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Date;
 
 @Controller
 @RequestMapping(value = "/article")
@@ -87,26 +88,34 @@ public class ArticleController {
         return jsonObject;
     }
 
+    @ResponseBody
     @RequestMapping(value ="/saveContent", method = RequestMethod.POST)
     public String saveContent(Model model, HttpServletRequest request, User user,
                        @RequestParam(value = "title", required = false) String title,
-                       @RequestParam(value = "content", required = false) String content1) {
+                       @RequestParam(value = "content", required = false) String content,
+                              @RequestParam(value = "summary", required = false) String summary,
+                              @RequestParam(value = "img_url", required = false) String img_url) {
         user = (User) request.getSession().getAttribute("user");
         if(user !=null){
             Article article = new Article();
+            if(title.equals("")){
+                title = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+            }
             article.setTitle(title);
-            article.setContent(content1);
+            article.setContent(content);
+            article.setSummary(summary);
             article.setUserId((user.getId()));
             article.setAuther(user.getNickName());
+            article.setImgUrl(img_url);
             Date now = new Date();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");//可以方便地修改日期格式
             article.setWriteDate(dateFormat.format(now));
             articleService.inserContent(article);
-            model.addAttribute("article_content",content1);
-            return "redirect:/article/getArticles";
+//            model.addAttribute("article_content",content);
+            return "true";
         }else{
-            model.addAttribute("writeMessage","no");
-            return "article/write";
+//            model.addAttribute("writeMessage","no");
+            return "false";
         }
 
     }

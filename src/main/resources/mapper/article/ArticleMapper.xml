@@ -5,11 +5,11 @@
 <mapper namespace="com.blog.mapper.article.ArticleMapper">
 
     <insert id="inserContent" parameterType="com.blog.entity.Article" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO articles (id,user_id,auther,title,content,img_url,views,comment_count,write_date,update_date,like_count) values(#{id},#{userId},#{auther},#{title}, #{content},#{imgUrl},#{views}, #{commentCount},#{writeDate},#{updateDate},#{likeCount})
+        INSERT INTO articles (id,user_id,auther,title,content,summary,img_url,views,comment_count,write_date,update_date,like_count) values(#{id},#{userId},#{auther},#{title}, #{content},#{summary},#{imgUrl},#{views}, #{commentCount},#{writeDate},#{updateDate},#{likeCount})
     </insert>
 
     <select id="findByJoin" resultMap="joinMap">
-        select id,user_id,auther, title,content,img_url,views,comment_count,write_date,update_date,like_count from articles
+        select id,user_id,auther, title,content,summary,img_url,views,comment_count,write_date,update_date,like_count from articles
     </select>
 
     <!--<select id="findByJoin" resultMap="joinMap">-->
@@ -27,6 +27,7 @@
         <result property="auther" column="auther"></result>
         <result property="title" column="title"></result>
         <result property="content" column="content"></result>
+        <result property="summary" column="summary"></result>
         <result property="imgUrl" column="img_url"></result>
         <result property="views" column="views"></result>
         <result property="commentCount" column="comment_count"></result>

@@ -34,6 +34,9 @@ public class Article {
     private String content;
 
 
+    private String summary;
+
+
     private String imgUrl;
 
     private String views;
@@ -77,6 +80,14 @@ public class Article {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
 
     public String getImgUrl() {

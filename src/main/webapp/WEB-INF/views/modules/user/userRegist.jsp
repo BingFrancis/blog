@@ -20,9 +20,11 @@
           media="all">
 
 
-    <script src="/static/js/jquery.min.js"></script>
+
     <script src="/static/layui-v2.4.5/layui.all.js"></script>
     <script src="/static/layer/layer.js"></script>
+
+    <script src="/static/js/jquery.min.js"></script>
 
     <style type="text/css">
         .sign-up-msg {
@@ -388,7 +390,7 @@
     </p>
 </div>
 
-<script>
+<script type="text/javascript">
     //短信验证码
     $("#codeBtn").click(function () {
         var btn = document.getElementById("codeBtn");
