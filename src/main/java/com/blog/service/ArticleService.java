@@ -10,5 +10,9 @@ public interface ArticleService {
 
     List<Article> findByJoin();
 
+    Article findByid(String id);
+
+
+
 
 }

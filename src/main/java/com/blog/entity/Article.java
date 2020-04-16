@@ -15,9 +15,9 @@ public class Article {
 
     private User user;
 
-    private Long ArticleId;
+    private String ArticleId;
 
-    private Long userId;
+    private String userId;
 
     private String auther;
 
@@ -34,6 +34,9 @@ public class Article {
     private String content;
 
 
+    private String summary;
+
+
     private String imgUrl;
 
     private String views;
@@ -47,19 +50,19 @@ public class Article {
 
     private Long likeCount;
 
-    public Long getId() {
+    public String getId() {
         return ArticleId;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.ArticleId = id;
     }
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -77,6 +80,14 @@ public class Article {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
 
     public String getImgUrl() {

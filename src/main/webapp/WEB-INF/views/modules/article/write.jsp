@@ -9,6 +9,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 <c:set var="ctx" value="${pageContext.request.contextPath }"/>
 <html>
 <head>
@@ -21,18 +23,19 @@
 <link rel="stylesheet" href="/static/layui-v2.4.5/css/modules/layer/default/layer.css" media="all">
 
 <link id="layuicss-layer" rel="stylesheet"
-href="https://www.layui.com/admin/std/dist/layuiadmin/layui/css/modules/layer/default/layer.css?v=3.1.1"
-media="all">
+      href="https://www.layui.com/admin/std/dist/layuiadmin/layui/css/modules/layer/default/layer.css?v=3.1.1"
+      media="all">
 
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/layui-v2.4.5/layui.all.js"></script>
 <script src="/static/layer/layer.js"></script>
 <script src="${ctx}/static/editor/editormd.min.js" type="text/javascript"></script>
 <style>
-    ol>li{
+    ol > li {
         list-style: decimal;
     }
-    ul>li{
+
+    ul > li {
         list-style: disc;
     }
 </style>
@@ -51,15 +54,15 @@ media="all">
             imageUploadURL: "${ctx}/article/uploadImage",
             imageUploadFileName: "uploadImage",
             toolbarIcons: [
-                "undo", "redo","|",
-                "bold", "del", "italic", "quote","|",
-                "h1", "h2", "h3", "h4", "h5", "h6","|",
-                "list-ul", "list-ol", "hr","|",
-                "link", "image",  "preformatted-text","table","|",
-                "watch", "preview","fullscreen", "clear", "search","|",
+                "h1", "h2", "h3", "h4", "h5", "h6", "|",
+                "bold", "del", "italic", "quote", "|",
+                "list-ul", "list-ol", "hr", "|",
+                "link", "image", "preformatted-text", "table", "|",
+                "undo", "redo", "|",
+                "watch", "preview", "fullscreen", "clear", "search", "|",
                 "help"
             ],
-            dialogMaskBgColor : "#E6E6E6",//设置透明遮罩层的背景颜色，全局通用，默认为#fff
+            dialogMaskBgColor: "#E6E6E6",//设置透明遮罩层的背景颜色，全局通用，默认为#fff
 
 
             // toolbarIconTexts : {
@@ -91,7 +94,7 @@ media="all">
                 reader.onload = function (event) {
                     var base64 = event.target.result;
                     //ajax上传图片
-                    $.post("{:url('${ctx}/article/uploadImage')}",{base:base64}, function (ret) {
+                    $.post("{:url('${ctx}/article/uploadImage')}", {base: base64}, function (ret) {
                         layer.msg(ret.msg);
                         if (ret.code === 1) {
                             //新一行的图片显示
@@ -106,7 +109,7 @@ media="all">
 </script>
 
 <style>
-    .title{
+    .title {
         border: none;
         height: 100%;
         width: 60%;
@@ -114,35 +117,88 @@ media="all">
         font-weight: 700;
     }
 </style>
+<script type="text/javascript">
+    function getUrl(content) {
+        var regexp = /!\[\]\((.*?)\)/g;
+        while ((result = regexp.exec(content)) !== null) {
+            return result[1];
+        }
+        return "";
+    }
+
+    function save() {
+        //去除html标签
+        var summary = document.querySelector(".editormd-preview-container").innerText.replace(/<[^>]+>/g, '')
+        //去除回车和换行
+        summary = summary.replace(/[\r\n]/g, "  ");
+        var summary = summary.substr(0, 180);
+        var title = document.getElementById("title").value;
+        var content = document.getElementById("content").value;
+        var img_url = getUrl(content);
+        $.ajax({
+            url: '/article/saveContent',
+            type: 'post',
+            dataType:'json',
+            // contentType: "application/x-www-form-urlencoded",
+            data: {"title":title,"content":content,"summary":summary,"img_url":img_url},
+
+            async: false,
+            success: function (data) {
+                if (data === true) {
+                    layer.msg("文章发布成功", {time: 3000, offset: 't-50px'},
+                        function () {
+                            location.href = "/"
+                        });
+                }
+                else{
+                    layer.msg("数据提交失败,请稍后重试")
+                }
+            },
+            error: function (jqXHR) {
+                layer.msg("服务器异常，请稍后重试....");
+                // alert("发生错误：" + jqXHR.status);
+            }
+        });
+    }
+</script>
 <body>
 <div style="position: relative">
-    <form id="saveForm" class="layui-form" action="${ctx}/article/saveContent" method="post" style="padding-top: 0px">
+    <%--action="${ctx}/article/saveContent"--%>
+    <%--<form id="saveForm" class="layui-form" method="post" style="padding-top: 0px">--%>
 
         <div class="layui-form-item" style="width: 80%; padding-left: 2%;margin-bottom: 0px;height: 44px">
-            <input  class="title" type="text" name="title" id="title"
-                    placeholder="文章标题"  >
-
-            <%--<button>文章列表</button>--%>
-            <%--<button>保存</button>--%>
-
+            <input class="title" type="text" name="title" id="title"
+                   placeholder="文章标题" value="<%=new SimpleDateFormat("yyyy-MM-dd").format(new Date())%>">
             <%--<button>返回首页</button>--%>
-
         </div>
 
-        <div class="col-sm-12"   name="article-editormd"  id="article-editormd" >
-            <textarea  name="content" id="content" style="display:none;"></textarea>
+        <div class="col-sm-12" name="article-editormd" id="article-editormd">
+            <textarea name="content" id="content" style="display:none;"></textarea>
         </div>
 
+        <c:if test="${empty user}">
+            <script>
+                // layui提示框
+                layui.use("layer", function () {
+                    // layer模块
+                    var layer = layui.layer;
+                    layer.ready(function () {
+                        layer.msg("继续操作请返回首页注册或登录", {time: 3000, offset: 't-50px'},
+                            function () {
+                                location.href = "/"
+                            });
+                    });
+                });
+            </script>
+        </c:if>
 
-
-        <div class="layui-form-item">
-            <button class="layui-btn layui-btn-fluid layui-bg-black" lay-submit lay-filter="commit">发布文章</button>
+        <div>
+            <%--<input class="layui-btn layui-btn-fluid layui-bg-black" type="button" onclick="save()" value="发布文章"></input>--%>
+            <button class="layui-btn layui-btn-fluid layui-bg-black" onclick="save()">发布文章</button>
         </div>
+    <%--</form>--%>
 
 
-
-
-    </form>
 </div>
 
 </body>
