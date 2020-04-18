@@ -60,9 +60,34 @@
     </style>
     <link rel="stylesheet" href="/static/css/index.css" media="all">
     <style>
+
+
         body {
             padding-top: 56px;
         }
+        a{
+            text-decoration: none;
+        }
+        /*头像设置*/
+        .nav  li a img{
+            width: 50px;
+            height: auto;
+        }
+
+        .navbar-nav>li>a {
+            line-height: 20px;
+            margin-top: -12px;
+        }
+
+        .card-footer a{
+            font-size: 16px;
+            color: #4D4D4D;
+        }
+
+        a:hover{
+            text-decoration: none;
+        }
+
 
         .card {
             position: relative;
@@ -103,6 +128,10 @@
             border-top: 1px solid rgba(0, 0, 0, .125);
         }
 
+        .card-footer a{
+            margin-right: 15px;
+        }
+
         .py-5{
             padding-bottom: 3rem!important;
             padding-top: 3rem!important;
@@ -116,12 +145,19 @@
             color: #fff!important;
         }
 
+        .card{
+            overflow: hidden;
+        }
+
+        .test{
+            overflow: hidden;
+        }
 
 
-        .card img {
-            max-height: 100%;
-            max-width: 100%;
-            vertical-align: middle;
+        .test img{
+           width: 100%;
+            display: block;
+
         }
     </style>
 
@@ -137,16 +173,6 @@
             })
         })
     </script>
-
-    <%--<script type="text/javascript">--%>
-        <%--function geturl(s) {--%>
-            <%--var regexp =/!\[\]\((.*?)\)/g;--%>
-            <%--while((result=regexp.exec(s))!==null){--%>
-                <%--return result[1];--%>
-                <%--console.log(result[1])--%>
-            <%--}--%>
-        <%--}--%>
-    <%--</script>--%>
 </head>
 <body class="reader-black-font" style="overflow-y: scroll ">
 <%--全局顶部导航栏--%>
@@ -233,7 +259,7 @@
                                     <div class="row" style="margin-top: 20px">
                                         <div class="text-center"
                                              style="padding: 15px;margin: 0px;background: #f6f5f5;color: #323534;">
-                                            <i class="fa fa-sign-out"></i> <a>退出</a>
+                                            <i class="fa fa-sign-out"></i> <a href="/sing_out">退出</a>
                                         </div>
                                     </div>
                                 </div>
@@ -268,7 +294,10 @@
             <c:forEach items="${articleList.list}" var="artilce">
                 <div class="card mb-4">
                     <c:if test="${not empty artilce.imgUrl}">
-                        <img class="card-img-top" src="${artilce.imgUrl}" alt="Card image cap">
+                        <div class="test" style="height: 300px;width: 750px">
+                            <img class="card-img-top" src="${artilce.imgUrl}" alt="Card image cap">
+                        </div>
+
                     </c:if>
                     <div class="card-body">
                         <h2 class="card-title">${artilce.title}</h2>
@@ -277,7 +306,9 @@
                     </div>
                     <div class="card-footer text-muted">
                         Posted on January 1, 2017 by
-                        <a href="#">Start Bootstrap</a>
+                        <a href="#" target="_blank">${artilce.auther}</a>
+                        <a target="_blank"><i class="glyphicon glyphicon-comment">12</i></a>
+                        <a target="_blank"><i class="glyphicon glyphicon-heart">2</i></a>
                     </div>
                 </div>
             </c:forEach>
