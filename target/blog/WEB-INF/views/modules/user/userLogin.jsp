@@ -67,57 +67,57 @@
                         return message;
                     }
                 })
-                // form.on('submit(commit)', function (data) {
-                //     $.fn.serializeObject = function () {
-                //         var o = {};
-                //         var a = this.serializeArray();
-                //         $.each(a, function () {
-                //             if (o[this.name]) {
-                //                 if (!o[this.name].push) {
-                //                     o[this.name] = [o[this.name]];
-                //                 }
-                //                 o[this.name].push(this.value || '');
-                //             } else {
-                //                 o[this.name] = this.value || '';
-                //             }
-                //         });
-                //         return o;
-                //     };
-                //     var maintenancePlace = $("#loginForm").serializeObject();
-                //     $.ajax({
-                //         url: './login',
-                //         type: 'post',
-                //         // contentType: "application/x-www-form-urlencoded",
-                //         data: maintenancePlace,
-                //         success: function (data) {
-                //             if (data === "true") {
-                //                 layer.open({
-                //                     content: "登录成功",
-                //                     yes: function () {
-                //                         window.location.href = "/";
-                //                     },
-                //                     cancel: function () {
-                //                         window.location.href = "/";
-                //                     }
-                //                 });
-                //             }
-                //             if (data === "false") {
-                //                 layer.msg("验证码错误，请输入正确的验证码")
-                //             }
-                //             else if (data == "null") {
-                //                 layer.msg("该手机号未注册")
-                //             }
-                //             else if (data === "fail") {
-                //                 layer.msg("账号或密码错误")
-                //             }
-                //         },
-                //         error: function (jqXHR) {
-                //             layer.msg("服务器异常，请稍后重试....");
-                //             // alert("发生错误：" + jqXHR.status);
-                //         }
-                //     });
-                //     return false;
-                // });
+                form.on('submit(commit)', function (data) {
+                    $.fn.serializeObject = function () {
+                        var o = {};
+                        var a = this.serializeArray();
+                        $.each(a, function () {
+                            if (o[this.name]) {
+                                if (!o[this.name].push) {
+                                    o[this.name] = [o[this.name]];
+                                }
+                                o[this.name].push(this.value || '');
+                            } else {
+                                o[this.name] = this.value || '';
+                            }
+                        });
+                        return o;
+                    };
+                    var maintenancePlace = $("#loginForm").serializeObject();
+                    $.ajax({
+                        url: './login',
+                        type: 'post',
+                        // contentType: "application/x-www-form-urlencoded",
+                        data: maintenancePlace,
+                        success: function (data) {
+                            if (data === "true") {
+                                layer.open({
+                                    content: "登录成功",
+                                    yes: function () {
+                                        window.location.href = "/";
+                                    },
+                                    cancel: function () {
+                                        window.location.href = "/";
+                                    }
+                                });
+                            }
+                            if (data === "false") {
+                                layer.msg("验证码错误，请输入正确的验证码")
+                            }
+                            else if (data == "null") {
+                                layer.msg("该手机号未注册")
+                            }
+                            else if (data === "fail") {
+                                layer.msg("账号或密码错误")
+                            }
+                        },
+                        error: function (jqXHR) {
+                            layer.msg("服务器异常，请稍后重试....");
+                            // alert("发生错误：" + jqXHR.status);
+                        }
+                    });
+                    return false;
+                });
             });
 
             function placeholderfun() {
@@ -209,7 +209,7 @@
             <h2>layuiAdmin</h2>
             <p>layui 官方出品的单页面后台管理模板系统</p>
         </div>
-        <form id="loginForm" action="${ctx}/login" method="post" class="layui-form">
+        <form id="loginForm"  method="post" class="layui-form">
             <%--账号密码--%>
             <div class="layadmin-user-login-box layadmin-user-login-body layui-form main"
                  style="background-color: white ; box-shadow: 0 0 8px rgba(0,0,0,.1); font-size: medium">
@@ -241,42 +241,42 @@
                     </div>
                 </div>
 
-                <c:if test="${(message == 'fail')}">
-                    <script>
-                        // layui提示框
-                        layui.use("layer", function () {
-                            // layer模块
-                            var layer = layui.layer;
-                            layer.ready(function () {
-                                layer.msg("用户或密码错误, 请重试.", {time: 2000, offset: 't-50px'});
-                            });
-                        });
-                    </script>
-                </c:if>
-                <c:if test="${(message == 'false')}">
-                    <script>
-                        // layui提示框
-                        layui.use("layer", function () {
-                            // layer模块
-                            var layer = layui.layer;
-                            layer.ready(function () {
-                                layer.msg("验证码错误", {time: 2000, offset: 't-50px'});
-                            });
-                        });
-                    </script>
-                </c:if>
-                <c:if test="${(message == 'null')}">
-                    <script>
-                        // layui提示框
-                        layui.use("layer", function () {
-                            // layer模块
-                            var layer = layui.layer;
-                            layer.ready(function () {
-                                layer.msg("改手机号未注册", {time: 2000, offset: 't-50px'});
-                            });
-                        });
-                    </script>
-                </c:if>
+                <%--<c:if test="${(message == 'fail')}">--%>
+                    <%--<script>--%>
+                        <%--// layui提示框--%>
+                        <%--layui.use("layer", function () {--%>
+                            <%--// layer模块--%>
+                            <%--var layer = layui.layer;--%>
+                            <%--layer.ready(function () {--%>
+                                <%--layer.msg("用户或密码错误, 请重试.", {time: 2000, offset: 't-50px'});--%>
+                            <%--});--%>
+                        <%--});--%>
+                    <%--</script>--%>
+                <%--</c:if>--%>
+                <%--<c:if test="${(message == 'false')}">--%>
+                    <%--<script>--%>
+                        <%--// layui提示框--%>
+                        <%--layui.use("layer", function () {--%>
+                            <%--// layer模块--%>
+                            <%--var layer = layui.layer;--%>
+                            <%--layer.ready(function () {--%>
+                                <%--layer.msg("验证码错误", {time: 2000, offset: 't-50px'});--%>
+                            <%--});--%>
+                        <%--});--%>
+                    <%--</script>--%>
+                <%--</c:if>--%>
+                <%--<c:if test="${(message == 'null')}">--%>
+                    <%--<script>--%>
+                        <%--// layui提示框--%>
+                        <%--layui.use("layer", function () {--%>
+                            <%--// layer模块--%>
+                            <%--var layer = layui.layer;--%>
+                            <%--layer.ready(function () {--%>
+                                <%--layer.msg("该手机号未注册", {time: 2000, offset: 't-50px'});--%>
+                            <%--});--%>
+                        <%--});--%>
+                    <%--</script>--%>
+                <%--</c:if>--%>
                 <div class="layui-form-item" style="margin-bottom: 20px;">
                     <input type="checkbox" checked="checked" name="remember" lay-skin="primary" title="记住密码">
                     <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
@@ -357,13 +357,6 @@
 <%--});--%>
 
 
-<%--//实际使用时记得删除该代码--%>
-<%--layer.msg('为了方便演示，用户名密码可随意输入', {--%>
-<%--offset: '15px'--%>
-<%--, icon: 1--%>
-<%--});--%>
 
-<%--});--%>
-<%--</script>--%>
 </body>
 </html>

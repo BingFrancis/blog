@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -47,6 +48,7 @@ public class LoginController {
 
     //验证图片验证码
     @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @ResponseBody
     public String login(Model model, HttpServletRequest request,
                         @RequestParam(value = "phone", required = false) String phone,
                         @RequestParam(value = "password", required = false) String password,
@@ -56,21 +58,27 @@ public class LoginController {
         String verifyCode = (String) request.getSession(false).getAttribute("code");
         if (!vercode.toUpperCase().equals(verifyCode)) {
             model.addAttribute("message","false");
-            return "user/userLogin";
+            return "false";
         }
         User pre_login = userService.findByPhone(phone);
         if(pre_login == null){
             model.addAttribute("message","null");
-            return "user/userLogin";
+            return "null";
         }
         if(validatePassword(password,pre_login.getPassword())){
             log.info("登录成功");
             request.getSession().setAttribute("user",pre_login);
             model.addAttribute("user",pre_login);
-            return "redirect:/article/getArticles";
+            return "true";
         }else{
             model.addAttribute("message","fail");
-            return "user/userLogin";
+            return "fail";
         }
+    }
+
+    @RequestMapping(value = "/sing_out")
+    public String sing_out(HttpServletRequest request,Model model){
+        request.getSession().removeAttribute("user");
+        return "redirect:/article/getArticles";
     }
 }
