@@ -2,8 +2,10 @@ package com.blog.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.blog.entity.Article;
+import com.blog.entity.Comment;
 import com.blog.entity.User;
 import com.blog.service.ArticleService;
+import com.blog.service.CommentService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.io.FileUtils;
@@ -33,6 +35,9 @@ public class ArticleController {
     private final static Logger log = Logger.getLogger(UserController.class);
     @Autowired
     private ArticleService articleService;
+
+    @Autowired
+    private CommentService commentService;
 
     @RequestMapping(value = "/getArticles",method = RequestMethod.GET)
     public String getArticles(@RequestParam(value = "page", defaultValue = "1") Integer page, Model model){
@@ -124,6 +129,8 @@ public class ArticleController {
     public String  getContent( Model model,@RequestParam(value ="a",required = false) String id){
         Article articleDetails = articleService.findByid(id);
         model.addAttribute("details",articleDetails);
+        List<Comment> list = commentService.finadAllFirstComment(id);
+        model.addAttribute("commentlist",list);
         return "article/view";
     }
 }
