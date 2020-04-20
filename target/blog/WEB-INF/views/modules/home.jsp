@@ -1,16 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%--<jsp:forward page="/article/getArticles"></jsp:forward>--%>
 <c:set var="ctx" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
     <title>主页，书写你的传奇</title>
     <meta charset=UTF-8">
-    <link href="${ctx}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="${ctx}/static/bootstrap/css/b">
+    <link href="${ctx}/static/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
     <style type="text/css">
@@ -60,10 +58,18 @@
     </style>
     <link rel="stylesheet" href="/static/css/index.css" media="all">
     <style>
-
-
         body {
             padding-top: 56px;
+        }
+        .card h5{
+            font-size: 1.25rem;
+            margin-top: auto;
+        }
+        .card-header {
+            padding: .75rem 1.25rem;
+            margin-bottom: 0;
+            background-color: rgba(0,0,0,.03);
+            border-bottom: 1px solid rgba(0,0,0,.125);
         }
         a{
             text-decoration: none;

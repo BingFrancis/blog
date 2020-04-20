@@ -15,16 +15,15 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>HTML Preview(markdown to html) - Editor.md examples</title>
     <link rel="stylesheet" href="${ctx}/static/editor/css/editormd.preview.css"/>
     <!-- Bootstrap core CSS -->
     <link href="${ctx}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="${ctx}/static/bootstrap/css/b">
 
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
     <style type="text/css">
-
 
         body.reader-night-mode .nqzzJ71pC-jOnJKAfdtr6_0 ._1RppgOJ_CQiXgzd3ke-sbJ_0 {
             background-color: #3f3f3f;
@@ -71,51 +70,47 @@
     <link rel="stylesheet" href="/static/css/index.css" media="all">
     <style>
 
-
         body {
             padding-top: 56px;
-            margin: 0;
-            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        }
+
+        .mt-4, .my-4 {
+            margin-top: 1.5rem!important;
+        }
+
+        .mb-3, .my-3 {
+            margin-bottom: 1rem!important;
+        }
+        .h1, h1 {
             font-size: 2.5rem;
-            font-weight: 400;
-            line-height: 1.5;
-            color: #212529;
-            text-align: left;
-            background-color: #fff;
         }
 
-        /*头像设置*/
-        .nav  li a img{
-            width: 50px;
-            height: auto;
+        div {
+            display: block;
         }
 
-        .navbar-nav>li>a {
-            line-height: 20px;
-            margin-top: -12px;
+        .card-header:first-child {
+            border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
         }
 
-        /*评论头像设置*/
-        .media,.mb-4 img{
-            width: 50px;
-            height: auto;
-            border-radius: 50%!important;
+        .card h5{
+            font-size: 1.25rem;
+            margin-top: auto;
+        }
+        .card-header {
+            padding: .75rem 1.25rem;
+            margin-bottom: 0;
+            background-color: rgba(0,0,0,.03);
+            border-bottom: 1px solid rgba(0,0,0,.125);
         }
 
-        a{
-            text-decoration: none;
+        mb-4, .my-4 {
+            margin-bottom: 1.5rem!important;
         }
 
-        .card-footer a{
-            font-size: 16px;
-            color: #4D4D4D;
+        .mt-4, .my-4 {
+            margin-top: 1.5rem!important;
         }
-
-        a:hover{
-            text-decoration: none;
-        }
-
-
         .card {
             position: relative;
             display: -ms-flexbox;
@@ -126,8 +121,35 @@
             word-wrap: break-word;
             background-color: #fff;
             background-clip: border-box;
-            border: 1px solid rgba(0, 0, 0, .125);
+            border: 1px solid rgba(0,0,0,.125);
             border-radius: .25rem;
+        }
+
+        textarea.form-control {
+            height: auto;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            height: calc(1.5em + .75rem + 2px);
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+        textarea {
+            overflow: auto;
+            resize: vertical;
+        }
+        .form-group {
+            margin-bottom: 1rem;
         }
 
         .card-body {
@@ -136,34 +158,71 @@
             padding: 1.25rem;
         }
 
-        .card-title {
-            font-weight: 700;
+
+
+        /*头像设置*/
+        .nav li a img {
+            width: 50px;
+            height: auto;
         }
 
-        .text-muted {
-            color: #6c757d !important;
+        .navbar-nav > li > a {
+            line-height: 20px;
+            margin-top: -12px;
         }
-
-        .card-footer {
-            padding: .75rem 1.25rem;
-            background-color: rgba(0, 0, 0, .03);
-            border-top: 1px solid rgba(0, 0, 0, .125);
-        }
-
-        .card-footer a{
-            margin-right: 15px;
+        a {
+            text-decoration: none;
         }
 
 
-        .card-header {
-            padding: .75rem 1.25rem;
-            margin-bottom: 0;
-            background-color: rgba(0,0,0,.03);
-            border-bottom: 1px solid rgba(0,0,0,.125);
+
+        /*评论布局*/
+
+        .media {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: start;
+            align-items: flex-start;
         }
-        .card-header:first-child {
-            border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+
+        .mb-4 img{
+            width: 50px;
+            height: 50px;
         }
+
+        .rounded-circle {
+            border-radius: 50%!important;
+        }
+
+        .mr-3, .mx-3 {
+            margin-right: 1rem!important;
+        }
+        .d-flex {
+            display: -ms-flexbox!important;
+            display: flex!important;
+        }
+
+        .media-body {
+            -ms-flex: 1;
+            flex: 1;
+        }
+
+        .mt-0, .my-0 {
+            margin-top: 0!important;
+        }
+
+
+
+
+        .card-footer a {
+            font-size: 16px;
+            color: #4D4D4D;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
 
 
     </style>
@@ -295,15 +354,15 @@
         <li class="breadcrumb-item active">Blog Details</li>
     </ol>
 
-    <div class="row">
-        <div class="col-lg-8" id="test-editormd-view">
-            <!-- Date/Time -->
-            <p>Posted on January 1, 2017 at 12:00 PM</p>
-            <textarea id="append-test" style="display:none;" name="test-editormd-markdown-doc">${details.content}</textarea>
-            <hr>
-        </div>
+    <div class="row" >
+        <div class="col-lg-8" >
+            <div id="test-editormd-view" style="border-bottom: 2px slateblue">
+                <!-- markdown 文本回显-->
+                <p>Posted on January 1, 2017 at 12:00 PM</p>
+                <textarea id="append-test" style="display:none;"
+                          name="test-editormd-markdown-doc">${details.content}</textarea>
+            </div>
 
-        <div class="col-lg-8">
             <!-- Comments Form -->
             <div class="card my-4">
                 <h5 class="card-header">Leave a Comment:</h5>
@@ -316,11 +375,122 @@
                     </form>
                 </div>
             </div>
+
+
+            <!-- Single Comment -->
+            <c:forEach items="${commentlist}" var="comment">
+                <div class="media mb-4">
+                    <img class="d-flex mr-3 rounded-circle" src="${ctx}/static/image/default.jpg" alt="">
+                    <div class="media-body">
+                        <h5 class="mt-0">${comment.autherId} </h5>
+                        ${comment.commentContent}
+                    </div>
+                </div>
+            </c:forEach>
+
+
+
+            <!-- Comment with nested comments -->
+            <div class="media mb-4">
+                <img class="d-flex mr-3 rounded-circle" src="${ctx}/static/image/default.jpg" alt="">
+                <div class="media-body">
+                    <h5 class="mt-0">Commenter Name</h5>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+
+                    <div class="media mt-4">
+                        <img class="d-flex mr-3 rounded-circle" src="${ctx}/static/image/default.jpg" alt="">
+                        <div class="media-body">
+                            <h5 class="mt-0">Commenter Name</h5>
+                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        </div>
+                    </div>
+
+                    <div class="media mt-4">
+                        <img class="d-flex mr-3 rounded-circle" src="${ctx}/static/image/default.jpg" alt="">
+                        <div class="media-body">
+                            <h5 class="mt-0">Commenter Name</h5>
+                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+            <!-- Search Widget -->
+            <div class="card mb-4">
+                <h5 class="card-header">Search</h5>
+                <div class="card-body">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button">Go!</button>
+              </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Categories</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="#">Web Design</a>
+                                </li>
+                                <li>
+                                    <a href="#">HTML</a>
+                                </li>
+                                <li>
+                                    <a href="#">Freebies</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="#">JavaScript</a>
+                                </li>
+                                <li>
+                                    <a href="#">CSS</a>
+                                </li>
+                                <li>
+                                    <a href="#">Tutorials</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Side Widget</h5>
+                <div class="card-body">
+                    You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                </div>
+            </div>
+
         </div>
 
 
     </div>
     <!-- /.row -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+        </div>
+        <!-- /.container -->
+    </footer>
 
 </div>
 <div id="layout">
