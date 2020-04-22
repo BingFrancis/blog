@@ -75,12 +75,13 @@
         }
 
         .mt-4, .my-4 {
-            margin-top: 1.5rem!important;
+            margin-top: 1.5rem !important;
         }
 
         .mb-3, .my-3 {
-            margin-bottom: 1rem!important;
+            margin-bottom: 1rem !important;
         }
+
         .h1, h1 {
             font-size: 2.5rem;
         }
@@ -93,24 +94,26 @@
             border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
         }
 
-        .card h5{
+        .card h5 {
             font-size: 1.25rem;
             margin-top: auto;
         }
+
         .card-header {
             padding: .75rem 1.25rem;
             margin-bottom: 0;
-            background-color: rgba(0,0,0,.03);
-            border-bottom: 1px solid rgba(0,0,0,.125);
+            background-color: rgba(0, 0, 0, .03);
+            border-bottom: 1px solid rgba(0, 0, 0, .125);
         }
 
         mb-4, .my-4 {
-            margin-bottom: 1.5rem!important;
+            margin-bottom: 1.5rem !important;
         }
 
         .mt-4, .my-4 {
-            margin-top: 1.5rem!important;
+            margin-top: 1.5rem !important;
         }
+
         .card {
             position: relative;
             display: -ms-flexbox;
@@ -121,7 +124,7 @@
             word-wrap: break-word;
             background-color: #fff;
             background-clip: border-box;
-            border: 1px solid rgba(0,0,0,.125);
+            border: 1px solid rgba(0, 0, 0, .125);
             border-radius: .25rem;
         }
 
@@ -142,12 +145,14 @@
             background-clip: padding-box;
             border: 1px solid #ced4da;
             border-radius: .25rem;
-            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
         }
+
         textarea {
             overflow: auto;
             resize: vertical;
         }
+
         .form-group {
             margin-bottom: 1rem;
         }
@@ -157,8 +162,6 @@
             flex: 1 1 auto;
             padding: 1.25rem;
         }
-
-
 
         /*头像设置*/
         .nav li a img {
@@ -170,11 +173,10 @@
             line-height: 20px;
             margin-top: -12px;
         }
+
         a {
             text-decoration: none;
         }
-
-
 
         /*评论布局*/
 
@@ -185,21 +187,22 @@
             align-items: flex-start;
         }
 
-        .mb-4 img{
+        .mb-4 img {
             width: 50px;
             height: 50px;
         }
 
         .rounded-circle {
-            border-radius: 50%!important;
+            border-radius: 50% !important;
         }
 
         .mr-3, .mx-3 {
-            margin-right: 1rem!important;
+            margin-right: 1rem !important;
         }
+
         .d-flex {
-            display: -ms-flexbox!important;
-            display: flex!important;
+            display: -ms-flexbox !important;
+            display: flex !important;
         }
 
         .media-body {
@@ -208,11 +211,8 @@
         }
 
         .mt-0, .my-0 {
-            margin-top: 0!important;
+            margin-top: 0 !important;
         }
-
-
-
 
         .card-footer a {
             font-size: 16px;
@@ -222,7 +222,6 @@
         a:hover {
             text-decoration: none;
         }
-
 
 
     </style>
@@ -354,8 +353,8 @@
         <li class="breadcrumb-item active">Blog Details</li>
     </ol>
 
-    <div class="row" >
-        <div class="col-lg-8" >
+    <div class="row">
+        <div class="col-lg-8">
             <div id="test-editormd-view" style="border-bottom: 2px slateblue">
                 <!-- markdown 文本回显-->
                 <p>Posted on January 1, 2017 at 12:00 PM</p>
@@ -367,12 +366,12 @@
             <div class="card my-4">
                 <h5 class="card-header">Leave a Comment:</h5>
                 <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                    <div class="form-group">
+                        <textarea id="comment_input" class="form-control" rows="2"></textarea>
+                    </div>
+                    <button type="submit" onclick="_comment(${details.id},${details.userId})" class="btn btn-primary">
+                        Submit
+                    </button>
                 </div>
             </div>
 
@@ -382,39 +381,84 @@
                 <div class="media mb-4">
                     <img class="d-flex mr-3 rounded-circle" src="${ctx}/static/image/default.jpg" alt="">
                     <div class="media-body">
-                        <h5 class="mt-0">${comment.autherId} </h5>
-                        ${comment.commentContent}
+                        <h5 class="mt-0">${comment.autherId},${comment.user.nickName} </h5>
+                            ${comment.commentContent}
+                        <div class="media-bottom">
+                            <a target="_blank"><i class="glyphicon glyphicon-heart">赞</i></a>
+                            <a target="_blank" onclick="_comment(${comment.articleId},${comment.autherId})"><i
+                                    class="glyphicon glyphicon-comment">回复</i></a>
+                            <div class="card-body">
+                                <div class="form-group">
+                                            <textarea id="comment_input_${qaq.articleId}" class="form-control"rows="1"
+                                                      placeholder="回复@${comment.user.nickName}"></textarea>
+
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit
+                                </button>
+                            </div>
+                        </div>
+                        <c:forEach items="${comment.commentList}" var="qaq">
+                            <div class="media mt-4">
+                                <img class="d-flex mr-3 rounded-circle" src="${ctx}/static/image/default.jpg" alt="">
+                                <div class="media-body">
+                                    <h5 class="mt-0">${qaq.user.id},${qaq.user.nickName}@${qaq.byUser.nickName}</h5>
+                                        ${qaq.commentContent}
+                                    <div class="media-bottom">
+                                        <a target="_blank"><i class="glyphicon glyphicon-heart">赞</i></a>
+                                        <a target="_blank" onclick="_comment(${comment.articleId},${comment.autherId})"><i
+                                                class="glyphicon glyphicon-comment">回复</i></a>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                    <textarea id="comment_input_${qaq.articleId}" class="form-control"
+                                              rows="1" placeholder="@${qaq.user.nickName}"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
                     </div>
                 </div>
             </c:forEach>
 
 
-
             <!-- Comment with nested comments -->
-            <div class="media mb-4">
-                <img class="d-flex mr-3 rounded-circle" src="${ctx}/static/image/default.jpg" alt="">
-                <div class="media-body">
-                    <h5 class="mt-0">Commenter Name</h5>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            <%--<div class="media mb-4">--%>
+                <%--<img class="d-flex mr-3 rounded-circle" src="${ctx}/static/image/default.jpg" alt="">--%>
+                <%--<div class="media-body">--%>
+                    <%--<h5 class="mt-0">Commenter Name</h5>--%>
+                    <%--Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras--%>
+                    <%--purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi--%>
+                    <%--vulputate fringilla. Donec lacinia congue felis in faucibus.--%>
 
-                    <div class="media mt-4">
-                        <img class="d-flex mr-3 rounded-circle" src="${ctx}/static/image/default.jpg" alt="">
-                        <div class="media-body">
-                            <h5 class="mt-0">Commenter Name</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        </div>
-                    </div>
+                    <%--<div class="media mt-4">--%>
+                        <%--<img class="d-flex mr-3 rounded-circle" src="${ctx}/static/image/default.jpg" alt="">--%>
+                        <%--<div class="media-body">--%>
+                            <%--<h5 class="mt-0">Commenter Name</h5>--%>
+                            <%--Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante--%>
+                            <%--sollicitudin.--%>
+                            <%--Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum--%>
+                            <%--nunc--%>
+                            <%--ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
 
-                    <div class="media mt-4">
-                        <img class="d-flex mr-3 rounded-circle" src="${ctx}/static/image/default.jpg" alt="">
-                        <div class="media-body">
-                            <h5 class="mt-0">Commenter Name</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        </div>
-                    </div>
+                    <%--<div class="media mt-4">--%>
+                        <%--<img class="d-flex mr-3 rounded-circle" src="${ctx}/static/image/default.jpg" alt="">--%>
+                        <%--<div class="media-body">--%>
+                            <%--<h5 class="mt-0">Commenter Name</h5>--%>
+                            <%--Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante--%>
+                            <%--sollicitudin.--%>
+                            <%--Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum--%>
+                            <%--nunc--%>
+                            <%--ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
 
-                </div>
-            </div>
+                <%--</div>--%>
+            <%--</div>--%>
 
         </div>
 
@@ -474,7 +518,9 @@
             <div class="card my-4">
                 <h5 class="card-header">Side Widget</h5>
                 <div class="card-body">
-                    You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                    You can put anything you want inside of these side widgets. They are easy to use, and feature
+                    the
+                    new Bootstrap 4 card containers!
                 </div>
             </div>
 
@@ -543,45 +589,69 @@
     </script>
 
 
-    <%--<script type="text/javascript">--%>
-    <%--$(function () {--%>
-    <%--var testEditormdView, testEditormdView2;--%>
-    <%--$.get("", function (markdown) {--%>
+    <script type="text/javascript">
+        //直接点击评论按钮
+        function _comment(article_id, auther_id) {
+            var content = $("#comment_input").val();
+            $.ajax({
+                type: 'post',
+                url: '/comment',
+                data: {"article_id": article_id, "auther_id": auther_id, "comment_content": content},
+                dataType: 'json',
+                success: function (data) {
+                    var comm_data = data["data"];
+                    //alert(comm_data);
+                    if (comm_data == "fail") {
+                        window.location.href = "/login.jsp";
+                    } else {
+                        var id = comm_data.id;
+                        //alert(id)
+                        oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="${user.imgUrl}" alt=""></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a  class="comment-size-name">${user.nickName} : </a> <span class="my-pl-con">&nbsp;' + oSize + '</span> </div> <div class="date-dz"> <span class="date-dz-left pull-left comment-time">' + now + '</span> <div class="date-dz-right pull-right comment-pl-block"><a style="cursor:pointer"  onclick="deleteComment(' + content_id + ',' + cuid + ',' + id + ',' + null + ')" id="comment_dl_' + id + '"  class="removeBlock">删除</a> <a style="cursor:pointer" onclick="comment_hf(' + content_id + ',' + id + ',' + null + ',' + comm_data.user.id + ',' + cuid + ')" id="comment_hf_' + id + '" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a onclick="reply_up(' + id + ')" id="change_color_' + id + '" style="cursor:pointer"  class="date-dz-z pull-left" ><i class="date-dz-z-click-red"></i>赞 (<i class="z-num" id="comment_upvote_' + id + '">0</i>)</a> </div> </div><div class="hf-list-con"></div></div> </div>';
+                        $("#comment_" + content_id).parents('.reviewArea ').siblings('.comment-show-first').prepend(oHtml);
+                        $("#comment_" + content_id).siblings('.flex-text-wrap').find('.comment-input').prop('value', '').siblings('pre').find('span').text('');
 
-    <%--testEditormdView = editormd.markdownToHTML("test-editormd-view", {--%>
-    <%--markdown: markdown,//+ "\r\n" + $("#append-test").text(),--%>
-    <%--//htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启--%>
-    <%--htmlDecode: "style,script,iframe",  // you can filter tags decode--%>
-    <%--//toc             : false,--%>
-    <%--tocm: true,    // Using [TOCM]--%>
-    <%--//tocContainer    : "#custom-toc-container", // 自定义 ToC 容器层--%>
-    <%--//gfm             : false,--%>
-    <%--//tocDropdown     : true,--%>
-    <%--// markdownSourceCode : true, // 是否保留 Markdown 源码，即是否删除保存源码的 Textarea 标签--%>
-    <%--emoji: true,--%>
-    <%--taskList: true,--%>
-    <%--tex: true,  // 默认不解析--%>
-    <%--flowChart: true,  // 默认不解析--%>
-    <%--sequenceDiagram: true,  // 默认不解析--%>
-    <%--});--%>
+                        $("#comment_input_" + content_id).val('');
 
-    <%--//console.log("返回一个 jQuery 实例 =>", testEditormdView);--%>
+                        var num = document.getElementById("comment_num_" + content_id).innerHTML;
+                        document.getElementById("comment_num_" + content_id).innerHTML = (parseInt(num) + 1) + "";
+                    }
+                }
+            });
+            // if(comment_content.replace(/(^\s*)|(\s*$)/g, "") != ''){
+            //
+            // }
+        }
+        function _comment(article_id, auther_id) {
+            var content = $("#comment_input").val();
+            $.ajax({
+                type: 'post',
+                url: '/comment',
+                data: {"article_id": article_id, "auther_id": auther_id, "comment_content": content},
+                dataType: 'json',
+                success: function (data) {
+                    var comm_data = data["data"];
+                    //alert(comm_data);
+                    if (comm_data == "fail") {
+                        window.location.href = "/login.jsp";
+                    } else {
+                        var id = comm_data.id;
+                        //alert(id)
+                        oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="${user.imgUrl}" alt=""></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a  class="comment-size-name">${user.nickName} : </a> <span class="my-pl-con">&nbsp;' + oSize + '</span> </div> <div class="date-dz"> <span class="date-dz-left pull-left comment-time">' + now + '</span> <div class="date-dz-right pull-right comment-pl-block"><a style="cursor:pointer"  onclick="deleteComment(' + content_id + ',' + cuid + ',' + id + ',' + null + ')" id="comment_dl_' + id + '"  class="removeBlock">删除</a> <a style="cursor:pointer" onclick="comment_hf(' + content_id + ',' + id + ',' + null + ',' + comm_data.user.id + ',' + cuid + ')" id="comment_hf_' + id + '" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a onclick="reply_up(' + id + ')" id="change_color_' + id + '" style="cursor:pointer"  class="date-dz-z pull-left" ><i class="date-dz-z-click-red"></i>赞 (<i class="z-num" id="comment_upvote_' + id + '">0</i>)</a> </div> </div><div class="hf-list-con"></div></div> </div>';
+                        $("#comment_" + content_id).parents('.reviewArea ').siblings('.comment-show-first').prepend(oHtml);
+                        $("#comment_" + content_id).siblings('.flex-text-wrap').find('.comment-input').prop('value', '').siblings('pre').find('span').text('');
 
-    <%--// 获取Markdown源码--%>
-    <%--//console.log(testEditormdView.getMarkdown());--%>
+                        $("#comment_input_" + content_id).val('');
 
-    <%--//alert(testEditormdView.getMarkdown());--%>
-    <%--});--%>
+                        var num = document.getElementById("comment_num_" + content_id).innerHTML;
+                        document.getElementById("comment_num_" + content_id).innerHTML = (parseInt(num) + 1) + "";
+                    }
+                }
+            });
+            // if(comment_content.replace(/(^\s*)|(\s*$)/g, "") != ''){
+            //
+            // }
+        }
+    </script>
 
-    <%--testEditormdView2 = editormd.markdownToHTML("test-editormd-view2", {--%>
-    <%--htmlDecode: "style,script,iframe",  // you can filter tags decode--%>
-    <%--emoji: true,--%>
-    <%--taskList: true,--%>
-    <%--tex: true,  // 默认不解析--%>
-    <%--flowChart: true,  // 默认不解析--%>
-    <%--sequenceDiagram: true,  // 默认不解析--%>
-    <%--});--%>
-    <%--});--%>
-    <%--</script>--%>
 </body>
 </html>

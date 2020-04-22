@@ -8,6 +8,7 @@ import com.blog.utils.Encodes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sun.nio.cs.US_ASCII;
 
 import java.util.List;
 
@@ -49,6 +50,13 @@ public class UserServiceImpl implements UserService {
     public User findByNickName(String nickname) {
         User user = new User();
         user.setNickName(nickname);
+        return userMapper.selectOne(user);
+    }
+
+    @Override
+    public User findById(Long id) {
+        User user = new User();
+        user.setId(id.toString());
         return userMapper.selectOne(user);
     }
 

@@ -88,7 +88,7 @@ public class Comment {
     }
 
     public void setChildren(String children) {
-        this.children = children;
+        this.children = children == null ? null : children.trim();
     }
 
     public Integer getUpvote() {
