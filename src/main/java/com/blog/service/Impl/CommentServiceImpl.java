@@ -25,6 +25,11 @@ public class CommentServiceImpl  implements CommentService {
     }
 
     @Override
+    public List<Comment> findAllChildrenComment(String id, String children) {
+        return commentMapper.findAllChildrenComment(id,children);
+    }
+
+    @Override
     public int insertComment(Comment comment) {
         return commentMapper.insertComment(comment);
     }

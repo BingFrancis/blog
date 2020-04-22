@@ -6,6 +6,7 @@ import com.blog.entity.Comment;
 import com.blog.entity.User;
 import com.blog.service.ArticleService;
 import com.blog.service.CommentService;
+import com.blog.service.UserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.io.FileUtils;
@@ -39,13 +40,16 @@ public class ArticleController {
     @Autowired
     private CommentService commentService;
 
-    @RequestMapping(value = "/getArticles",method = RequestMethod.GET)
-    public String getArticles(@RequestParam(value = "page", defaultValue = "1") Integer page, Model model){
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(value = "/getArticles", method = RequestMethod.GET)
+    public String getArticles(@RequestParam(value = "page", defaultValue = "1") Integer page, Model model) {
         //设置当前页数与大小
-        PageHelper.startPage(page,5);
+        PageHelper.startPage(page, 5);
         List<Article> articleList = articleService.findByJoin();
-        PageInfo pageInfo = new PageInfo(articleList,5);
-        model.addAttribute("articleList",pageInfo);
+        PageInfo pageInfo = new PageInfo(articleList, 5);
+        model.addAttribute("articleList", pageInfo);
         return "/home";
     }
 
@@ -94,16 +98,16 @@ public class ArticleController {
     }
 
     @ResponseBody
-    @RequestMapping(value ="/saveContent", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveContent", method = RequestMethod.POST)
     public String saveContent(Model model, HttpServletRequest request, User user,
-                       @RequestParam(value = "title", required = false) String title,
-                       @RequestParam(value = "content", required = false) String content,
+                              @RequestParam(value = "title", required = false) String title,
+                              @RequestParam(value = "content", required = false) String content,
                               @RequestParam(value = "summary", required = false) String summary,
                               @RequestParam(value = "img_url", required = false) String img_url) {
         user = (User) request.getSession().getAttribute("user");
-        if(user !=null){
+        if (user != null) {
             Article article = new Article();
-            if(title.equals("")){
+            if (title.equals("")) {
                 title = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
             }
             article.setTitle(title);
@@ -118,19 +122,34 @@ public class ArticleController {
             articleService.inserContent(article);
 //            model.addAttribute("article_content",content);
             return "true";
-        }else{
+        } else {
 //            model.addAttribute("writeMessage","no");
             return "false";
         }
 
     }
 
-    @RequestMapping(value = "getContent",method = RequestMethod.GET)
-    public String  getContent( Model model,@RequestParam(value ="a",required = false) String id){
+    @RequestMapping(value = "getContent", method = RequestMethod.GET)
+    public String getContent(Model model, @RequestParam(value = "a", required = false) String id) {
         Article articleDetails = articleService.findByid(id);
-        model.addAttribute("details",articleDetails);
+        model.addAttribute("details", articleDetails);
         List<Comment> list = commentService.finadAllFirstComment(id);
-        model.addAttribute("commentlist",list);
+        if (list != null && list.size() > 0) {
+            for (Comment c : list) {
+                List<Comment> coments = commentService.findAllChildrenComment((c.getArticleId().toString()), c.getChildren());
+                if(coments!=null && coments.size()>0){
+                    for(Comment com:coments){
+                        if(com  .getCommenteeid()!=null ){
+                            User byUser = userService.findById( com.getCommenteeid() );
+                            com.setByUser( byUser );
+                        }
+
+                    }
+                }
+                c.setCommentList( coments );
+            }
+        }
+        model.addAttribute("commentlist", list);
         return "article/view";
     }
 }

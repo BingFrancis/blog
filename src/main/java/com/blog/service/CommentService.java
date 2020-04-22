@@ -9,5 +9,7 @@ public interface CommentService {
 
     List<Comment>finadAllFirstComment(String id);
 
+    List<Comment>findAllChildrenComment(String cid,String children);
+
     int insertComment(Comment comment);
 }
