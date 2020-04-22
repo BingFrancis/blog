@@ -1,25 +1,30 @@
 package com.blog.entity;
 
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Transient;
 import java.util.Date;
 import java.util.List;
 
 public class Comment {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
 
     private  Long articleId;
 
     private  Long autherId;
 
-    private Long commenteeid;
+    private Long commenteeId;
 
     private String commentContent;
 
 
 
-    private Date commentTime;
+    private Date commentDate;
 
     private  String children;
 
@@ -60,11 +65,11 @@ public class Comment {
     }
 
     public Long getCommenteeid() {
-        return commenteeid;
+        return commenteeId;
     }
 
-    public void setCommenteeid(Long commenteeid) {
-        this.commenteeid = commenteeid;
+    public void setCommenteeid(Long commenteeId) {
+        this.commenteeId = commenteeId;
     }
 
     public String getCommentContent() {
@@ -75,12 +80,12 @@ public class Comment {
         this.commentContent = commentContent;
     }
 
-    public Date getCommentTime() {
-        return commentTime;
+    public Date getCommentDate() {
+        return commentDate;
     }
 
-    public void setCommentTime(Date commentTime) {
-        this.commentTime = commentTime;
+    public void setCommentDate(Date commentTime) {
+        this.commentDate = commentTime;
     }
 
     public String getChildren() {

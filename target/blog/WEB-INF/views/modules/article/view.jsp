@@ -389,11 +389,11 @@
                                     class="glyphicon glyphicon-comment">回复</i></a>
                             <div class="card-body">
                                 <div class="form-group">
-                                            <textarea id="comment_input_${qaq.articleId}" class="form-control"rows="1"
+                                            <textarea id="comment_input_${comment.id}" class="form-control"rows="1"
                                                       placeholder="回复@${comment.user.nickName}"></textarea>
 
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit
+                                <button type="submit" class="btn btn-primary" onclick="_commentfirst(${comment.articleId},${comment.id},${comment.autherId},${comment.id})">Submit
                                 </button>
                             </div>
                         </div>
@@ -405,15 +405,15 @@
                                         ${qaq.commentContent}
                                     <div class="media-bottom">
                                         <a target="_blank"><i class="glyphicon glyphicon-heart">赞</i></a>
-                                        <a target="_blank" onclick="_comment(${comment.articleId},${comment.autherId})"><i
+                                        <a target="_blank" onclick="_comment(${qaq.articleId},${comment.autherId})"><i
                                                 class="glyphicon glyphicon-comment">回复</i></a>
                                     </div>
                                     <div class="card-body">
                                         <div class="form-group">
-                                    <textarea id="comment_input_${qaq.articleId}" class="form-control"
+                                    <textarea id="comment_input_${qaq.id}" class="form-control"
                                               rows="1" placeholder="@${qaq.user.nickName}"></textarea>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Submit
+                                        <button type="submit" class="btn btn-primary" onclick="_commentfirst(${qaq.articleId},${qaq.id},${qaq.user.id},${comment.id})">Submit
                                         </button>
                                     </div>
                                 </div>
@@ -422,44 +422,6 @@
                     </div>
                 </div>
             </c:forEach>
-
-
-            <!-- Comment with nested comments -->
-            <%--<div class="media mb-4">--%>
-                <%--<img class="d-flex mr-3 rounded-circle" src="${ctx}/static/image/default.jpg" alt="">--%>
-                <%--<div class="media-body">--%>
-                    <%--<h5 class="mt-0">Commenter Name</h5>--%>
-                    <%--Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras--%>
-                    <%--purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi--%>
-                    <%--vulputate fringilla. Donec lacinia congue felis in faucibus.--%>
-
-                    <%--<div class="media mt-4">--%>
-                        <%--<img class="d-flex mr-3 rounded-circle" src="${ctx}/static/image/default.jpg" alt="">--%>
-                        <%--<div class="media-body">--%>
-                            <%--<h5 class="mt-0">Commenter Name</h5>--%>
-                            <%--Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante--%>
-                            <%--sollicitudin.--%>
-                            <%--Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum--%>
-                            <%--nunc--%>
-                            <%--ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-
-                    <%--<div class="media mt-4">--%>
-                        <%--<img class="d-flex mr-3 rounded-circle" src="${ctx}/static/image/default.jpg" alt="">--%>
-                        <%--<div class="media-body">--%>
-                            <%--<h5 class="mt-0">Commenter Name</h5>--%>
-                            <%--Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante--%>
-                            <%--sollicitudin.--%>
-                            <%--Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum--%>
-                            <%--nunc--%>
-                            <%--ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-
-                <%--</div>--%>
-            <%--</div>--%>
-
         </div>
 
 
@@ -621,12 +583,12 @@
             //
             // }
         }
-        function _comment(article_id, auther_id) {
-            var content = $("#comment_input").val();
+        function _commentfirst(article_id,comment_id,auther_id,fid) {
+            var content = $("#comment_input_"+comment_id).val();
             $.ajax({
                 type: 'post',
-                url: '/comment',
-                data: {"article_id": article_id, "auther_id": auther_id, "comment_content": content},
+                url: '/commentfirst',
+                data: {"article_id": article_id, "auther_id": auther_id,"id":fid, "comment_content": content},
                 dataType: 'json',
                 success: function (data) {
                     var comm_data = data["data"];

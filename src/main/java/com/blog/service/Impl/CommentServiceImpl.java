@@ -33,4 +33,16 @@ public class CommentServiceImpl  implements CommentService {
     public int insertComment(Comment comment) {
         return commentMapper.insertComment(comment);
     }
+
+    @Override
+    public Comment findById(Long id) {
+        Comment comment = new Comment();
+        comment.setId( id );
+        return commentMapper.selectOne( comment );
+    }
+
+
+    public void update(Comment comment) {
+         commentMapper.updateByPrimaryKey(comment);
+    }
 }
