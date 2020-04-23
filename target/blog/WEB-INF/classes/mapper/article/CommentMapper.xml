@@ -9,9 +9,9 @@
         <result property="children" column="children"/>
         <result property="articleId" column="article_id"/>
         <result property="autherId" column="auther_id"/>
-        <result property="commenteeid" column="commentee_id"/>
+        <result property="commenteeId" column="commentee_id"/>
         <result property="commentContent" column="comment_content"/>
-        <result property="commentTime" column="comment_date"/>
+        <result property="commentDate" column="comment_date"/>
         <result property="upvote" column="upvote"/>
         <association property="user" javaType="User">
             <id column="id" property="id"/>
@@ -31,9 +31,9 @@
         <result property="children" column="children"/>
         <result property="articleId" column="article_id"/>
         <result property="autherId" column="auther_id"/>
-        <result property="commenteeid" column="commentee_id"/>
+        <result property="commenteeId" column="commentee_id"/>
         <result property="commentContent" column="comment_content"/>
-        <result property="commentTime" column="comment_date"/>
+        <result property="commentDate" column="comment_date"/>
         <result property="upvote" column="upvote"/>
         <association property="user" javaType="User">
             <id column="uid" property="id"/>
@@ -48,7 +48,7 @@
     </resultMap>
 
     <insert id="insertComment" parameterType="com.blog.entity.Comment" useGeneratedKeys="true" keyProperty="id">
-         insert into comment (id,article_id,auther_id,commentee_id,comment_content,comment_date,children,upvote) value (#{id},#{articleId},#{autherId},#{commenteeid},#{commentContent},#{commentTime},#{children},#{upvote})
+         insert into comment (id,article_id,auther_id,commentee_id,comment_content,comment_date,children,upvote) value (#{id},#{articleId},#{autherId},#{commenteeId},#{commentContent},#{commentDate},#{children},#{upvote})
     </insert>
 
     <!--根据文章id查询所有评论-->
