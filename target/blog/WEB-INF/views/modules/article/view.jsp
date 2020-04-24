@@ -25,6 +25,10 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
     <style type="text/css">
 
+        .showdelete {
+            display: block;
+        }
+
         body.reader-night-mode .nqzzJ71pC-jOnJKAfdtr6_0 ._1RppgOJ_CQiXgzd3ke-sbJ_0 {
             background-color: #3f3f3f;
             color: #c8c8c8;
@@ -212,6 +216,7 @@
 
         .mt-0, .my-0 {
             margin-top: 0 !important;
+            font-size: 18px;
         }
 
         .card-footer a {
@@ -221,6 +226,36 @@
 
         a:hover {
             text-decoration: none;
+        }
+
+        .comment_div {
+            background-color: rgb(206, 115, 113);
+            margin-right: 200px;
+            border-color: cornsilk;
+            border-radius: 20px;
+            width: 66px;
+        }
+
+        .comment_div_quit {
+            background-color: #b7c0c0;
+            margin-right: 200px;
+            border-color: cornsilk;
+            border-radius: 20px;
+            width: 66px;
+        }
+
+        .media-bottom a {
+            margin-right: 30px;
+            color: dimgrey;
+            font-size: unset
+        }
+
+        .delete_first_a {
+            margin-left: 360px;
+        }
+
+        .delete_a {
+            margin-left: 300px;
         }
 
 
@@ -235,6 +270,14 @@
 
             $(".dropdown").mouseleave(function () {
                 $(this).removeClass("open");
+            })
+
+            $(".delete_first_a").mousemove(function () {
+                $(this).addClass("showdelete")
+            })
+
+            $(".delete_first_a").mouseleave(function () {
+                $(this).addClass("showdelete")
             })
         })
     </script>
@@ -385,15 +428,23 @@
                             ${comment.commentContent}
                         <div class="media-bottom">
                             <a target="_blank"><i class="glyphicon glyphicon-heart">赞</i></a>
-                            <a target="_blank" onclick="_comment(${comment.articleId},${comment.autherId})"><i
+                            <a target="_blank" onclick="_showcomment(${comment.id})"><i
                                     class="glyphicon glyphicon-comment">回复</i></a>
-                            <div class="card-body">
+                            <c:if test="${user.id == details.userId||user.id == comment.autherId}">
+                                <a target="_blank" class="delete_first_a" onclick="deleteComment(${comment.articleId},${comment.id},null,${comment.autherId})">删除</a>
+                            </c:if>
+                            <div class="card-body" id="comment_div_${comment.id}" style="display: none">
                                 <div class="form-group">
-                                            <textarea id="comment_input_${comment.id}" class="form-control"rows="1"
+                                            <textarea id="comment_input_${comment.id}" class="form-control" rows="1"
                                                       placeholder="回复@${comment.user.nickName}"></textarea>
 
                                 </div>
-                                <button type="submit" class="btn btn-primary" onclick="_commentfirst(${comment.articleId},${comment.id},${comment.autherId},${comment.id})">Submit
+                                <button type="submit" class="btn btn-primary comment_div"
+                                        onclick="_commentfirst(${comment.articleId},${comment.id},${comment.autherId},${comment.id})">
+                                    发布
+                                </button>
+                                <button type="" class="btn btn-primary comment_div_quit"
+                                        onclick="_hidecomment(${comment.id})">取消
                                 </button>
                             </div>
                         </div>
@@ -405,15 +456,23 @@
                                         ${qaq.commentContent}
                                     <div class="media-bottom">
                                         <a target="_blank"><i class="glyphicon glyphicon-heart">赞</i></a>
-                                        <a target="_blank" onclick="_comment(${qaq.articleId},${comment.autherId})"><i
+                                        <a target="_blank" onclick="_showcomment(${qaq.id})"><i
                                                 class="glyphicon glyphicon-comment">回复</i></a>
+                                        <c:if test="${user.id == details.userId||user.id == qaq.autherId}">
+                                            <a target="_blank" onclick="deleteComment(${qaq.articleId},${qaq.id},${comment.id},${qaq.autherId})"><i class=" delete_a"> 删除</i></a>
+                                        </c:if>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body" id="comment_div_${qaq.id}" style="display: none">
                                         <div class="form-group">
                                     <textarea id="comment_input_${qaq.id}" class="form-control"
                                               rows="1" placeholder="@${qaq.user.nickName}"></textarea>
                                         </div>
-                                        <button type="submit" class="btn btn-primary" onclick="_commentfirst(${qaq.articleId},${qaq.id},${qaq.user.id},${comment.id})">Submit
+                                        <button type="submit" class="btn btn-primary comment_div"
+                                                onclick="_commentfirst(${qaq.articleId},${qaq.id},${qaq.user.id},${comment.id})">
+                                            发布
+                                        </button>
+                                        <button type="submit" class="btn btn-primary comment_div_quit"
+                                                onclick="_hidecomment(${qaq.id})">取消
                                         </button>
                                     </div>
                                 </div>
@@ -583,12 +642,13 @@
             //
             // }
         }
-        function _commentfirst(article_id,comment_id,auther_id,fid) {
-            var content = $("#comment_input_"+comment_id).val();
+
+        function _commentfirst(article_id, comment_id, auther_id, fid) {
+            var content = $("#comment_input_" + comment_id).val();
             $.ajax({
                 type: 'post',
                 url: '/commentfirst',
-                data: {"article_id": article_id, "auther_id": auther_id,"id":fid, "comment_content": content},
+                data: {"article_id": article_id, "auther_id": auther_id, "id": fid, "comment_content": content},
                 dataType: 'json',
                 success: function (data) {
                     var comm_data = data["data"];
@@ -612,6 +672,54 @@
             // if(comment_content.replace(/(^\s*)|(\s*$)/g, "") != ''){
             //
             // }
+        }
+
+        //删除评论块
+        function deleteComment(article_id, comment_id, fid, authr_id) {
+            if (!confirm("确认要删除？")) {
+                window.event.returnValue = false;
+            } else {
+                //发送ajax请求
+                $.ajax({
+                    type: 'post',
+                    url: '/deleteComment',
+                    data: {"article_id": article_id, "comment_id": comment_id, "fid": fid, "auther_id": authr_id},
+                    dataType: 'json',
+                    success: function (data) {
+                        var comm_data = data["data"];
+                        //alert(comm_data);
+                        if (comm_data == "fail") {
+                            window.location.href = "/login.jsp";
+                        } else if (comm_data == "no-access") {
+                            //alert("没有权限！");
+                        } else {
+                            //alert(comm_data)
+                            var oThis = $("#comment_dl_" + id);
+                            var oT = oThis.parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con');
+                            if (oT.siblings('.all-pl-con').length >= 1) {
+                                oT.remove();
+                            } else {
+                                oThis.parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con').parents('.hf-list-con').css('display', 'none')
+                                oT.remove();
+                            }
+                            oThis.parents('.date-dz-right').parents('.date-dz').parents('.comment-show-con-list').parents('.comment-show-con').remove();
+
+
+                            //评论数comment_num_con_id
+                            document.getElementById("comment_num_" + con_id).innerHTML = parseInt(comm_data) + "";
+
+                        }
+                    }
+                });
+            }
+        }
+
+        function _showcomment(id) {
+            $("#comment_div_" + id).show();
+        }
+
+        function _hidecomment(id) {
+            $("#comment_div_" + id).hide();
         }
     </script>
 

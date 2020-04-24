@@ -16,4 +16,13 @@ public interface CommentService {
     Comment findById(Long id);
 
     void update(Comment comment);
+
+    /**
+     * 根据id删除评论
+     * @param id
+     */
+    void deleteById(Long id);
+
+    void deleteChildrenComment(String children);
+
 }

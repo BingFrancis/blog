@@ -13,7 +13,7 @@ public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private User user;
+//    private User user;
 
     private String ArticleId;
 

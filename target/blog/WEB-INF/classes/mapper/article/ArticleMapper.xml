@@ -21,6 +21,10 @@
         select id,user_id,auther, title,content,img_url,views,comment_count,write_date,update_date,like_count from articles where id = #{id}
     </select>
 
+    <update id="updateComment" parameterType="com.blog.entity.Article" useGeneratedKeys="true" keyProperty="id">
+        update articles set comment_count = #{comment_count} where id = #{id}
+    </update>
+
     <resultMap id="joinMap" type="com.blog.entity.Article">
         <id property="ArticleId" column="id"></id>
         <result property="userId" column="user_id"></result>

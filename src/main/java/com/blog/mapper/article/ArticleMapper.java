@@ -3,6 +3,7 @@ package com.blog.mapper.article;
 import com.blog.common.annotation.MyBatisDao;
 import com.blog.entity.Article;
 import tk.mybatis.mapper.common.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -20,4 +21,5 @@ public interface ArticleMapper extends Mapper<Article> {
 
     Article findByid(String id);
 
+    int updateComment(@Param("id") String id,@Param("comment_count") Long comment_count);
 }
