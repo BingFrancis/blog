@@ -313,8 +313,9 @@
                     <div class="card-footer text-muted">
                         Posted on January 1, 2017 by
                         <a href="#" target="_blank">${artilce.auther}</a>
-                        <a target="_blank"><i class="glyphicon glyphicon-comment">12</i></a>
-                        <a target="_blank"><i class="glyphicon glyphicon-heart">2</i></a>
+                        <a target="_blank"><i class="glyphicon glyphicon-heart">${artilce.likeCount}</i></a>
+                        <a target="_blank"><i class="glyphicon glyphicon-comment">${artilce.commentCount}</i></a>
+
                     </div>
                 </div>
             </c:forEach>

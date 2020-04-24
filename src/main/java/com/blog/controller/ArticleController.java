@@ -116,6 +116,7 @@ public class ArticleController {
             article.setUserId((user.getId()));
             article.setAuther(user.getNickName());
             article.setImgUrl(img_url);
+            article.setCommentCount(0L);
             Date now = new Date();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");//可以方便地修改日期格式
             article.setWriteDate(dateFormat.format(now));
