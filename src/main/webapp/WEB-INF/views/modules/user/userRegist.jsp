@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>注册 - layuiAdmin</title>
+    <title>注册</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
@@ -276,8 +276,8 @@
 <div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login" style="display: none;">
     <div class="layadmin-user-login-main">
         <div class="layadmin-user-login-box layadmin-user-login-header">
-            <h2>layuiAdmin</h2>
-            <p>layui 官方出品的单页面后台管理模板系统</p>
+            <h2>欢迎注册</h2>
+            <p>博客系统</p>
         </div>
         <div class="layadmin-user-login-box layadmin-user-login-body layui-form"
              style="background-color: white ; box-shadow: 0 0 8px rgba(0,0,0,.1); font-size: medium">
@@ -336,27 +336,16 @@
                            placeholder="密码"
                            class="layui-input">
                 </div>
-                <%--<div class="layui-form-item">--%>
-                <%--<label class="layadmin-user-login-icon layui-icon layui-icon-password" for="LAY-user-login-repass"></label>--%>
-                <%--<input type="password" name="repass" id="LAY-user-login-repass" lay-verify="required" placeholder="确认密码" class="layui-input">--%>
-                <%--</div>--%>
-
-                <%--<div class="layui-form-item" style="height: 28px;">--%>
-                <%--<input type="checkbox" id="agreement" lay-verify="agreement" lay-skin="primary" title="同意用户协议"--%>
-                <%--checked>--%>
-                <%--<a onclick="show();" href="javascript:;"   style="padding: -20px 0 0;margin: 20px 0px 0px">《使用说明》</a>--%>
-                <%--<input type="text"  style="display: none" class="layui-input">--%>
-                <%--</div>--%>
                 <div class="layui-form-item">
                     <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="commit">注 册</button>
                 </div>
             </form>
 
-            <p class="sign-up-msg">点击 “注册” 即表示您同意并愿意遵守简书<br> <a target="_blank"
-                                                                href="http://www.jianshu.com/p/c44d171298ce">《用户协议》</a>
-                和 <a target="_blank" href="http://www.jianshu.com/p/2ov8x3">《隐私政策》</a> 。</p>
+            <%--<p class="sign-up-msg">点击 “注册” 即表示您同意并愿意遵守简书<br> <a target="_blank"--%>
+                                                                <%--href="http://www.jianshu.com/p/c44d171298ce">《用户协议》</a>--%>
+                <%--和 <a target="_blank" href="http://www.jianshu.com/p/2ov8x3">《隐私政策》</a> 。</p>--%>
             <div class="more-sign">
-                <h6>社交帐号直接注册</h6>
+                <%--<h6>社交帐号直接注册</h6>--%>
                 <ul>
                     <li><a id="weixin" class="weixin" target="_blank" href="/users/auth/wechat"><i
                             class="iconfont ic-wechat"></i></a></li>
@@ -370,24 +359,15 @@
     </div>
 </div>
 
-<%--<div class="layui-trans layui-form-item layadmin-user-login-other">--%>
-<%--<label>社交账号注册</label>--%>
-<%--<a href="javascript:;"><i class="layui-icon layui-icon-login-qq"></i></a>--%>
-<%--<a href="javascript:;"><i class="layui-icon layui-icon-login-wechat"></i></a>--%>
-<%--<a href="javascript:;"><i class="layui-icon layui-icon-login-weibo"></i></a>--%>
-
-<%--<a href="login.html" class="layadmin-user-jump-change layadmin-link layui-hide-xs">用已有帐号登入</a>--%>
-<%--<a href="login.html" class="layadmin-user-jump-change layadmin-link layui-hide-sm layui-show-xs-inline-block">登入</a>--%>
-<%--</div>--%>
 
 <div class="layui-trans layadmin-user-login-footer">
 
-    <p>© 2018 <a href="http://www.layui.com/" target="_blank">layui.com</a></p>
-    <p>
-        <span><a href="http://www.layui.com/admin/#get" target="_blank">获取授权</a></span>
-        <span><a href="http://www.layui.com/admin/pro/" target="_blank">在线演示</a></span>
-        <span><a href="http://www.layui.com/admin/" target="_blank">前往官网</a></span>
-    </p>
+    <p>© 2020 <a href="#" target="_blank">Francis</a></p>
+    <%--<p>--%>
+        <%--<span><a href="http://www.layui.com/admin/#get" target="_blank">获取授权</a></span>--%>
+        <%--<span><a href="http://www.layui.com/admin/pro/" target="_blank">在线演示</a></span>--%>
+        <%--<span><a href="http://www.layui.com/admin/" target="_blank">前往官网</a></span>--%>
+    <%--</p>--%>
 </div>
 
 <script type="text/javascript">

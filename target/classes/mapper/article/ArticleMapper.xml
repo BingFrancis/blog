@@ -15,15 +15,34 @@
     <!--<select id="findByJoin" resultMap="joinMap">-->
         <!--select a.id,a.user_id,a.auther, a.title,a.content,a.img_url,a.views,a.comment_count,a.write_date,a.update_date,a.like_count,u.nick_name from articles a INNER JOIN `user` u on a.user_id = u.id-->
     <!--</select>-->
-
+    <delete id="deletearticle">
+      delete from articles where id = #{id}
+    </delete>
 
     <select id="findByid" resultMap="joinMap">
         select id,user_id,auther, title,content,img_url,views,comment_count,write_date,update_date,like_count from articles where id = #{id}
     </select>
 
+    <select id="findByUserid" resultMap="joinMap">
+        select id,user_id,auther, title,content,img_url,views,comment_count,write_date,update_date,like_count from articles where user_id = #{id}
+    </select>
+
+
     <update id="updateComment" parameterType="com.blog.entity.Article" useGeneratedKeys="true" keyProperty="id">
         update articles set comment_count = #{comment_count} where id = #{id}
     </update>
+
+    <update id="updateArticle" parameterType="com.blog.entity.Article" useGeneratedKeys="true" keyProperty="id">
+       UPDATE Articles SET  title = #{title}, content = #{content}, summary = #{summary}, img_Url = #{imgUrl}, update_Date = #{updateDate} WHERE id = #{id}
+    </update>
+
+
+    <select id="findByKeyWord" parameterType="String" resultMap="joinMap">
+        <bind name="pattern" value="'%' + keyword + '%'" />
+        SELECT id,user_id,auther, title,content,summary,img_url,views,comment_count,write_date,update_date,like_count FROM articles WHERE
+        title LIKE #{pattern}
+        OR content LIKE #{pattern}
+    </select>
 
     <resultMap id="joinMap" type="com.blog.entity.Article">
         <id property="ArticleId" column="id"></id>

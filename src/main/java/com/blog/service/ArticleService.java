@@ -13,6 +13,12 @@ public interface ArticleService {
 
     Article findByid(String id);
 
+    List<Article> findByUserid(String id);
+
     void update(Article article);
+
+    void deleteById(String id);
+
+    List<Article>searchByKeyWord(String keyword);
 
 }

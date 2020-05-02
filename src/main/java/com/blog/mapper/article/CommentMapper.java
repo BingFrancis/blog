@@ -16,7 +16,6 @@ public interface CommentMapper extends Mapper<Comment> {
 
     List<Comment>findAllChildrenComment(@Param("cid")String id,@Param("children")String children);
 
-
-
+    void deleteByArticleId(String id);
 
 }

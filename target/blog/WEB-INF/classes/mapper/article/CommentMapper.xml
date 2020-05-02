@@ -51,6 +51,10 @@
          insert into comment (id,article_id,auther_id,commentee_id,comment_content,comment_date,children,upvote) value (#{id},#{articleId},#{autherId},#{commenteeId},#{commentContent},#{commentDate},#{children},#{upvote})
     </insert>
 
+    <delete id="deleteByArticleId">
+        delete from comment where article_id = #{id}
+    </delete>
+
     <!--根据文章id查询所有评论-->
     <select id="selectAll" resultMap="commentMap">
         select c.id ,c.children,c.commentee_id,c.comment_date,c.comment_content,c.article_id,c.auther_id,u.nick_name,u.img_url, u.id AS uid from `comment` c ,`user` u where c.article_id = #{id} and c.auther_id = u.id

@@ -61,39 +61,42 @@
         body {
             padding-top: 56px;
         }
-        .card h5{
+
+        .card h5 {
             font-size: 1.25rem;
             margin-top: auto;
         }
+
         .card-header {
             padding: .75rem 1.25rem;
             margin-bottom: 0;
-            background-color: rgba(0,0,0,.03);
-            border-bottom: 1px solid rgba(0,0,0,.125);
-        }
-        a{
-            text-decoration: none;
-        }
-        /*头像设置*/
-        .nav  li a img{
-            width: 50px;
-            height: auto;
+            background-color: rgba(0, 0, 0, .03);
+            border-bottom: 1px solid rgba(0, 0, 0, .125);
         }
 
-        .navbar-nav>li>a {
+        a {
+            text-decoration: none;
+        }
+
+        /*头像设置*/
+        .nav li a img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .navbar-nav > li > a {
             line-height: 20px;
             margin-top: -12px;
         }
 
-        .card-footer a{
+        .card-footer a {
             font-size: 16px;
             color: #4D4D4D;
         }
 
-        a:hover{
+        a:hover {
             text-decoration: none;
         }
-
 
         .card {
             position: relative;
@@ -134,34 +137,33 @@
             border-top: 1px solid rgba(0, 0, 0, .125);
         }
 
-        .card-footer a{
+        .card-footer a {
             margin-right: 15px;
         }
 
-        .py-5{
-            padding-bottom: 3rem!important;
-            padding-top: 3rem!important;
+        .py-5 {
+            padding-bottom: 3rem !important;
+            padding-top: 3rem !important;
         }
 
-        .bg-dark{
-            background-color: #343a40!important;
+        .bg-dark {
+            background-color: #343a40 !important;
         }
 
-        .text-white{
-            color: #fff!important;
+        .text-white {
+            color: #fff !important;
         }
 
-        .card{
+        .card {
             overflow: hidden;
         }
 
-        .test{
+        .test {
             overflow: hidden;
         }
 
-
-        .test img{
-           width: 100%;
+        .test img {
+            width: 100%;
             display: block;
 
         }
@@ -178,6 +180,10 @@
                 $(this).removeClass("open");
             })
         })
+
+        function serach() {
+            $("#searchform").submit();
+        }
     </script>
 </head>
 <body class="reader-black-font" style="overflow-y: scroll ">
@@ -210,16 +216,12 @@
                                 <a href="#" class="dropdown-toggle"
                                    data-toggle="dropdown"
                                    style="height: 60px">
-                                    <img alt="" class="img-circle" src="${ctx}/static/image/default.jpg" width="38px"
+                                    <img alt="" class="img-circle" src="${user.imgUrl}" width="38px"
                                          height="38px"/>
                                 </a>
                                 <div class="dropdown-menu pull-right"
                                      style="background: #FFFFFF;width: 320px;overflow: hidden">
                                     <div style="margin-top: 16px;border-bottom: 1px solid #eeeeee">
-                                        <div style="text-align: center">
-                                            <img class="img-circle" src="${ctx}/static/image/default.jpg"
-                                                 style="width: 38px;height: 38px;"/>
-                                        </div>
                                         <div style="color: #323534;text-align: center;line-height: 36px;font-size: 17px">
                                             <span>${user.nickName}</span>
                                         </div>
@@ -229,39 +231,19 @@
                                         <div class="col-md-4 text-center grid">
                                             <i class="fa fa-user" style="font-size: 25px;line-height: 45px;"></i>
                                             <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-                                                个人中心</p>
+                                                <a href="/myhome">我的主页</a></p>
                                         </div>
                                         <div class="col-md-4 text-center grid">
                                             <i class="fa fa-gear" style="font-size: 25px;line-height: 45px;"></i>
                                             <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-                                                账号管理</p>
+                                                <a href="/user">账号管理</a></p>
                                         </div>
                                         <div class="col-md-4 text-center grid">
                                             <i class="fa fa-key" style="font-size: 25px;line-height: 45px;"></i>
                                             <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-                                                密码修改</p>
+                                                <a>密码修改</a></p>
                                         </div>
                                     </div>
-
-                                    <div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">
-                                        <div class="col-md-4 text-center grid">
-                                            <i class="fa fa-user-circle" style="font-size: 25px;line-height: 45px;"></i>
-                                            <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-                                                修改头像</p>
-                                        </div>
-                                        <div class="col-md-4 text-center grid">
-                                            <i class="fa fa-comments" style="font-size: 25px;line-height: 45px;"></i>
-                                            <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-                                                消息</p>
-                                        </div>
-                                        <div class="col-md-4 text-center grid">
-                                            <i class="fa fa-heart-o" style="font-size: 25px;line-height: 45px;"></i>
-                                            <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-                                                帮助中心</p>
-                                        </div>
-                                    </div>
-
-
                                     <div class="row" style="margin-top: 20px">
                                         <div class="text-center"
                                              style="padding: 15px;margin: 0px;background: #f6f5f5;color: #323534;">
@@ -282,13 +264,13 @@
 <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Blog Home One
-        <small>Subheading</small>
+    <h1 class="mt-4 mb-3">Blog
+        <%--<small>Home</small>--%>
     </h1>
 
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="index.html">Home</a>
+            <a style="color: #973533" href="/">Home</a>
         </li>
         <%--<li class="breadcrumb-item active">Blog Home 1</li>--%>
     </ol>
@@ -308,7 +290,8 @@
                     <div class="card-body">
                         <h2 class="card-title">${artilce.title}</h2>
                         <p class="card-text">${artilce.summary}......</p>
-                        <a href="${ctx}/article/getContent?a=${artilce.id}" style="background-color: #60686f" class="btn btn-primary">Read More &rarr;</a>
+                        <a href="${ctx}/article/getContent?a=${artilce.id}" style="background-color: #60686f"
+                           class="btn btn-primary">Read More &rarr;</a>
                     </div>
                     <div class="card-footer text-muted">
                         Posted on January 1, 2017 by
@@ -364,12 +347,15 @@
             <div class="card mb-4">
                 <h5 class="card-header">Search</h5>
                 <div class="card-body">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button">Go!</button>
-              </span>
-                    </div>
+                    <form id="searchform"  action="${ctx}/article/search" method="post">
+                        <div class="input-group">
+                                <input id="keyword" name="keyword" type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="submit">Go!</button>
+                            </span>
+                        </div>
+                    </form>
+
                 </div>
             </div>
 
@@ -427,10 +413,10 @@
 
 <!-- Footer -->
 <%--<footer class="py-5 bg-dark">--%>
-    <%--<div class="container">--%>
-        <%--<p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>--%>
-    <%--</div>--%>
-    <%--<!-- /.container -->--%>
+<%--<div class="container">--%>
+<%--<p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>--%>
+<%--</div>--%>
+<%--<!-- /.container -->--%>
 <%--</footer>--%>
 
 <%----%>

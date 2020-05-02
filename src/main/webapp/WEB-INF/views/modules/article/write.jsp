@@ -145,7 +145,7 @@
             async: false,
             success: function (data) {
                 if (data === true) {
-                    layer.msg("文章发布成功", {time: 3000, offset: 't-50px'},
+                    layer.msg("文章发布成功", {icon:1},
                         function () {
                             location.href = "/"
                         });
