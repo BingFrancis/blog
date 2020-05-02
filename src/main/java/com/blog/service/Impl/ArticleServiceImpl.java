@@ -29,7 +29,23 @@ public class ArticleServiceImpl  implements ArticleService {
     }
 
     @Override
+    public List<Article> findByUserid(String id) {
+        return articleMapper.findByUserid(id);
+    }
+
+    @Override
     public void update(Article article) {
         articleMapper.updateByPrimaryKeySelective(article);
+    }
+
+    @Override
+    public void deleteById(String id) {
+
+        articleMapper.deletearticle(id);
+    }
+
+    @Override
+    public List<Article> searchByKeyWord(String keyword) {
+        return articleMapper.findByKeyWord(keyword);
     }
 }

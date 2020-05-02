@@ -16,13 +16,19 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>HTML Preview(markdown to html) - Editor.md examples</title>
+    <title>文章详情</title>
     <link rel="stylesheet" href="${ctx}/static/editor/css/editormd.preview.css"/>
     <!-- Bootstrap core CSS -->
     <link href="${ctx}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+
+    <link rel="stylesheet" href="/static/layui-v2.4.5/css/layui.css" media="all">
+
+    <script src="/static/layui-v2.4.5/layui.all.js"></script>
+    <script src="/static/layer/layer.js"></script>
+
     <style type="text/css">
 
         .showdelete {
@@ -258,6 +264,13 @@
             margin-left: 300px;
         }
 
+        .article_a {
+            margin-left: 120px;
+            color: #72767a;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
 
     </style>
 
@@ -313,16 +326,16 @@
                                 <a href="#" class="dropdown-toggle"
                                    data-toggle="dropdown"
                                    style="height: 60px">
-                                    <img alt="" class="img-circle" src="${ctx}/static/image/default.jpg" width="38px"
+                                    <img alt="" class="img-circle" src="${user.imgUrl}" width="38px"
                                          height="38px"/>
                                 </a>
                                 <div class="dropdown-menu pull-right"
                                      style="background: #FFFFFF;width: 320px;overflow: hidden">
                                     <div style="margin-top: 16px;border-bottom: 1px solid #eeeeee">
-                                        <div style="text-align: center">
-                                            <img class="img-circle" src="${ctx}/static/image/default.jpg"
-                                                 style="width: 38px;height: 38px;"/>
-                                        </div>
+                                        <%--<div style="text-align: center">--%>
+                                            <%--<img class="img-circle" src="${user.imgUrl}"--%>
+                                                 <%--style="width: 38px;height: 38px;"/>--%>
+                                        <%--</div>--%>
                                         <div style="color: #323534;text-align: center;line-height: 36px;font-size: 17px">
                                             <span>${user.nickName}</span>
                                         </div>
@@ -391,7 +404,7 @@
 
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="index.html">Home</a>
+            <a href="/">Home</a>
         </li>
         <li class="breadcrumb-item active">Blog Details</li>
     </ol>
@@ -400,7 +413,14 @@
         <div class="col-lg-8">
             <div id="test-editormd-view" style="border-bottom: 2px slateblue">
                 <!-- markdown 文本回显-->
-                <p>Posted on January 1, 2017 at 12:00 PM</p>
+                <p>Posted on January 1, 2017 at 12:00 PM
+                    <c:if test="${details.userId == user.id}">
+                        <a target="_blank" class="article_a" href="/article/update?a=${details.id}" style="color: #72767a">编辑文章</a>
+                        <a target="_blank" class="article_a" onclick="_deleteArticle(${details.id})"
+                           style="color: #72767a">删除文章</a>
+                    </c:if>
+                </p>
+
                 <textarea id="append-test" style="display:none;"
                           name="test-editormd-markdown-doc">${details.content}</textarea>
             </div>
@@ -431,7 +451,8 @@
                             <a target="_blank" onclick="_showcomment(${comment.id})"><i
                                     class="glyphicon glyphicon-comment">回复</i></a>
                             <c:if test="${user.id == details.userId||user.id == comment.autherId}">
-                                <a target="_blank" class="delete_first_a" onclick="deleteComment(${comment.articleId},${comment.id},null,${comment.autherId})">删除</a>
+                                <a target="_blank" class="delete_first_a"
+                                   onclick="deleteComment(${comment.articleId},${comment.id},null,${comment.autherId})">删除</a>
                             </c:if>
                             <div class="card-body" id="comment_div_${comment.id}" style="display: none">
                                 <div class="form-group">
@@ -459,7 +480,9 @@
                                         <a target="_blank" onclick="_showcomment(${qaq.id})"><i
                                                 class="glyphicon glyphicon-comment">回复</i></a>
                                         <c:if test="${user.id == details.userId||user.id == qaq.autherId}">
-                                            <a target="_blank" onclick="deleteComment(${qaq.articleId},${qaq.id},${comment.id},${qaq.autherId})"><i class=" delete_a"> 删除</i></a>
+                                            <a target="_blank"
+                                               onclick="deleteComment(${qaq.articleId},${qaq.id},${comment.id},${qaq.autherId})"><i
+                                                    class=" delete_a"> 删除</i></a>
                                         </c:if>
                                     </div>
                                     <div class="card-body" id="comment_div_${qaq.id}" style="display: none">
@@ -491,12 +514,14 @@
             <div class="card mb-4">
                 <h5 class="card-header">Search</h5>
                 <div class="card-body">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button">Go!</button>
-              </span>
-                    </div>
+                    <form id="searchform"  action="${ctx}/article/search" method="post">
+                        <div class="input-group">
+                            <input id="keyword" name="keyword" type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="submit">Go!</button>
+                            </span>
+                        </div>
+                    </form>
                 </div>
             </div>
 
@@ -586,9 +611,6 @@
                 htmlDecode: "style,script,iframe",  // you can filter tags decode
                 //toc             : false,
                 tocm: true,    // Using [TOCM]
-                //tocContainer    : "#custom-toc-container", // 自定义 ToC 容器层
-                //gfm             : false,
-                //tocDropdown     : true,
                 markdownSourceCode: true, // 是否保留 Markdown 源码，即是否删除保存源码的 Textarea 标签
                 emoji: true,
                 taskList: true,
@@ -686,29 +708,7 @@
                     data: {"article_id": article_id, "comment_id": comment_id, "fid": fid, "auther_id": authr_id},
                     dataType: 'json',
                     success: function (data) {
-                        var comm_data = data["data"];
-                        //alert(comm_data);
-                        if (comm_data == "fail") {
-                            window.location.href = "/login.jsp";
-                        } else if (comm_data == "no-access") {
-                            //alert("没有权限！");
-                        } else {
-                            //alert(comm_data)
-                            var oThis = $("#comment_dl_" + id);
-                            var oT = oThis.parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con');
-                            if (oT.siblings('.all-pl-con').length >= 1) {
-                                oT.remove();
-                            } else {
-                                oThis.parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con').parents('.hf-list-con').css('display', 'none')
-                                oT.remove();
-                            }
-                            oThis.parents('.date-dz-right').parents('.date-dz').parents('.comment-show-con-list').parents('.comment-show-con').remove();
-
-
-                            //评论数comment_num_con_id
-                            document.getElementById("comment_num_" + con_id).innerHTML = parseInt(comm_data) + "";
-
-                        }
+                        location.reload();
                     }
                 });
             }
@@ -720,6 +720,34 @@
 
         function _hidecomment(id) {
             $("#comment_div_" + id).hide();
+        }
+
+        function _deleteArticle(article_id, article_title) {
+            layer.confirm('在考虑一下么，删除之后不可恢复', {
+                btn: ['重要','奇葩'] //按钮
+            }, function() {
+                $.ajax({
+                    type:'post',
+                    url: "./deleteArticle",
+                    data: {'article_id': article_id},
+                    dataType: "json",
+                    success: function (data) {
+                        if(data["data"] === "ok"){
+                            layer.msg("文章已删除",{icon: 1},function () {
+                                window.location.href="/myhome";
+                            });
+                        }else if(data["data"]==="fail"){
+                            layer.msg("请登录",{icon:2},function () {
+                                window.location.href="/"
+                            })
+                        }
+
+                    },
+                    error: function (data) {
+                       layer.msg("服务器异常，请稍后重试")
+                    }
+                });
+            });
         }
     </script>
 

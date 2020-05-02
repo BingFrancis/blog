@@ -25,6 +25,20 @@
     </select>
 
 
+    <update id="updatePhoto" parameterType="com.blog.entity.Article" useGeneratedKeys="true" keyProperty="id">
+       UPDATE user SET  img_url = #{img_url} WHERE id = #{id}
+    </update>
+
+
+    <update id="updateInformation" parameterType="com.blog.entity.Article" useGeneratedKeys="true" keyProperty="id">
+       UPDATE user SET  nick_name = #{nickName},email=#{email} WHERE id = #{id}
+    </update>
+
+
+
+
+
+
 
     <!--&lt;!&ndash; 根据ID查询用户 &ndash;&gt;-->
     <!--<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >-->
@@ -131,6 +145,7 @@
     <!--</set>-->
     <!--where id = #{id,jdbcType=BIGINT}-->
     <!--</update>-->
+
     <!--<update id="updateByPrimaryKey" parameterType="com.blog.entity.User" >-->
     <!--update user-->
     <!--set nick_name = #{nickName,jdbcType=VARCHAR},-->

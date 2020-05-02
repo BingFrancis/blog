@@ -23,12 +23,10 @@
 <!--http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">-->
 
 
-<!-- 使用注解驱动：自动配置处理器映射器与处理器适配器 -->
-
+    <!-- 使用注解驱动：自动配置处理器映射器与处理器适配器 -->
     <mvc:default-servlet-handler/>
     <!-- 注解方式：配置Handler，自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
     <!-- 批量加载：组件扫描方式： -->
-    <!--<context:component-scan base-package="com.blog.controller" />-->
     <context:component-scan base-package="com.blog.controller"/>
     <context:component-scan base-package="com.blog.service"/>
 
@@ -59,9 +57,6 @@
     <mvc:resources location="/static/css/" mapping="/static/css/**"/>
     <mvc:resources location="/static/js/" mapping="/static/js/**"/>
     <mvc:resources location="/static/image/" mapping="/static/image/**"/>
-
-
-
 
     <!-- 文件上传相关配置 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
