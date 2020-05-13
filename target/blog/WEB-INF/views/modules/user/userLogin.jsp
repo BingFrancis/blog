@@ -13,7 +13,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Login</title>
+    <title>登录</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
@@ -247,7 +247,7 @@
                         <span>记住密码</span>
                         <i class="layui-icon layui-icon-ok"></i>
                     </div>
-                    <a href="forget.html" class="layadmin-user-jump-change layadmin-link"
+                    <a href="${ctx}/forgetPwd" class="layadmin-user-jump-change layadmin-link"
                        style="margin-top: 7px;">忘记密码？</a>
                 </div>
                 <div class="layui-form-item">
@@ -259,7 +259,7 @@
                     <a href="javascript:;"><i class="layui-icon layui-icon-login-wechat"></i></a>
                     <a href="javascript:;"><i class="layui-icon layui-icon-login-weibo"></i></a>
 
-                    <a href="reg.html" class="layadmin-user-jump-change layadmin-link">注册帐号</a>
+                    <a href="${ctx}/sing_up" class="layadmin-user-jump-change layadmin-link">注册帐号</a>
                 </div>
             </div>
         </form>

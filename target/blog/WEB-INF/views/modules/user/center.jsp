@@ -363,7 +363,7 @@
                                         <div class="col-md-4 text-center grid">
                                             <i class="fa fa-key" style="font-size: 25px;line-height: 45px;"></i>
                                             <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-                                                <a>密码修改</a></p>
+                                                <a href="/modifyPwd">密码修改</a></p>
                                         </div>
                                     </div>
 

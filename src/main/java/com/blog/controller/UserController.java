@@ -64,7 +64,7 @@ public class UserController {
     public String checkPhone(Model model, @RequestParam(value = "phoneNum", required = false) String phoneNum) {
         User user = userService.findByPhone(phoneNum);
         if (user == null) {
-            //手机号为注册
+            //手机号未注册
             return "true";
         }
         return "false";
@@ -121,13 +121,6 @@ public class UserController {
         HttpSession session = request.getSession();
 
         String regcode = (String) session.getAttribute("regcode");
-
-//        if(null == regcode){//验证码超时，请重新注册
-//            return "past";
-//        }
-//        if (!regcode.equals(vercode)) {
-//            return "error";
-//        }
         user.setNickName(nickname);
         user.setPhone(cellphone);
         user.setPassword(entryptPassword(password));
@@ -256,4 +249,71 @@ public class UserController {
         }
         return map;
     }
+
+    @RequestMapping(value = "/modifyPwd")
+    public String modifyPwd(HttpServletRequest request) {
+        return "/user/modifyPwd";
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/updatePassword")
+    public Map<String, Object> updatePassword(Model model, HttpServletRequest request, HttpServletResponse response,
+                                              @RequestParam(value = "oldpassword", required = false) String oldpassword,
+                                              @RequestParam(value = "password", required = false) String password,
+                                              @RequestParam(value = "vercode", required = false) String vercode) {
+        Map map = new HashMap<String, Object>();
+        //核验图片验证码
+        String verifyCode = (String) request.getSession(false).getAttribute("code");
+        if (!vercode.toUpperCase().equals(verifyCode)) {
+            model.addAttribute("message", "false");
+            map.put("data", "error");
+        } else {
+            User user = (User) request.getSession().getAttribute("user");
+            if (user != null) {
+                if (validatePassword(oldpassword, user.getPassword())) {
+                    String newPwd = entryptPassword(password);
+                    request.getSession().removeAttribute("user");
+                    map.put("data","ok");
+                    userMapper.updatePwd(user.getId(), newPwd);
+                } else {
+                    map.put("data", "false");
+                    return map;
+                }
+            } else {
+                map.put("data","illegal");
+            }
+        }
+        return map;
+    }
+
+    //    注册页面的跳转
+    @RequestMapping(value = "/forgetPwd")
+    public String fotgetPwd() {
+        return "user/userForgetPwd";
+    }
+
+    @RequestMapping(value = "/resetPwd")
+    @ResponseBody
+    public String resetPwd(Model model, HttpServletRequest request, User user,
+                           @RequestParam(value = "cellphone", required = false) String cellphone,
+                           @RequestParam(value = "vercode", required = false) String vercode,
+                           @RequestParam(value = "password", required = false) String password) {
+        log.debug("重置密码...");
+        if (StringUtils.isBlank(vercode)) {
+            model.addAttribute("error", "非法提交");
+            return "error";
+        }
+        User preUser = userService.findByPhone(cellphone);
+        if (preUser == null) {
+            return "false";
+        }
+        String newPwd = entryptPassword(password);
+        request.getSession().removeAttribute("user");
+        userMapper.updatePwd(preUser.getId(), newPwd);
+
+        log.info("密码重置成功");
+        return "true";
+    }
+
 }

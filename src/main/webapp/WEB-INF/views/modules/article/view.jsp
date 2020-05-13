@@ -270,6 +270,17 @@
             font-weight: 700;
             text-decoration: none;
         }
+        .py-5{
+            padding-bottom: 3rem!important;
+            padding-top: 3rem!important;
+        }
+
+        .bg-dark{
+            background-color: #343a40!important;
+        }
+
+
+
 
 
     </style>
@@ -284,14 +295,14 @@
             $(".dropdown").mouseleave(function () {
                 $(this).removeClass("open");
             })
-
-            $(".delete_first_a").mousemove(function () {
-                $(this).addClass("showdelete")
-            })
-
-            $(".delete_first_a").mouseleave(function () {
-                $(this).addClass("showdelete")
-            })
+        //
+        //     $(".delete_first_a").mousemove(function () {
+        //         $(this).addClass("showdelete")
+        //     })
+        //
+        //     $(".delete_first_a").mouseleave(function () {
+        //         $(this).addClass("showdelete")
+        //     })
         })
     </script>
 
@@ -340,42 +351,25 @@
                                             <span>${user.nickName}</span>
                                         </div>
                                     </div>
-
                                     <div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">
                                         <div class="col-md-4 text-center grid">
                                             <i class="fa fa-user" style="font-size: 25px;line-height: 45px;"></i>
                                             <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-                                                个人中心</p>
+                                                <a href="/myhome">我的主页</a></p>
                                         </div>
                                         <div class="col-md-4 text-center grid">
                                             <i class="fa fa-gear" style="font-size: 25px;line-height: 45px;"></i>
                                             <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-                                                账号管理</p>
+                                                <a href="/user">账号管理</a></p>
                                         </div>
                                         <div class="col-md-4 text-center grid">
                                             <i class="fa fa-key" style="font-size: 25px;line-height: 45px;"></i>
                                             <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-                                                密码修改</p>
+                                                <a href="/modifyPwd">密码修改</a></p>
                                         </div>
                                     </div>
 
-                                    <div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">
-                                        <div class="col-md-4 text-center grid">
-                                            <i class="fa fa-user-circle" style="font-size: 25px;line-height: 45px;"></i>
-                                            <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-                                                修改头像</p>
-                                        </div>
-                                        <div class="col-md-4 text-center grid">
-                                            <i class="fa fa-comments" style="font-size: 25px;line-height: 45px;"></i>
-                                            <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-                                                消息</p>
-                                        </div>
-                                        <div class="col-md-4 text-center grid">
-                                            <i class="fa fa-heart-o" style="font-size: 25px;line-height: 45px;"></i>
-                                            <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-                                                帮助中心</p>
-                                        </div>
-                                    </div>
+
 
 
                                     <div class="row" style="margin-top: 20px">
@@ -413,7 +407,7 @@
         <div class="col-lg-8">
             <div id="test-editormd-view" style="border-bottom: 2px slateblue">
                 <!-- markdown 文本回显-->
-                <p>Posted on January 1, 2017 at 12:00 PM
+                <p>${details.writeDate}
                     <c:if test="${details.userId == user.id}">
                         <a target="_blank" class="article_a" href="/article/update?a=${details.id}" style="color: #72767a">编辑文章</a>
                         <a target="_blank" class="article_a" onclick="_deleteArticle(${details.id})"
@@ -430,7 +424,7 @@
                 <h5 class="card-header">Leave a Comment:</h5>
                 <div class="card-body">
                     <div class="form-group">
-                        <textarea id="comment_input" class="form-control" rows="2"></textarea>
+                        <textarea id="comment_input" class="form-control" rows="1"></textarea>
                     </div>
                     <button type="submit" onclick="_comment(${details.id},${details.userId})" class="btn btn-primary">
                         Submit
@@ -442,17 +436,18 @@
             <!-- Single Comment -->
             <c:forEach items="${commentlist}" var="comment">
                 <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="${ctx}/static/image/default.jpg" alt="">
+                    <img class="d-flex mr-3 rounded-circle" src="${comment.user.imgUrl}" alt="">
                     <div class="media-body">
-                        <h5 class="mt-0">${comment.autherId},${comment.user.nickName} </h5>
+                        <h5 class="mt-0">${comment.user.nickName}:</h5>
                             ${comment.commentContent}
-                        <div class="media-bottom">
+                        <div class="media-bottom" onmousemove="showdelete(${comment.id})" onmouseleave="hidedelete(${comment.id})">
                             <a target="_blank"><i class="glyphicon glyphicon-heart">赞</i></a>
                             <a target="_blank" onclick="_showcomment(${comment.id})"><i
                                     class="glyphicon glyphicon-comment">回复</i></a>
                             <c:if test="${user.id == details.userId||user.id == comment.autherId}">
-                                <a target="_blank" class="delete_first_a"
-                                   onclick="deleteComment(${comment.articleId},${comment.id},null,${comment.autherId})">删除</a>
+                                    <a id="delete_btn_${comment.id}" target="_blank" class="delete_first_a" style="display: none"
+                                       onclick="deleteComment(${comment.articleId},${comment.id},null,${comment.autherId})">删除</a>
+
                             </c:if>
                             <div class="card-body" id="comment_div_${comment.id}" style="display: none">
                                 <div class="form-group">
@@ -471,16 +466,16 @@
                         </div>
                         <c:forEach items="${comment.commentList}" var="qaq">
                             <div class="media mt-4">
-                                <img class="d-flex mr-3 rounded-circle" src="${ctx}/static/image/default.jpg" alt="">
+                                <img class="d-flex mr-3 rounded-circle" src="${qaq.user.imgUrl}" alt="">
                                 <div class="media-body">
-                                    <h5 class="mt-0">${qaq.user.id},${qaq.user.nickName}@${qaq.byUser.nickName}</h5>
+                                    <h5 class="mt-0">${qaq.user.nickName}@${qaq.byUser.nickName}</h5>
                                         ${qaq.commentContent}
-                                    <div class="media-bottom">
+                                    <div class="media-bottom" onmousemove="showdelete(${qaq.id})" onmouseleave="hidedelete(${qaq.id})">
                                         <a target="_blank"><i class="glyphicon glyphicon-heart">赞</i></a>
                                         <a target="_blank" onclick="_showcomment(${qaq.id})"><i
                                                 class="glyphicon glyphicon-comment">回复</i></a>
                                         <c:if test="${user.id == details.userId||user.id == qaq.autherId}">
-                                            <a target="_blank"
+                                            <a id="delete_btn_${qaq.id}" target="_blank" style="display: none;"
                                                onclick="deleteComment(${qaq.articleId},${qaq.id},${comment.id},${qaq.autherId})"><i
                                                     class=" delete_a"> 删除</i></a>
                                         </c:if>
@@ -525,41 +520,6 @@
                 </div>
             </div>
 
-            <!-- Categories Widget -->
-            <div class="card my-4">
-                <h5 class="card-header">Categories</h5>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled mb-0">
-                                <li>
-                                    <a href="#">Web Design</a>
-                                </li>
-                                <li>
-                                    <a href="#">HTML</a>
-                                </li>
-                                <li>
-                                    <a href="#">Freebies</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled mb-0">
-                                <li>
-                                    <a href="#">JavaScript</a>
-                                </li>
-                                <li>
-                                    <a href="#">CSS</a>
-                                </li>
-                                <li>
-                                    <a href="#">Tutorials</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- Side Widget -->
             <div class="card my-4">
                 <h5 class="card-header">Side Widget</h5>
@@ -576,15 +536,10 @@
     </div>
     <!-- /.row -->
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-        </div>
-        <!-- /.container -->
-    </footer>
+
 
 </div>
+
 <div id="layout">
     <%--<div id="test-editormd-view">--%>
     <%--<textarea style="display:none;" name="test-editormd-markdown-doc"></textarea>--%>
@@ -647,16 +602,9 @@
                     if (comm_data == "fail") {
                         window.location.href = "/login.jsp";
                     } else {
-                        var id = comm_data.id;
-                        //alert(id)
-                        oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="${user.imgUrl}" alt=""></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a  class="comment-size-name">${user.nickName} : </a> <span class="my-pl-con">&nbsp;' + oSize + '</span> </div> <div class="date-dz"> <span class="date-dz-left pull-left comment-time">' + now + '</span> <div class="date-dz-right pull-right comment-pl-block"><a style="cursor:pointer"  onclick="deleteComment(' + content_id + ',' + cuid + ',' + id + ',' + null + ')" id="comment_dl_' + id + '"  class="removeBlock">删除</a> <a style="cursor:pointer" onclick="comment_hf(' + content_id + ',' + id + ',' + null + ',' + comm_data.user.id + ',' + cuid + ')" id="comment_hf_' + id + '" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a onclick="reply_up(' + id + ')" id="change_color_' + id + '" style="cursor:pointer"  class="date-dz-z pull-left" ><i class="date-dz-z-click-red"></i>赞 (<i class="z-num" id="comment_upvote_' + id + '">0</i>)</a> </div> </div><div class="hf-list-con"></div></div> </div>';
-                        $("#comment_" + content_id).parents('.reviewArea ').siblings('.comment-show-first').prepend(oHtml);
-                        $("#comment_" + content_id).siblings('.flex-text-wrap').find('.comment-input').prop('value', '').siblings('pre').find('span').text('');
-
-                        $("#comment_input_" + content_id).val('');
-
-                        var num = document.getElementById("comment_num_" + content_id).innerHTML;
-                        document.getElementById("comment_num_" + content_id).innerHTML = (parseInt(num) + 1) + "";
+                        layer.msg("评论发布成功",{icon: 1},function () {
+                            location.reload();
+                        });
                     }
                 }
             });
@@ -678,16 +626,9 @@
                     if (comm_data == "fail") {
                         window.location.href = "/login.jsp";
                     } else {
-                        var id = comm_data.id;
-                        //alert(id)
-                        oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="${user.imgUrl}" alt=""></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a  class="comment-size-name">${user.nickName} : </a> <span class="my-pl-con">&nbsp;' + oSize + '</span> </div> <div class="date-dz"> <span class="date-dz-left pull-left comment-time">' + now + '</span> <div class="date-dz-right pull-right comment-pl-block"><a style="cursor:pointer"  onclick="deleteComment(' + content_id + ',' + cuid + ',' + id + ',' + null + ')" id="comment_dl_' + id + '"  class="removeBlock">删除</a> <a style="cursor:pointer" onclick="comment_hf(' + content_id + ',' + id + ',' + null + ',' + comm_data.user.id + ',' + cuid + ')" id="comment_hf_' + id + '" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a onclick="reply_up(' + id + ')" id="change_color_' + id + '" style="cursor:pointer"  class="date-dz-z pull-left" ><i class="date-dz-z-click-red"></i>赞 (<i class="z-num" id="comment_upvote_' + id + '">0</i>)</a> </div> </div><div class="hf-list-con"></div></div> </div>';
-                        $("#comment_" + content_id).parents('.reviewArea ').siblings('.comment-show-first').prepend(oHtml);
-                        $("#comment_" + content_id).siblings('.flex-text-wrap').find('.comment-input').prop('value', '').siblings('pre').find('span').text('');
-
-                        $("#comment_input_" + content_id).val('');
-
-                        var num = document.getElementById("comment_num_" + content_id).innerHTML;
-                        document.getElementById("comment_num_" + content_id).innerHTML = (parseInt(num) + 1) + "";
+                        layer.msg("评论发布成功",{icon: 1},function () {
+                            location.reload();
+                        });
                     }
                 }
             });
@@ -698,9 +639,9 @@
 
         //删除评论块
         function deleteComment(article_id, comment_id, fid, authr_id) {
-            if (!confirm("确认要删除？")) {
-                window.event.returnValue = false;
-            } else {
+            layer.confirm('确定删除此评论么？', {
+                btn: ['确定','取消'] //按钮
+            }, function() {
                 //发送ajax请求
                 $.ajax({
                     type: 'post',
@@ -708,15 +649,42 @@
                     data: {"article_id": article_id, "comment_id": comment_id, "fid": fid, "auther_id": authr_id},
                     dataType: 'json',
                     success: function (data) {
-                        location.reload();
+                        if(data["data"] === "q"){
+                            layer.msg("评论已删除",{icon: 1},function () {
+                                location.reload();
+                            });
+                        }else if(data["data"]==="fail"){
+                            layer.msg("请登录",{icon:2},{time:1000},function () {
+                                window.location.href="/"
+                            })
+                        }
+
                     }
                 });
-            }
+            });
         }
 
         function _showcomment(id) {
             $("#comment_div_" + id).show();
         }
+
+        function showdelete(id) {
+            $("#delete_btn_" + id).show();
+        }
+
+
+        function hidedelete(id) {
+            $("#delete_btn_" + id).hide();
+        }
+        //
+        // function showdelete(id) {
+        //     $("#delete_btn_" + id).show();
+        // }
+        //
+        //
+        // function hidedelete1(id) {
+        //     $("#delete_btn1_" + id).hide();
+        // }
 
         function _hidecomment(id) {
             $("#comment_div_" + id).hide();
@@ -724,7 +692,7 @@
 
         function _deleteArticle(article_id, article_title) {
             layer.confirm('在考虑一下么，删除之后不可恢复', {
-                btn: ['重要','奇葩'] //按钮
+                btn: ['确定','取消'] //按钮
             }, function() {
                 $.ajax({
                     type:'post',
@@ -733,7 +701,7 @@
                     dataType: "json",
                     success: function (data) {
                         if(data["data"] === "ok"){
-                            layer.msg("文章已删除",{icon: 1},function () {
+                            layer.msg("文章已删除",{icon: 1},{time:1000},function () {
                                 window.location.href="/myhome";
                             });
                         }else if(data["data"]==="fail"){

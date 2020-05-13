@@ -9,7 +9,7 @@
     </insert>
 
     <select id="findByJoin" resultMap="joinMap">
-        select id,user_id,auther, title,content,summary,img_url,views,comment_count,write_date,update_date,like_count from articles
+        select id,user_id,auther, title,content,summary,img_url,views,comment_count,write_date,update_date,like_count from articles order by write_date desc
     </select>
 
     <!--<select id="findByJoin" resultMap="joinMap">-->
@@ -24,7 +24,7 @@
     </select>
 
     <select id="findByUserid" resultMap="joinMap">
-        select id,user_id,auther, title,content,img_url,views,comment_count,write_date,update_date,like_count from articles where user_id = #{id}
+        select id,user_id,auther, title,content,img_url,views,comment_count,write_date,update_date,like_count from articles where user_id = #{id} order by write_date desc
     </select>
 
 

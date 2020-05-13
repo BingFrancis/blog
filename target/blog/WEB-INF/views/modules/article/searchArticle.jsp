@@ -167,6 +167,9 @@
             display: block;
 
         }
+        .dropdown-menu a{
+            color: #4D4D4D;
+        }
     </style>
 
     <script src="/static/js/jquery.min.js"></script>
@@ -252,24 +255,14 @@
                                         <div class="col-md-4 text-center grid">
                                             <i class="fa fa-gear" style="font-size: 25px;line-height: 45px;"></i>
                                             <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-                                                <a>账号管理</a></p>
+                                                <a href="/user">账号管理</a></p>
                                         </div>
                                         <div class="col-md-4 text-center grid">
                                             <i class="fa fa-key" style="font-size: 25px;line-height: 45px;"></i>
                                             <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-                                                <a>密码修改</a></p>
+                                                <a href="/modifyPwd">密码修改</a></p>
                                         </div>
                                     </div>
-
-                                        <%--<div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">--%>
-                                        <%--<div class="col-md-4 text-center grid">--%>
-                                        <%--<i class="fa fa-user-circle" style="font-size: 25px;line-height: 45px;"></i>--%>
-                                        <%--<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">--%>
-                                        <%--修改头像</p>--%>
-                                        <%--</div>--%>
-                                        <%--</div>--%>
-
-
                                     <div class="row" style="margin-top: 20px">
                                         <div class="text-center"
                                              style="padding: 15px;margin: 0px;background: #f6f5f5;color: #323534;">
@@ -320,10 +313,11 @@
                            class="btn btn-primary">Read More &rarr;</a>
                     </div>
                     <div class="card-footer text-muted">
-                        Posted on January 1, 2017 by
+                            ${artilce.writeDate} By
+
                         <a href="#" target="_blank">${artilce.auther}</a>
-                        <a target="_blank"><i class="glyphicon glyphicon-heart">${artilce.likeCount}</i></a>
-                        <a target="_blank"><i class="glyphicon glyphicon-comment">${artilce.commentCount}</i></a>
+                        <a href="${ctx}/article/getContent?a=${artilce.id}"><i class="glyphicon glyphicon-heart">${artilce.likeCount}</i></a>
+                        <a href="${ctx}/article/getContent?a=${artilce.id}"><i class="glyphicon glyphicon-comment">${artilce.commentCount}</i></a>
 
                     </div>
                 </div>
@@ -385,39 +379,39 @@
             </div>
 
             <!-- Categories Widget -->
-            <div class="card my-4">
-                <h5 class="card-header">Categories</h5>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled mb-0">
-                                <li>
-                                    <a href="#">Web Design</a>
-                                </li>
-                                <li>
-                                    <a href="#">HTML</a>
-                                </li>
-                                <li>
-                                    <a href="#">Freebies</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled mb-0">
-                                <li>
-                                    <a href="#">JavaScript</a>
-                                </li>
-                                <li>
-                                    <a href="#">CSS</a>
-                                </li>
-                                <li>
-                                    <a href="#">Tutorials</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <%--<div class="card my-4">--%>
+                <%--<h5 class="card-header">Categories</h5>--%>
+                <%--<div class="card-body">--%>
+                    <%--<div class="row">--%>
+                        <%--<div class="col-lg-6">--%>
+                            <%--<ul class="list-unstyled mb-0">--%>
+                                <%--<li>--%>
+                                    <%--<a href="#">Web Design</a>--%>
+                                <%--</li>--%>
+                                <%--<li>--%>
+                                    <%--<a href="#">HTML</a>--%>
+                                <%--</li>--%>
+                                <%--<li>--%>
+                                    <%--<a href="#">Freebies</a>--%>
+                                <%--</li>--%>
+                            <%--</ul>--%>
+                        <%--</div>--%>
+                        <%--<div class="col-lg-6">--%>
+                            <%--<ul class="list-unstyled mb-0">--%>
+                                <%--<li>--%>
+                                    <%--<a href="#">JavaScript</a>--%>
+                                <%--</li>--%>
+                                <%--<li>--%>
+                                    <%--<a href="#">CSS</a>--%>
+                                <%--</li>--%>
+                                <%--<li>--%>
+                                    <%--<a href="#">Tutorials</a>--%>
+                                <%--</li>--%>
+                            <%--</ul>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
 
             <!-- Side Widget -->
             <div class="card my-4">
@@ -437,12 +431,12 @@
 <!-- /.container -->
 
 <!-- Footer -->
-<%--<footer class="py-5 bg-dark">--%>
-<%--<div class="container">--%>
-<%--<p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>--%>
-<%--</div>--%>
-<%--<!-- /.container -->--%>
-<%--</footer>--%>
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Francis Blog 2020</p>
+    </div>
+    <!-- /.container -->
+</footer>
 
 <%----%>
 
