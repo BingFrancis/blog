@@ -31,9 +31,7 @@
     <context:component-scan base-package="com.blog.service"/>
 
     <mvc:view-controller path="/" view-name="index"/>
-
     <mvc:annotation-driven/>
-
 
     <!-- 视图解析器：解析jsp页面，默认使用jstl标签，classpath下得有jstl的包 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -63,4 +61,5 @@
         <property name="defaultEncoding" value="UTF-8"></property>
         <property name="maxUploadSize" value="10240000"></property>
     </bean>
+
 </beans>

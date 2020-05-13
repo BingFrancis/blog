@@ -1,11 +1,14 @@
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="ctx" value="${pageContext.request.contextPath }"/>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>主页，书写你的传奇</title>
+    <title>主页</title>
     <meta charset=UTF-8">
 
     <link href="${ctx}/static/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -167,6 +170,11 @@
             display: block;
 
         }
+
+        .dropdown-menu a{
+            color: #4D4D4D;
+        }
+        
     </style>
 
     <script src="/static/js/jquery.min.js"></script>
@@ -241,7 +249,7 @@
                                         <div class="col-md-4 text-center grid">
                                             <i class="fa fa-key" style="font-size: 25px;line-height: 45px;"></i>
                                             <p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-                                                <a>密码修改</a></p>
+                                                <a href="/modifyPwd">密码修改</a></p>
                                         </div>
                                     </div>
                                     <div class="row" style="margin-top: 20px">
@@ -294,10 +302,11 @@
                            class="btn btn-primary">Read More &rarr;</a>
                     </div>
                     <div class="card-footer text-muted">
-                        Posted on January 1, 2017 by
+                            ${artilce.writeDate} By
+
                         <a href="#" target="_blank">${artilce.auther}</a>
-                        <a target="_blank"><i class="glyphicon glyphicon-heart">${artilce.likeCount}</i></a>
-                        <a target="_blank"><i class="glyphicon glyphicon-comment">${artilce.commentCount}</i></a>
+                        <a href="${ctx}/article/getContent?a=${artilce.id}"><i class="glyphicon glyphicon-heart">${artilce.likeCount}</i></a>
+                        <a href="${ctx}/article/getContent?a=${artilce.id}"><i class="glyphicon glyphicon-comment">${artilce.commentCount}</i></a>
 
                     </div>
                 </div>
@@ -347,10 +356,11 @@
             <div class="card mb-4">
                 <h5 class="card-header">Search</h5>
                 <div class="card-body">
-                    <form id="searchform"  action="${ctx}/article/search" method="post">
+                    <form id="searchform" action="${ctx}/article/search" method="post">
                         <div class="input-group">
-                                <input id="keyword" name="keyword" type="text" class="form-control" placeholder="Search for...">
-                                <span class="input-group-btn">
+                            <input id="keyword" name="keyword" type="text" class="form-control"
+                                   placeholder="Search for...">
+                            <span class="input-group-btn">
                                 <button class="btn btn-secondary" type="submit">Go!</button>
                             </span>
                         </div>
@@ -360,46 +370,45 @@
             </div>
 
             <!-- Categories Widget -->
-            <div class="card my-4">
-                <h5 class="card-header">Categories</h5>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled mb-0">
-                                <li>
-                                    <a href="#">Web Design</a>
-                                </li>
-                                <li>
-                                    <a href="#">HTML</a>
-                                </li>
-                                <li>
-                                    <a href="#">Freebies</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled mb-0">
-                                <li>
-                                    <a href="#">JavaScript</a>
-                                </li>
-                                <li>
-                                    <a href="#">CSS</a>
-                                </li>
-                                <li>
-                                    <a href="#">Tutorials</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <%--<div class="card my-4">--%>
+                <%--<h5 class="card-header">Categories</h5>--%>
+                <%--<div class="card-body">--%>
+                    <%--<div class="row">--%>
+                        <%--&lt;%&ndash;<div class="col-lg-6">&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;<ul class="list-unstyled mb-0">&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
+                                    <%--&lt;%&ndash;<a href="#">Web Design</a>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
+                                    <%--&lt;%&ndash;<a href="#">HTML</a>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
+                                    <%--&lt;%&ndash;<a href="#">Freebies</a>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;</ul>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<div class="col-lg-6">&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;<ul class="list-unstyled mb-0">&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
+                                    <%--&lt;%&ndash;<a href="#">JavaScript</a>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
+                                    <%--&lt;%&ndash;<a href="#">CSS</a>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
+                                    <%--&lt;%&ndash;<a href="#">Tutorials</a>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;</ul>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
 
             <!-- Side Widget -->
             <div class="card my-4">
-                <h5 class="card-header">Side Widget</h5>
+                <h5 class="card-header">Introduction</h5>
                 <div class="card-body">
-                    You can put anything you want inside of these side widgets. They are easy to use, and feature the
-                    new Bootstrap 4 card containers!
+                    You can record something you think makes sense through this blog
                 </div>
             </div>
 
@@ -409,17 +418,17 @@
     <!-- /.row -->
 
 </div>
-<!-- /.container -->
+
 
 <!-- Footer -->
-<%--<footer class="py-5 bg-dark">--%>
-<%--<div class="container">--%>
-<%--<p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>--%>
-<%--</div>--%>
-<%--<!-- /.container -->--%>
-<%--</footer>--%>
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Francis Blog 2020</p>
+    </div>
+    <!-- /.container -->
+</footer>
 
-<%----%>
+
 
 
 </body>

@@ -82,10 +82,6 @@
                     if (/(^\_)|(\__)|(\_+$)/.test(value)) {
                         return '首尾不能出现下划线\'_\'';
                     }
-                    // var minlength = $(item).attr("minlength");
-                    // if(minlength && value.length < minlength){
-                    //     return '长度至少为'+minlength+"位";
-                    // }
                     if (/^\d+$/.test(value)) {
                         return '不能全为数字';
                     }
@@ -108,7 +104,7 @@
                         });
                         return message;///^[\S]{6,12}$/
                     }
-                },password: [/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/, '密码必须6到16位，且不能出现空格']
+                },password: [/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/, '密码由6到16位数字和字母组成，且不能出现空格']
             });
 
             //表单提交验证

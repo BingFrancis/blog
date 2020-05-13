@@ -35,6 +35,11 @@
     </update>
 
 
+    <update id="updatePwd" parameterType="com.blog.entity.Article" useGeneratedKeys="true" keyProperty="id">
+       UPDATE user SET  password = #{password} WHERE id = #{id}
+    </update>
+
+
 
 
 
