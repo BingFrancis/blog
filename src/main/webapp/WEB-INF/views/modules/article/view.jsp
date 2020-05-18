@@ -701,7 +701,7 @@
                     dataType: "json",
                     success: function (data) {
                         if(data["data"] === "ok"){
-                            layer.msg("文章已删除",{icon: 1},{time:1000},function () {
+                            layer.msg("文章已删除",{icon: 1},function () {
                                 window.location.href="/myhome";
                             });
                         }else if(data["data"]==="fail"){

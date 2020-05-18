@@ -124,7 +124,7 @@ public class UserController {
         user.setNickName(nickname);
         user.setPhone(cellphone);
         user.setPassword(entryptPassword(password));
-        user.setImgUrl("/images/icon_m.jpg");
+        user.setImgUrl("/static/image/default.jpg");
         userService.insert(user);
         log.info("注册成功");
         return "true";

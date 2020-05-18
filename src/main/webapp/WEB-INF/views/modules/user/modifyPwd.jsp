@@ -248,7 +248,7 @@
                         <span>记住密码</span>
                         <i class="layui-icon layui-icon-ok"></i>
                     </div>
-                    <a href="forget.html" class="layadmin-user-jump-change layadmin-link"
+                    <a href="${ctx}/forgetPwd" class="layadmin-user-jump-change layadmin-link"
                        style="margin-top: 7px;">忘记密码？</a>
                 </div>
                 <div class="layui-form-item">

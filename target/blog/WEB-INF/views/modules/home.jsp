@@ -369,40 +369,6 @@
                 </div>
             </div>
 
-            <!-- Categories Widget -->
-            <%--<div class="card my-4">--%>
-                <%--<h5 class="card-header">Categories</h5>--%>
-                <%--<div class="card-body">--%>
-                    <%--<div class="row">--%>
-                        <%--&lt;%&ndash;<div class="col-lg-6">&ndash;%&gt;--%>
-                            <%--&lt;%&ndash;<ul class="list-unstyled mb-0">&ndash;%&gt;--%>
-                                <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
-                                    <%--&lt;%&ndash;<a href="#">Web Design</a>&ndash;%&gt;--%>
-                                <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
-                                <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
-                                    <%--&lt;%&ndash;<a href="#">HTML</a>&ndash;%&gt;--%>
-                                <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
-                                <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
-                                    <%--&lt;%&ndash;<a href="#">Freebies</a>&ndash;%&gt;--%>
-                                <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
-                            <%--&lt;%&ndash;</ul>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<div class="col-lg-6">&ndash;%&gt;--%>
-                            <%--&lt;%&ndash;<ul class="list-unstyled mb-0">&ndash;%&gt;--%>
-                                <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
-                                    <%--&lt;%&ndash;<a href="#">JavaScript</a>&ndash;%&gt;--%>
-                                <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
-                                <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
-                                    <%--&lt;%&ndash;<a href="#">CSS</a>&ndash;%&gt;--%>
-                                <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
-                                <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
-                                    <%--&lt;%&ndash;<a href="#">Tutorials</a>&ndash;%&gt;--%>
-                                <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
-                            <%--&lt;%&ndash;</ul>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
 
             <!-- Side Widget -->
             <div class="card my-4">
